@@ -2,9 +2,12 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { ShoppingCart, Package, Star, ExternalLink } from "lucide-react";
 
 const PortfolioPage = () => {
   const [filter, setFilter] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
 
   const categories = ["All", "Branding", "Web Design", "Marketing", "Company Profile"];
 
@@ -19,7 +22,8 @@ const PortfolioPage = () => {
       title: "EcoStore E-commerce",
       category: "Web Design",
       description: "Modern e-commerce platform for sustainable products",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      isEcoStore: true
     },
     {
       title: "FinanceHub Profile",
@@ -116,8 +120,9 @@ const PortfolioPage = () => {
               {filteredProjects.map((project, index) => (
                 <Card
                   key={index}
-                  className="group overflow-hidden hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-in-up"
+                  className="group overflow-hidden hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-in-up cursor-pointer"
                   style={{ animationDelay: `${index * 100}ms` }}
+                  onClick={() => setSelectedProject(project)}
                 >
                   <div className="relative overflow-hidden aspect-[4/3]">
                     <img
@@ -142,6 +147,113 @@ const PortfolioPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Project Modal */}
+      <Dialog open={selectedProject?.isEcoStore} onOpenChange={() => setSelectedProject(null)}>
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-bold flex items-center gap-2">
+              <ShoppingCart className="h-6 w-6 text-brand-blue" />
+              EcoStore E-commerce Platform
+            </DialogTitle>
+            <DialogDescription className="text-lg">
+              A modern, AI-powered e-commerce platform for sustainable products
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="space-y-6">
+            {/* Project Description */}
+            <div className="space-y-4">
+              <h4 className="text-lg font-semibold">Project Overview</h4>
+              <p className="text-muted-foreground leading-relaxed">
+                EcoStore is a comprehensive e-commerce platform designed for sustainable and eco-friendly products. 
+                Built with modern web technologies, it features AI-powered product recommendations, seamless user 
+                authentication, and a complete shopping experience from browsing to checkout.
+              </p>
+              
+              <div className="grid md:grid-cols-2 gap-6">
+                <div>
+                  <h5 className="font-semibold mb-2 flex items-center gap-2">
+                    <Package className="h-4 w-4 text-brand-blue" />
+                    Key Features
+                  </h5>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    <li>• AI-powered product recommendations</li>
+                    <li>• User authentication & profile management</li>
+                    <li>• Shopping cart & checkout system</li>
+                    <li>• Product categories & filtering</li>
+                    <li>• Order tracking & history</li>
+                    <li>• Responsive design for all devices</li>
+                  </ul>
+                </div>
+                
+                <div>
+                  <h5 className="font-semibold mb-2 flex items-center gap-2">
+                    <Star className="h-4 w-4 text-brand-blue" />
+                    Technologies Used
+                  </h5>
+                  <ul className="space-y-1 text-sm text-muted-foreground">
+                    <li>• React with TypeScript</li>
+                    <li>• Tailwind CSS for styling</li>
+                    <li>• Framer Motion for animations</li>
+                    <li>• React Router for navigation</li>
+                    <li>• Context API for state management</li>
+                    <li>• Lucide React for icons</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Interactive E-commerce Preview */}
+            <div className="relative overflow-hidden rounded-lg border-2 border-gray-200 bg-white shadow-lg">
+              {/* Browser Header */}
+              <div className="flex items-center justify-between bg-gray-100 px-4 py-2 border-b">
+                <div className="flex items-center space-x-2">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                </div>
+                <div className="flex-1 mx-4">
+                  <div className="bg-white rounded px-3 py-1 text-sm text-gray-600 text-center">
+                    localhost:5173
+                  </div>
+                </div>
+                <div className="w-4 h-4"></div>
+              </div>
+              
+              {/* E-commerce Website Screenshot */}
+              <div className="relative">
+                <img
+                  src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop&auto=format&q=80"
+                  alt="EcoStore E-commerce Website"
+                  className="w-full h-auto object-cover"
+                />
+                {/* Overlay Stats Card */}
+                <div className="absolute bottom-4 left-4 bg-white rounded-lg p-3 shadow-lg">
+                  <div className="text-2xl font-bold text-green-600">50K+</div>
+                  <div className="text-sm text-gray-600">Happy Customers</div>
+                </div>
+              </div>
+              
+              {/* Hover Overlay */}
+              <div className="absolute inset-0 bg-black/80 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <Button 
+                  onClick={() => {
+                    // Open the e-commerce project in a new tab
+                    // You can replace this URL with your actual e-commerce deployment URL
+                    window.open('http://localhost:5173', '_blank');
+                  }}
+                  className="bg-white text-black hover:bg-gray-100 px-6 py-3 text-lg font-semibold"
+                >
+                  <ExternalLink className="h-5 w-5 mr-2" />
+                  View Complete Website
+                </Button>
+              </div>
+            </div>
+
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

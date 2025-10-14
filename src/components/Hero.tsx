@@ -1,8 +1,19 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
+  const navigate = useNavigate();
+
+  const handleGetStarted = () => {
+    navigate('/contact');
+  };
+
+  const handleViewWork = () => {
+    navigate('/portfolio');
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Animated background gradient */}
@@ -38,11 +49,20 @@ const Hero = () => {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-              <Button size="lg" className="text-lg px-8 py-6 gradient-primary shadow-lg hover:shadow-glow transition-smooth group">
+              <Button 
+                size="lg" 
+                className="text-lg px-8 py-6 gradient-primary shadow-lg hover:shadow-glow transition-smooth group"
+                onClick={handleGetStarted}
+              >
                 Get Started
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-6 border-2 hover:border-primary transition-smooth">
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="text-lg px-8 py-6 border-2 hover:border-primary transition-smooth"
+                onClick={handleViewWork}
+              >
                 View Our Work
               </Button>
             </div>
@@ -61,7 +81,7 @@ const Hero = () => {
             
             {/* Floating stats cards */}
             <div className="absolute -bottom-6 -left-6 bg-card p-6 rounded-2xl shadow-lg border animate-float hidden lg:block">
-              <div className="text-3xl font-bold text-primary">150+</div>
+              <div className="text-3xl font-bold text-primary">10+</div>
               <div className="text-sm text-muted-foreground">Projects Completed</div>
             </div>
             

@@ -76,7 +76,7 @@ const AboutPage = () => {
                   <div className="space-y-6">
                     <div>
                       <div className="text-4xl font-bold bg-gradient-to-r from-brand-blue to-brand-violet bg-clip-text text-transparent">
-                        100+
+                        10+
                       </div>
                       <div className="text-muted-foreground">Projects Completed</div>
                     </div>

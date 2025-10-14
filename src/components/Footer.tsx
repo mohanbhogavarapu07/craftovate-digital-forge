@@ -4,8 +4,6 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const companyLinks = [
     { name: "About Us", href: "/about" },
-    { name: "Our Team", href: "/team" },
-    { name: "Careers", href: "/careers" },
     { name: "Contact", href: "/contact" }
   ];
 
@@ -18,8 +16,6 @@ const Footer = () => {
 
   const resourcesLinks = [
     { name: "Portfolio", href: "/portfolio" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "Blog", href: "/blog" },
     { name: "FAQ", href: "/faq" },
     { name: "Pricing", href: "/pricing" }
   ];
