@@ -1,72 +1,140 @@
-import { Palette, Code, FileText, Target } from "lucide-react";
+import { Palette, Code, FileText, Target, Smartphone, Globe, BarChart3, Users, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   const services = [
     {
       icon: Palette,
-      title: "Branding & Identity Design",
-      description: "Create a memorable brand identity with custom logos, color palettes, and visual guidelines that resonate with your audience.",
-      gradient: "from-brand-blue to-brand-violet"
+      title: "Branding & Identity",
+      description: "Create memorable brand identities with custom logos and visual guidelines.",
+      gradient: "from-blue-400 to-blue-500"
     },
     {
       icon: Code,
-      title: "Website Design & Development",
-      description: "Build stunning, responsive websites that combine beautiful design with powerful functionality and seamless user experience.",
-      gradient: "from-brand-violet to-brand-purple"
+      title: "Web Development",
+      description: "Build stunning, responsive websites with powerful functionality.",
+      gradient: "from-blue-500 to-blue-600"
+    },
+    {
+      icon: Smartphone,
+      title: "Mobile Solutions",
+      description: "Develop native and cross-platform mobile applications.",
+      gradient: "from-blue-600 to-blue-700"
     },
     {
       icon: FileText,
-      title: "Company Profile & Marketing Collateral",
-      description: "Design professional company profiles, brochures, and marketing materials that communicate your value proposition effectively.",
-      gradient: "from-brand-purple to-brand-blue"
+      title: "Marketing Collateral",
+      description: "Design professional company profiles and marketing materials.",
+      gradient: "from-blue-500 to-cyan-500"
     },
     {
-      icon: Target,
-      title: "Digital Strategy & Content Creation",
-      description: "Develop comprehensive digital strategies and engaging content that attracts, converts, and retains your ideal customers.",
-      gradient: "from-brand-blue to-brand-purple"
+      icon: Globe,
+      title: "Digital Strategy",
+      description: "Develop comprehensive digital strategies for business growth.",
+      gradient: "from-cyan-500 to-blue-600"
+    },
+    {
+      icon: BarChart3,
+      title: "Analytics & Insights",
+      description: "Provide data-driven insights to optimize your digital presence.",
+      gradient: "from-blue-600 to-indigo-600"
+    },
+    {
+      icon: Users,
+      title: "Team Augmentation",
+      description: "Extend your team with our expert designers and developers.",
+      gradient: "from-indigo-500 to-blue-700"
     }
   ];
 
   return (
-    <section id="services" className="py-24 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
+    <section id="services" className="py-24 relative overflow-hidden">
+      {/* Premium gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-blue-100 to-cyan-50">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-blue-200/30 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-200/30 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Header */}
+        <div className="max-w-3xl mx-auto text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             Our Services
           </h2>
           <p className="text-xl text-muted-foreground">
-            Comprehensive solutions to elevate your digital presence and drive business growth.
+            What we offer to help you grow
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {services.map((service, index) => (
-            <div 
-              key={service.title}
-              className="group relative p-8 rounded-3xl bg-card border hover:shadow-xl transition-smooth overflow-hidden animate-fade-in-up"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Gradient overlay on hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-5 transition-smooth`}></div>
-              
-              <div className="relative">
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-smooth shadow-md`}>
-                  <service.icon className="w-7 h-7 text-white" />
-                </div>
-                
-                <h3 className="text-2xl font-bold mb-4 group-hover:text-primary transition-smooth">
-                  {service.title}
-                </h3>
-                
-                <p className="text-muted-foreground leading-relaxed">
-                  {service.description}
-                </p>
-              </div>
+        {/* Scrolling Cards Container */}
+        <div className="relative h-80 overflow-hidden">
+          <div className="absolute inset-0 flex items-center">
+            {/* Auto-scrolling cards in straight line */}
+            <div className="flex items-center space-x-6 animate-scroll-horizontal">
+              {/* Duplicate set for seamless loop */}
+              {[...services, ...services, ...services].map((service, index) => {
+                return (
+                  <div
+                    key={`${service.title}-${index}`}
+                    className="flex-shrink-0 w-80 h-64 group cursor-pointer"
+                  >
+                    <div className="w-full h-full p-6 bg-white/80 backdrop-blur-md rounded-3xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-400 ease-in-out hover:scale-110 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(128,90,213,0.3)]">
+                      {/* Icon */}
+                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                        <service.icon className="w-8 h-8 text-white" />
+                      </div>
+                      
+                      {/* Content */}
+                      <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-violet-600 transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {service.description}
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          ))}
+          </div>
+        </div>
+
+        {/* View More Button */}
+        <div className="flex justify-center mt-12 relative z-20">
+          <Link to="/services">
+            <Button 
+              size="lg" 
+              className="bg-gradient-to-r from-blue-500 via-blue-600 to-cyan-500 text-white hover:shadow-xl hover:scale-105 group transition-all duration-300 px-8 py-4 text-lg font-semibold"
+            >
+              View More Services
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </Button>
+          </Link>
         </div>
       </div>
+
+      {/* Custom CSS for animation */}
+      <style jsx>{`
+        @keyframes scroll-horizontal {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-33.333%);
+          }
+        }
+        
+        .animate-scroll-horizontal {
+          animation: scroll-horizontal 20s linear infinite;
+        }
+        
+        .animate-scroll-horizontal:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   );
 };

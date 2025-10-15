@@ -1,84 +1,110 @@
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Portfolio = () => {
   const projects = [
     {
-      title: "TechStart SaaS Platform",
-      category: "Branding & Web Development",
-      description: "Complete brand identity and web platform for a B2B SaaS startup",
-      color: "from-brand-blue to-brand-violet"
+      title: "TechStart Branding",
+      category: "Branding",
+      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop",
+      description: "Complete brand identity redesign for a tech startup"
     },
     {
-      title: "EcoLife Brand Identity",
-      category: "Branding & Marketing",
-      description: "Sustainable brand design and marketing strategy for eco-friendly products",
-      color: "from-brand-violet to-brand-purple"
+      title: "EcoStore E-commerce",
+      category: "Web Design",
+      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+      description: "Modern e-commerce platform for sustainable products"
     },
     {
-      title: "FinanceHub Dashboard",
-      category: "UI/UX Design & Development",
-      description: "Modern dashboard interface for fintech platform with advanced analytics",
-      color: "from-brand-purple to-brand-blue"
+      title: "FinanceHub Profile",
+      category: "Company Profile",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop",
+      description: "Professional company profile for financial services"
     },
     {
-      title: "Creative Agency Website",
-      category: "Web Design & Content",
-      description: "Portfolio website with interactive animations and engaging content",
-      color: "from-brand-blue to-brand-purple"
+      title: "FitLife Campaign",
+      category: "Marketing",
+      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop",
+      description: "Multi-channel marketing campaign for fitness brand"
     },
     {
-      title: "FoodTech Mobile App",
-      category: "Mobile App Design",
-      description: "User-friendly mobile app design for food delivery service",
-      color: "from-brand-violet to-brand-blue"
+      title: "CloudTech Website",
+      category: "Web Design",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
+      description: "SaaS platform website with custom illustrations"
     },
     {
-      title: "Corporate Rebrand",
-      category: "Brand Strategy",
-      description: "Complete brand refresh for established corporate client",
-      color: "from-brand-purple to-brand-violet"
+      title: "GreenLeaf Identity",
+      category: "Branding",
+      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop",
+      description: "Organic brand identity with eco-friendly aesthetic"
     }
   ];
 
   return (
-    <section id="portfolio" className="py-24 gradient-subtle">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6">
-            Our Portfolio
+    <section id="portfolio" className="py-24 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
+            My Portfolio
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Explore our recent projects and see how we've helped businesses transform their digital presence.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            Some of my latest work and projects
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-          {projects.map((project, index) => (
-            <div 
-              key={project.title}
-              className="group relative rounded-3xl overflow-hidden bg-card border hover:shadow-xl transition-smooth animate-fade-in-up cursor-pointer"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Gradient background */}
-              <div className={`h-48 bg-gradient-to-br ${project.color} opacity-80 group-hover:opacity-100 transition-smooth`}></div>
-              
-              {/* Content overlay */}
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-3">
-                  <span className="text-sm font-medium text-primary">{project.category}</span>
-                  <ExternalLink className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-smooth" />
+        {/* Portfolio Grid with Shared Overlay */}
+        <div className="relative mb-12">
+          {/* Grid Container */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {projects.map((project, index) => (
+              <div
+                key={project.title}
+                className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 animate-fade-in-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                {/* Project Image */}
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  
+                  {/* Card-specific gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  
+                  {/* Project Info Overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-gray-300 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
-                
-                <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-smooth">
-                  {project.title}
-                </h3>
-                
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  {project.description}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
+
+          {/* Shared Overlay covering entire grid */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 pointer-events-none rounded-2xl" />
+          
+          {/* View More Button positioned on overlay */}
+          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-10">
+            <Link to="/portfolio">
+              <Button 
+                size="lg" 
+                className="bg-white text-gray-900 hover:bg-gray-100 hover:shadow-xl hover:scale-105 group transition-all duration-300 px-6 py-3 text-lg font-semibold rounded-full shadow-lg"
+              >
+                View More
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
