@@ -54,17 +54,14 @@ const Footer = () => {
                 Craft. Innovate. Elevate your brand with our creative digital solutions.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 rounded-full hover:bg-blue-500/10">
-                  <Facebook className="w-5 h-5" />
+                <a href="https://www.instagram.com/craftovate/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 rounded-full hover:bg-blue-500/10">
+                  <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 rounded-full hover:bg-blue-500/10">
+                <a href="https://x.com/Contacttea67111" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 rounded-full hover:bg-blue-500/10">
                   <Twitter className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 rounded-full hover:bg-blue-500/10">
+                <a href="https://www.linkedin.com/in/craftovate-in-79a88838a" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 rounded-full hover:bg-blue-500/10">
                   <Linkedin className="w-5 h-5" />
-                </a>
-                <a href="#" className="text-gray-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 rounded-full hover:bg-blue-500/10">
-                  <Instagram className="w-5 h-5" />
                 </a>
               </div>
             </div>

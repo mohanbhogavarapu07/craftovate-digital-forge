@@ -76,7 +76,7 @@ const PricingPage = () => {
       <section className="py-20 bg-gradient-to-br from-brand-blue/5 via-brand-violet/5 to-brand-purple/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Simple,{" "}
               <span className="bg-gradient-to-r from-brand-blue via-brand-violet to-brand-purple bg-clip-text text-transparent">
                 Transparent Pricing
@@ -110,9 +110,9 @@ const PricingPage = () => {
                     </div>
                   )}
                   <CardHeader className="text-center pb-8">
-                    <CardTitle className="text-2xl mb-2">{plan.name}</CardTitle>
+                    <CardTitle className="text-xl mb-2">{plan.name}</CardTitle>
                     <div className="mb-4">
-                      <span className="text-4xl font-bold bg-gradient-to-r from-brand-blue to-brand-violet bg-clip-text text-transparent">
+                      <span className="text-3xl font-bold bg-gradient-to-r from-brand-blue to-brand-violet bg-clip-text text-transparent">
                         {plan.price}
                       </span>
                       {plan.period && (
@@ -152,7 +152,7 @@ const PricingPage = () => {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Additional Services</h2>
+            <h2 className="text-2xl font-bold text-center mb-8">Additional Services</h2>
             <div className="grid md:grid-cols-2 gap-4">
               {addons.map((addon, index) => (
                 <Card
@@ -174,7 +174,7 @@ const PricingPage = () => {
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Pricing FAQ</h2>
+            <h2 className="text-2xl font-bold text-center mb-8">Pricing FAQ</h2>
             <div className="space-y-6">
               <Card>
                 <CardHeader>

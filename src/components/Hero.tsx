@@ -34,7 +34,7 @@ const Hero = () => {
               <span className="text-sm font-medium text-white">Creative Digital Studio</span>
             </div>
             
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight text-white text-left">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 leading-tight text-white text-left">
               Craft. Innovate.{" "}
               <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 Elevate
@@ -69,12 +69,12 @@ const Hero = () => {
           {/* Floating stats cards */}
           <div className="flex justify-start gap-8 mt-16">
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 animate-float">
-              <div className="text-3xl font-bold text-white">10+</div>
+              <div className="text-2xl font-bold text-white">10+</div>
               <div className="text-sm text-white/80">Projects Completed</div>
             </div>
             
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl shadow-lg border border-white/20 animate-float" style={{ animationDelay: '1s' }}>
-              <div className="text-3xl font-bold text-white">98%</div>
+              <div className="text-2xl font-bold text-white">98%</div>
               <div className="text-sm text-white/80">Client Satisfaction</div>
             </div>
           </div>

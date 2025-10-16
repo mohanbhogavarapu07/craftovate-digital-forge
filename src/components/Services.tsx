@@ -55,15 +55,10 @@ const Services = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-400/5 via-cyan-400/5 to-blue-600/5"></div>
       </div>
 
-      {/* Floating geometric shapes */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-blue-200/20 rounded-full blur-xl animate-pulse"></div>
-      <div className="absolute top-40 right-20 w-32 h-32 bg-cyan-200/20 rounded-full blur-xl animate-pulse delay-1000"></div>
-      <div className="absolute bottom-20 left-1/4 w-24 h-24 bg-blue-300/20 rounded-full blur-xl animate-pulse delay-2000"></div>
-
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-blue-700 to-cyan-600 bg-clip-text text-transparent">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Header */}
+        <div className="max-w-3xl mx-auto text-center mb-20 animate-fade-in">
+          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             Our Services
           </h2>
           <p className="text-xl text-muted-foreground">

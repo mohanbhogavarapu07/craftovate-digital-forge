@@ -53,7 +53,7 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Centered Heading */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
             About Us
           </h2>
         </div>
@@ -62,7 +62,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Left Column - Text Content */}
           <div className="space-y-6 animate-fade-in-up">
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+            <h3 className="text-xl font-semibold text-gray-900 mb-4">
               Our Story
             </h3>
             <div className="space-y-4 text-gray-600">
