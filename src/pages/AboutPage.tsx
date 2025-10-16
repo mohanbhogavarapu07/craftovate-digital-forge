@@ -45,7 +45,7 @@ const AboutPage = () => {
     },
     {
       name: "Surya Bogavarapu",
-      role: "Co-Founder & CEO",
+      role: "Co-Founder & CTO",
       image: suryaImage,
       bio: "Surya drives our company's growth and oversees strategic initiatives to deliver exceptional digital solutions.",
       social: {
@@ -65,7 +65,7 @@ const AboutPage = () => {
     },
     {
       name: "Bhavya",
-      role: "CTO & COO",
+      role: "CEO & COO",
       image: "/placeholder.svg",
       bio: "Bhavya manages our technical operations and ensures smooth execution of all projects and initiatives.",
       social: {
@@ -81,19 +81,19 @@ const AboutPage = () => {
       <section className="relative py-8 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/30">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
-          {/* Flowing wave shapes */}
-          <div className="absolute top-0 left-0 w-full h-80 bg-gradient-to-br from-blue-100/30 to-indigo-100/20 animate-gentle-flow" style={{
+          {/* Flowing wave shapes - Dark colors */}
+          <div className="absolute top-0 left-0 w-full h-80 bg-gradient-to-br from-slate-800/20 to-gray-700/15 animate-gentle-flow" style={{
             clipPath: 'polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%)'
           }}></div>
           
-          <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-tl from-purple-100/25 to-pink-100/15 animate-gentle-flow-reverse" style={{
+          <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-tl from-slate-700/15 to-gray-600/10 animate-gentle-flow-reverse" style={{
             clipPath: 'polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%)',
             animationDelay: '3s'
           }}></div>
           
-          {/* Floating elements */}
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-blue-200/20 to-indigo-200/15 rounded-full blur-xl animate-soft-float"></div>
-          <div className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-gradient-to-tl from-purple-200/15 to-pink-200/10 rounded-full blur-xl animate-soft-float" style={{ animationDelay: '2s' }}></div>
+          {/* Floating elements - Dark colors */}
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-slate-600/15 to-gray-600/10 rounded-full blur-xl animate-soft-float"></div>
+          <div className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-gradient-to-tl from-slate-700/10 to-gray-700/8 rounded-full blur-xl animate-soft-float" style={{ animationDelay: '2s' }}></div>
         </div>
 
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
@@ -272,14 +272,11 @@ const AboutPage = () => {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
 
-                  {/* Name and Role - Always at bottom, moves to top on hover */}
+                  {/* Name - Always at bottom, moves to top on hover */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 group-hover:top-6 group-hover:bottom-auto transition-all duration-500 ease-in-out">
                     <h3 className="text-2xl font-bold text-white mb-2 font-sans">
                       {member.name}
                     </h3>
-                    <p className="text-gray-200 text-sm font-medium">
-                      {member.role}
-                    </p>
                   </div>
 
                   {/* Hover Content Container - Centered */}

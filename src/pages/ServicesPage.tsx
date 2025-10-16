@@ -107,50 +107,14 @@ const ServicesPage = () => {
 
   return (
     <div className="pt-16">
-      {/* Hero Section - Dark with Light Animations */}
-      <section className="relative py-20 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
-        {/* Dark Background with Bouncing Balls */}
-        <div className="absolute inset-0">
-          {/* Dark gradient base */}
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900"></div>
-          
-          {/* Big Icons - Random Flow */}
-          <div className="absolute top-1/4 left-1/4 w-20 h-20 text-blue-400/20 animate-random-float">
-            <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
-            </svg>
-          </div>
-          
-          <div className="absolute top-1/3 right-1/4 w-16 h-16 text-cyan-400/25 animate-random-float" style={{ animationDelay: '2s' }}>
-            <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
-            </svg>
-          </div>
-          
-          <div className="absolute bottom-1/4 left-1/3 w-18 h-18 text-purple-400/20 animate-random-float" style={{ animationDelay: '4s' }}>
-            <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
-            </svg>
-          </div>
-          
-          {/* Bouncing Balls - Distributed Across Section */}
-          <div className="absolute top-1/4 left-1/4 w-6 h-6 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-bounce-from-top"></div>
-          <div className="absolute top-1/2 right-1/3 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-bounce-from-bottom" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute bottom-1/3 left-1/6 w-5 h-5 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-bounce-from-left" style={{ animationDelay: '6s' }}></div>
-          <div className="absolute top-1/3 right-1/6 w-7 h-7 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-bounce-from-right" style={{ animationDelay: '9s' }}></div>
-          <div className="absolute bottom-1/4 right-1/4 w-4 h-4 bg-gradient-to-r from-pink-400 to-cyan-400 rounded-full animate-bounce-from-top" style={{ animationDelay: '12s' }}></div>
-          <div className="absolute top-2/3 left-1/3 w-6 h-6 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full animate-bounce-from-bottom" style={{ animationDelay: '15s' }}></div>
-          <div className="absolute bottom-1/2 right-1/2 w-5 h-5 bg-gradient-to-r from-green-400 to-teal-400 rounded-full animate-bounce-from-left" style={{ animationDelay: '18s' }}></div>
-          <div className="absolute top-1/6 left-1/2 w-7 h-7 bg-gradient-to-r from-orange-400 to-red-400 rounded-full animate-bounce-from-right" style={{ animationDelay: '21s' }}></div>
-          
-          {/* Light dot pattern overlay */}
-          <div className="absolute inset-0 opacity-[0.05]">
-            <div className="absolute inset-0" style={{
-              backgroundImage: `radial-gradient(circle at 2px 2px, #60a5fa 1px, transparent 0)`,
-              backgroundSize: '20px 20px'
-            }}></div>
-          </div>
-        </div>
+       {/* Hero Section - Clean Dark Background with Gradient */}
+       <section className="relative py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 overflow-hidden">
+         {/* Subtle Light Elements */}
+         <div className="absolute inset-0">
+           <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
+           <div className="absolute bottom-20 left-20 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
+           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/3 rounded-full blur-2xl"></div>
+         </div>
 
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
@@ -162,7 +126,7 @@ const ServicesPage = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-white">
               Digital
               <br />
-              <span className="bg-gradient-to-r from-white via-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
                 Excellence
               </span>
             </h1>
@@ -175,7 +139,7 @@ const ServicesPage = () => {
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center group">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm">
                     <stat.icon className="w-8 h-8 text-white" />
                   </div>
                   <div className="text-2xl font-bold text-white mb-2">{stat.value}</div>
@@ -257,8 +221,8 @@ const ServicesPage = () => {
                 <Card
                   key={index}
                 className="group relative overflow-hidden bg-white border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
                 {/* Card Header */}
                 <CardHeader className="p-8 pb-6">
                   <div className="flex items-start justify-between mb-6">
@@ -315,9 +279,8 @@ const ServicesPage = () => {
 
       {/* Process Section - How We Work */}
       <section className="py-24 relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 overflow-hidden">
-        {/* Smooth Background Elements */}
+        {/* Abstract Background Waves */}
         <div className="absolute inset-0">
-          {/* Flowing wave background */}
           <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-blue-100/20 to-indigo-100/15 animate-gentle-flow" style={{
             clipPath: 'polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%)'
           }}></div>
@@ -344,100 +307,64 @@ const ServicesPage = () => {
               </p>
             </div>
 
-            {/* Curved Process Flow */}
-            <div className="relative">
-              {/* Curved connecting line */}
-              <div className="absolute top-1/2 left-0 right-0 h-1 hidden lg:block">
-                <svg className="w-full h-full" viewBox="0 0 1200 4" preserveAspectRatio="none">
-                  <path 
-                    d="M0,2 Q300,20 600,2 T1200,2" 
-                    stroke="url(#gradient)" 
-                    strokeWidth="2" 
-                    fill="none"
-                    className="animate-curve-flow"
-                  />
-                  <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#3B82F6" stopOpacity="0.3"/>
-                      <stop offset="50%" stopColor="#8B5CF6" stopOpacity="0.5"/>
-                      <stop offset="100%" stopColor="#06B6D4" stopOpacity="0.3"/>
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-
-              {/* Process Steps */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+             {/* Process Steps - Clean Layout */}
+             <div className="relative">
+               {/* Process Steps - Linear Flow */}
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-12 lg:gap-8">
                 {[
                   {
                     step: "01",
                     title: "Discovery",
-                    description: "We dive deep into your business goals, target audience, and market landscape to understand your unique challenges and opportunities.",
+                    description: "Deep dive into your business goals and market landscape",
                     icon: "🔍",
-                    color: "from-blue-500 to-blue-600",
-                    bgColor: "bg-blue-50",
-                    borderColor: "border-blue-200"
+                    color: "from-blue-500 to-blue-600"
                   },
                   {
                     step: "02", 
                     title: "Strategy",
-                    description: "Based on our findings, we develop a comprehensive digital strategy tailored to your specific needs and business objectives.",
+                    description: "Comprehensive digital strategy tailored to your needs",
                     icon: "📋",
-                    color: "from-indigo-500 to-indigo-600",
-                    bgColor: "bg-indigo-50",
-                    borderColor: "border-indigo-200"
+                    color: "from-indigo-500 to-indigo-600"
                   },
                   {
                     step: "03",
                     title: "Design",
-                    description: "Our creative team crafts stunning visual experiences that resonate with your audience and authentically reflect your brand.",
+                    description: "Stunning visual experiences that reflect your brand",
                     icon: "🎨",
-                    color: "from-purple-500 to-purple-600",
-                    bgColor: "bg-purple-50",
-                    borderColor: "border-purple-200"
+                    color: "from-purple-500 to-purple-600"
                   },
                   {
                     step: "04",
                     title: "Launch",
-                    description: "We bring your vision to life with meticulous development, testing, and deployment of your digital solution.",
+                    description: "Meticulous development and deployment of your solution",
                     icon: "🚀",
-                    color: "from-cyan-500 to-cyan-600",
-                    bgColor: "bg-cyan-50",
-                    borderColor: "border-cyan-200"
+                    color: "from-cyan-500 to-cyan-600"
                   }
                 ].map((process, index) => (
-                  <div key={index} className="relative group">
-                    {/* Step Card */}
-                    <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-gray-100 group-hover:border-gray-200">
-                      {/* Step Number Badge */}
-                      <div className={`absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br ${process.color} rounded-full flex items-center justify-center text-white text-sm font-bold shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <div key={index} className="relative group flex-shrink-0">
+                    {/* Step Number Only */}
+                    <div className="relative mx-auto lg:mx-0">
+                      {/* Step Number */}
+                      <div className={`text-6xl font-bold bg-gradient-to-br ${process.color} bg-clip-text text-transparent group-hover:scale-110 transition-all duration-500`}>
                         {process.step}
                       </div>
-                      
-                      {/* Icon */}
-                      <div className={`w-20 h-20 mx-auto mb-6 rounded-2xl ${process.bgColor} ${process.borderColor} border-2 flex items-center justify-center text-4xl group-hover:scale-110 transition-transform duration-300 shadow-sm`}>
-                        {process.icon}
                       </div>
                       
-                      {/* Content */}
-                      <div className="text-center">
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-700 transition-colors duration-300">
+                    {/* Step Content */}
+                    <div className="text-center lg:text-left mt-6 lg:mt-8 max-w-xs mx-auto lg:mx-0">
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-gray-700 transition-colors duration-300">
                           {process.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed text-base">
+                      <p className="text-gray-600 text-sm leading-relaxed">
                           {process.description}
                         </p>
                       </div>
                       
-                      {/* Hover Effect Overlay */}
-                      <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${process.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                    </div>
-                    
-                    {/* Connecting Arrow (Mobile) */}
+                    {/* Mobile Arrow */}
                     {index < 3 && (
-                      <div className="lg:hidden flex justify-center mt-6 mb-6">
-                        <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                          <ArrowRight className="w-4 h-4 text-gray-500" />
+                      <div className="lg:hidden flex justify-center mt-8 mb-4">
+                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-500 flex items-center justify-center animate-bounce">
+                          <ArrowRight className="w-4 h-4 text-white" />
                         </div>
                       </div>
                     )}
@@ -503,8 +430,8 @@ const ServicesPage = () => {
         </div>
       </section>
 
-      {/* CTA Section - Modern Corporate */}
-      <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-600 via-purple-600 to-indigo-700">
+       {/* CTA Section - Modern Corporate */}
+       <section className="py-20 relative overflow-hidden bg-gradient-to-br from-blue-400 via-purple-400 to-indigo-500">
         {/* Subtle geometric background */}
         <div className="absolute inset-0">
           <div className="absolute top-20 right-20 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
@@ -529,7 +456,7 @@ const ServicesPage = () => {
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-white tracking-tight">
               Let's Build Something
               <br />
-              <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
                 Extraordinary
               </span>
             </h2>
@@ -1074,9 +1001,77 @@ const ServicesPage = () => {
         .animate-random-float {
           animation: randomFloat 15s ease-in-out infinite;
         }
+        
+        /* Gentle Flow Animations (from AboutPage) */
+        @keyframes gentleFlow {
+          0%, 100% {
+            transform: translateX(0px) translateY(0px);
+            clip-path: polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%);
+          }
+          25% {
+            transform: translateX(10px) translateY(-3px);
+            clip-path: polygon(0% 55%, 25% 35%, 50% 65%, 75% 45%, 100% 55%, 100% 100%, 0% 100%);
+          }
+          50% {
+            transform: translateX(-5px) translateY(2px);
+            clip-path: polygon(0% 65%, 25% 45%, 50% 75%, 75% 55%, 100% 65%, 100% 100%, 0% 100%);
+          }
+          75% {
+            transform: translateX(7px) translateY(-1px);
+            clip-path: polygon(0% 58%, 25% 38%, 50% 68%, 75% 48%, 100% 58%, 100% 100%, 0% 100%);
+          }
+        }
+        
+        @keyframes gentleFlowReverse {
+          0%, 100% {
+            transform: translateX(0px) translateY(0px);
+            clip-path: polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%);
+          }
+          25% {
+            transform: translateX(-8px) translateY(3px);
+            clip-path: polygon(0% 0%, 100% 35%, 100% 100%, 0% 100%);
+          }
+          50% {
+            transform: translateX(4px) translateY(-2px);
+            clip-path: polygon(0% 0%, 100% 45%, 100% 100%, 0% 100%);
+          }
+          75% {
+            transform: translateX(-6px) translateY(1px);
+            clip-path: polygon(0% 0%, 100% 38%, 100% 100%, 0% 100%);
+          }
+        }
+        
+        @keyframes softFloat {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+          }
+          25% {
+            transform: translateY(-10px) translateX(5px) scale(1.05);
+          }
+          50% {
+            transform: translateY(-5px) translateX(-3px) scale(0.95);
+          }
+          75% {
+            transform: translateY(-15px) translateX(2px) scale(1.02);
+          }
+        }
+        
+        .animate-gentle-flow {
+          animation: gentleFlow 10s ease-in-out infinite;
+        }
+        
+        .animate-gentle-flow-reverse {
+          animation: gentleFlowReverse 13s ease-in-out infinite;
+        }
+        
+        .animate-soft-float {
+          animation: softFloat 8s ease-in-out infinite;
+        }
+        
       `}</style>
     </div>
   );
 };
 
 export default ServicesPage;
+
