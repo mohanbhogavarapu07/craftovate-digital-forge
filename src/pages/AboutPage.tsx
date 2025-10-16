@@ -1,4 +1,4 @@
-import { Lightbulb, Rocket, TrendingUp, Users, Award, Target, Linkedin, Twitter, Github } from "lucide-react";
+import { Lightbulb, Rocket, TrendingUp, Users, Award, Target, Linkedin, Twitter, Github, Heart, CheckCircle, Zap, Star, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import revanthImage from "@/assets/revanth.jpg";
@@ -36,23 +36,21 @@ const AboutPage = () => {
     {
       name: "Revanth Vasa",
       role: "Founder",
-      image: "/placeholder.svg",
+      image: revanthImage,
       bio: "Revanth leads our vision and strategy with extensive experience in digital innovation and business development.",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "https://linkedin.com/in/revanth-vasa",
+        github: "https://github.com/revanth-vasa"
       }
     },
     {
       name: "Surya Bogavarapu",
       role: "Co-Founder & CEO",
-      image: "/placeholder.svg",
+      image: suryaImage,
       bio: "Surya drives our company's growth and oversees strategic initiatives to deliver exceptional digital solutions.",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "https://linkedin.com/in/surya-bogavarapu",
+        github: "https://github.com/surya-bogavarapu"
       }
     },
     {
@@ -61,9 +59,8 @@ const AboutPage = () => {
       image: "/placeholder.svg",
       bio: "Poorna leads our technical vision and ensures we stay at the forefront of technology and innovation.",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "https://linkedin.com/in/poorna",
+        github: "https://github.com/poorna"
       }
     },
     {
@@ -72,9 +69,8 @@ const AboutPage = () => {
       image: "/placeholder.svg",
       bio: "Bhavya manages our technical operations and ensures smooth execution of all projects and initiatives.",
       social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
+        linkedin: "https://linkedin.com/in/bhavya",
+        github: "https://github.com/bhavya"
       }
     }
   ];
@@ -222,71 +218,103 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Team Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6 py-16 text-center">
-          {/* Section Header */}
-          <div className="mb-16 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-muted-foreground mb-6">
-              The minds behind Craftovate
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
-          </div>
+      {/* Our Team Section - Modern Interactive Cards */}
+      <section className="py-24 relative bg-gradient-to-b from-gray-50 to-white overflow-hidden">
+        {/* Subtle Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-blue-50/30 to-indigo-50/20 animate-gentle-flow" style={{
+            clipPath: 'polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%)'
+          }}></div>
+          
+          <div className="absolute bottom-0 right-0 w-full h-48 bg-gradient-to-tl from-purple-50/20 to-pink-50/15 animate-gentle-flow-reverse" style={{
+            clipPath: 'polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%)',
+            animationDelay: '3s'
+          }}></div>
+        </div>
 
-          {/* Team Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 animate-fade-in-up group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Profile Image */}
-                <div className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-blue-500 overflow-hidden mb-4 group-hover:border-cyan-500 transition-colors duration-300">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Name */}
-                <h3 className="text-lg font-semibold mt-4 mb-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                  {member.name}
-                </h3>
-
-                {/* Role */}
-                <p className="text-sm text-gray-500 mb-3 font-medium">
-                  {member.role}
-                </p>
-
-                {/* Description */}
-                <p className="text-sm text-gray-600 mt-2 leading-relaxed mb-4">
-                  {member.bio}
-                </p>
-
-                {/* Social Icons */}
-                <div className="flex justify-center gap-4 mt-4">
-                  <a
-                    href={member.social.linkedin}
-                    className="text-gray-500 hover:text-blue-600 transition-colors duration-300 p-2 rounded-full hover:bg-blue-50"
-                    aria-label={`${member.name} LinkedIn`}
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={member.social.github}
-                    className="text-gray-500 hover:text-gray-800 transition-colors duration-300 p-2 rounded-full hover:bg-gray-50"
-                    aria-label={`${member.name} GitHub`}
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                </div>
+        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto">
+            {/* Section Header */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-medium mb-6">
+                <Users className="w-4 h-4" />
+                Meet the Visionaries
               </div>
-            ))}
+              
+              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
+                Our Team
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+                The creative minds and technical experts behind Craftovate's success, dedicated to bringing your digital vision to life.
+              </p>
+            </div>
+
+            {/* Modern Team Cards Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {teamMembers.map((member, index) => (
+                <div
+                  key={index}
+                  className="group relative h-96 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] animate-fade-in-up"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  {/* Background Image */}
+                  <div 
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
+                    style={{ 
+                      backgroundImage: `url(${member.image})`,
+                      backgroundPosition: 'center center'
+                    }}
+                  >
+                    {/* Base Gradient Overlay - Always visible */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    
+                    {/* Hover Overlay - Darker for better readability */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  </div>
+
+                  {/* Name and Role - Always at bottom, moves to top on hover */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 group-hover:top-6 group-hover:bottom-auto transition-all duration-500 ease-in-out">
+                    <h3 className="text-2xl font-bold text-white mb-2 font-sans">
+                      {member.name}
+                    </h3>
+                    <p className="text-gray-200 text-sm font-medium">
+                      {member.role}
+                    </p>
+                  </div>
+
+                  {/* Hover Content Container - Centered */}
+                  <div className="absolute inset-0 flex flex-col justify-center items-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    {/* Description - Appears after name/role moves to top */}
+                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200 mb-6 max-w-xs">
+                      <p className="text-white text-sm leading-relaxed font-light text-center">
+                        {member.bio}
+                      </p>
+                    </div>
+
+                    {/* Social Icons - Appear after description */}
+                    <div className="flex justify-center gap-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-400">
+                      <a
+                        href={member.social.linkedin}
+                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                        aria-label={`${member.name} LinkedIn`}
+                      >
+                        <Linkedin className="w-5 h-5 text-white" />
+                      </a>
+                      <a
+                        href={member.social.github}
+                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 hover:scale-110 transition-all duration-300 hover:shadow-lg"
+                        aria-label={`${member.name} GitHub`}
+                      >
+                        <Github className="w-5 h-5 text-white" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Subtle border on hover */}
+                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-white/20 transition-all duration-500"></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -551,6 +579,62 @@ const AboutPage = () => {
         
         .animate-soft-float {
           animation: softFloat 8s ease-in-out infinite;
+        }
+        
+        /* Modern Team Card Animations */
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        /* Enhanced hover effects for team cards */
+        .group:hover .group-hover\:scale-110 {
+          transform: scale(1.1);
+        }
+        
+        .group:hover .group-hover\:translate-y-0 {
+          transform: translateY(0);
+        }
+        
+        /* Smooth overlay transitions */
+        .group:hover .group-hover\:opacity-100 {
+          opacity: 1;
+        }
+        
+        /* Backdrop blur effect */
+        .backdrop-blur-sm {
+          backdrop-filter: blur(4px);
+        }
+        
+        /* Modern card hover effects */
+        .group:hover {
+          transform: translateY(-4px);
+        }
+        
+        /* Smooth sequential animations */
+        .group:hover .group-hover\:-translate-y-16 {
+          transform: translateY(-4rem);
+        }
+        
+        /* Icon hover effects */
+        .group a:hover {
+          transform: scale(1.1);
+          box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Enhanced shadow on hover */
+        .group:hover {
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
       `}</style>
     </div>
