@@ -1,4 +1,4 @@
-import { Lightbulb, Rocket, TrendingUp, Users, Award, Target, Linkedin, Twitter, Github } from "lucide-react";
+import { Lightbulb, Rocket, TrendingUp, Users, Award, Target } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const AboutPage = () => {
@@ -35,52 +35,6 @@ const AboutPage = () => {
     }
   ];
 
-  const teamMembers = [
-    {
-      name: "Revanth Vasa",
-      role: "Founder",
-      image: "/placeholder.svg",
-      bio: "Revanth leads our vision and strategy with extensive experience in digital innovation and business development.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
-      }
-    },
-    {
-      name: "Surya Bogavarapu",
-      role: "Co-Founder & CEO",
-      image: "/placeholder.svg",
-      bio: "Surya drives our company's growth and oversees strategic initiatives to deliver exceptional digital solutions.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
-      }
-    },
-    {
-      name: "Poorna",
-      role: "Co-Founder & CTO",
-      image: "/placeholder.svg",
-      bio: "Poorna leads our technical vision and ensures we stay at the forefront of technology and innovation.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
-      }
-    },
-    {
-      name: "Bhavya",
-      role: "CTO & COO",
-      image: "/placeholder.svg",
-      bio: "Bhavya manages our technical operations and ensures smooth execution of all projects and initiatives.",
-      social: {
-        linkedin: "#",
-        twitter: "#",
-        github: "#"
-      }
-    }
-  ];
 
   return (
     <div className="pt-24">
@@ -147,74 +101,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Team Section */}
-      <section className="py-20 bg-gradient-to-b from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-6 py-16 text-center">
-          {/* Section Header */}
-          <div className="mb-16 animate-fade-in">
-            <h2 className="text-4xl sm:text-5xl font-bold mb-4">
-              Meet Our Team
-            </h2>
-            <p className="text-xl text-muted-foreground mb-6">
-              The minds behind Craftovate
-            </p>
-            <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-cyan-500 mx-auto rounded-full"></div>
-          </div>
-
-          {/* Team Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {teamMembers.map((member, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl hover:scale-[1.02] transition-all duration-300 animate-fade-in-up group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                {/* Profile Image */}
-                <div className="w-24 h-24 mx-auto rounded-full object-cover border-4 border-blue-500 overflow-hidden mb-4 group-hover:border-cyan-500 transition-colors duration-300">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Name */}
-                <h3 className="text-lg font-semibold mt-4 mb-2 text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
-                  {member.name}
-                </h3>
-
-                {/* Role */}
-                <p className="text-sm text-gray-500 mb-3 font-medium">
-                  {member.role}
-                </p>
-
-                {/* Description */}
-                <p className="text-sm text-gray-600 mt-2 leading-relaxed mb-4">
-                  {member.bio}
-                </p>
-
-                {/* Social Icons */}
-                <div className="flex justify-center gap-4 mt-4">
-                  <a
-                    href={member.social.linkedin}
-                    className="text-gray-500 hover:text-blue-600 transition-colors duration-300 p-2 rounded-full hover:bg-blue-50"
-                    aria-label={`${member.name} LinkedIn`}
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a
-                    href={member.social.github}
-                    className="text-gray-500 hover:text-gray-800 transition-colors duration-300 p-2 rounded-full hover:bg-gray-50"
-                    aria-label={`${member.name} GitHub`}
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Values Section */}
       <section className="py-20 bg-muted/30">
