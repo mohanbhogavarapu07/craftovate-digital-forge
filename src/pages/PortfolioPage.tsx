@@ -79,7 +79,7 @@ const PortfolioPage = () => {
       <section className="py-20 bg-gradient-to-br from-brand-blue/5 via-brand-violet/5 to-brand-purple/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Our{" "}
               <span className="bg-gradient-to-r from-brand-blue via-brand-violet to-brand-purple bg-clip-text text-transparent">
                 Portfolio
@@ -152,7 +152,7 @@ const PortfolioPage = () => {
       <Dialog open={selectedProject?.isEcoStore} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-bold flex items-center gap-2">
+            <DialogTitle className="text-xl font-bold flex items-center gap-2">
               <ShoppingCart className="h-6 w-6 text-brand-blue" />
               EcoStore E-commerce Platform
             </DialogTitle>
@@ -230,7 +230,7 @@ const PortfolioPage = () => {
                 />
                 {/* Overlay Stats Card */}
                 <div className="absolute bottom-4 left-4 bg-white rounded-lg p-3 shadow-lg">
-                  <div className="text-2xl font-bold text-green-600">50K+</div>
+                  <div className="text-xl font-bold text-green-600">50K+</div>
                   <div className="text-sm text-gray-600">Happy Customers</div>
                 </div>
               </div>

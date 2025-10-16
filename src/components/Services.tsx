@@ -60,7 +60,7 @@ const Services = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center mb-20 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
             Our Services
           </h2>
           <p className="text-xl text-muted-foreground">

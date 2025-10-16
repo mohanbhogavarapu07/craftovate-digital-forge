@@ -109,39 +109,53 @@ const ServicesPage = () => {
     <div className="pt-16">
       {/* Hero Section - Dark with Light Animations */}
       <section className="relative py-20 overflow-hidden bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900">
-        {/* Dark Background with Bouncing Balls */}
+        {/* Dark Background with Enhanced Animations */}
         <div className="absolute inset-0">
           {/* Dark gradient base */}
           <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900"></div>
           
-          {/* Big Icons - Random Flow */}
-          <div className="absolute top-1/4 left-1/4 w-20 h-20 text-blue-400/20 animate-random-float">
+          {/* Rolling Settings Icons */}
+          <div className="absolute top-1/4 left-10 w-16 h-16 text-blue-400/30 animate-roll-clockwise">
             <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+              <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
             </svg>
           </div>
           
-          <div className="absolute top-1/3 right-1/4 w-16 h-16 text-cyan-400/25 animate-random-float" style={{ animationDelay: '2s' }}>
+          <div className="absolute top-1/3 right-10 w-12 h-12 text-cyan-400/25 animate-roll-counter-clockwise">
             <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+              <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
             </svg>
           </div>
           
-          <div className="absolute bottom-1/4 left-1/3 w-18 h-18 text-purple-400/20 animate-random-float" style={{ animationDelay: '4s' }}>
+          <div className="absolute bottom-1/4 left-1/4 w-14 h-14 text-purple-400/30 animate-roll-clockwise" style={{ animationDelay: '1s' }}>
             <svg className="w-full h-full" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4M12,6A6,6 0 0,0 6,12A6,6 0 0,0 12,18A6,6 0 0,0 18,12A6,6 0 0,0 12,6M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8Z"/>
+              <path d="M12,15.5A3.5,3.5 0 0,1 8.5,12A3.5,3.5 0 0,1 12,8.5A3.5,3.5 0 0,1 15.5,12A3.5,3.5 0 0,1 12,15.5M19.43,12.97C19.47,12.65 19.5,12.33 19.5,12C19.5,11.67 19.47,11.34 19.43,11L21.54,9.37C21.73,9.22 21.78,8.95 21.66,8.73L19.66,5.27C19.54,5.05 19.27,4.96 19.05,5.05L16.56,6.05C16.04,5.66 15.5,5.32 14.87,5.07L14.5,2.42C14.46,2.18 14.25,2 14,2H10C9.75,2 9.54,2.18 9.5,2.42L9.13,5.07C8.5,5.32 7.96,5.66 7.44,6.05L4.95,5.05C4.73,4.96 4.46,5.05 4.34,5.27L2.34,8.73C2.22,8.95 2.27,9.22 2.46,9.37L4.57,11C4.53,11.34 4.5,11.67 4.5,12C4.5,12.33 4.53,12.65 4.57,12.97L2.46,14.63C2.27,14.78 2.22,15.05 2.34,15.27L4.34,18.73C4.46,18.95 4.73,19.03 4.95,18.95L7.44,17.95C7.96,18.34 8.5,18.68 9.13,18.93L9.5,21.58C9.54,21.82 9.75,22 10,22H14C14.25,22 14.46,21.82 14.5,21.58L14.87,18.93C15.5,18.68 16.04,18.34 16.56,17.95L19.05,18.95C19.27,19.03 19.54,18.95 19.66,18.73L21.66,15.27C21.78,15.05 21.73,14.78 21.54,14.63L19.43,12.97Z"/>
             </svg>
           </div>
           
-          {/* Bouncing Balls - Distributed Across Section */}
-          <div className="absolute top-1/4 left-1/4 w-6 h-6 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-bounce-from-top"></div>
-          <div className="absolute top-1/2 right-1/3 w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full animate-bounce-from-bottom" style={{ animationDelay: '3s' }}></div>
-          <div className="absolute bottom-1/3 left-1/6 w-5 h-5 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-bounce-from-left" style={{ animationDelay: '6s' }}></div>
-          <div className="absolute top-1/3 right-1/6 w-7 h-7 bg-gradient-to-r from-indigo-400 to-purple-400 rounded-full animate-bounce-from-right" style={{ animationDelay: '9s' }}></div>
-          <div className="absolute bottom-1/4 right-1/4 w-4 h-4 bg-gradient-to-r from-pink-400 to-cyan-400 rounded-full animate-bounce-from-top" style={{ animationDelay: '12s' }}></div>
-          <div className="absolute top-2/3 left-1/3 w-6 h-6 bg-gradient-to-r from-blue-400 to-indigo-400 rounded-full animate-bounce-from-bottom" style={{ animationDelay: '15s' }}></div>
-          <div className="absolute bottom-1/2 right-1/2 w-5 h-5 bg-gradient-to-r from-green-400 to-teal-400 rounded-full animate-bounce-from-left" style={{ animationDelay: '18s' }}></div>
-          <div className="absolute top-1/6 left-1/2 w-7 h-7 bg-gradient-to-r from-orange-400 to-red-400 rounded-full animate-bounce-from-right" style={{ animationDelay: '21s' }}></div>
+          {/* Moving Elements - Left to Right */}
+          <div className="absolute top-1/2 left-0 w-8 h-8 bg-gradient-to-r from-blue-400/40 to-cyan-400/30 rounded-full animate-move-right"></div>
+          <div className="absolute top-2/3 left-0 w-6 h-6 bg-gradient-to-r from-purple-400/35 to-pink-400/25 rounded-full animate-move-right" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-1/3 left-0 w-10 h-10 bg-gradient-to-r from-indigo-400/30 to-blue-400/20 rounded-full animate-move-right" style={{ animationDelay: '4s' }}></div>
+          
+          {/* Moving Elements - Right to Left */}
+          <div className="absolute top-1/3 right-0 w-6 h-6 bg-gradient-to-l from-cyan-400/35 to-blue-400/25 rounded-full animate-move-left"></div>
+          <div className="absolute bottom-1/2 right-0 w-8 h-8 bg-gradient-to-l from-pink-400/30 to-purple-400/20 rounded-full animate-move-left" style={{ animationDelay: '3s' }}></div>
+          
+          {/* Floating Geometric Shapes */}
+          <div className="absolute top-1/4 left-1/3 w-4 h-4 bg-blue-400/40 rotate-45 animate-float-geometric"></div>
+          <div className="absolute top-3/4 right-1/3 w-6 h-6 bg-purple-400/30 rounded-full animate-float-geometric" style={{ animationDelay: '1.5s' }}></div>
+          <div className="absolute bottom-1/4 left-1/2 w-5 h-5 bg-cyan-400/35 transform rotate-12 animate-float-geometric" style={{ animationDelay: '3s' }}></div>
+          
+          {/* Pulsing Light Dots */}
+          <div className="absolute top-1/6 left-1/6 w-2 h-2 bg-white/60 rounded-full animate-pulse-dot"></div>
+          <div className="absolute top-2/3 right-1/6 w-3 h-3 bg-blue-400/50 rounded-full animate-pulse-dot" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute bottom-1/6 left-2/3 w-2 h-2 bg-cyan-400/60 rounded-full animate-pulse-dot" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-purple-400/40 rounded-full animate-pulse-dot" style={{ animationDelay: '0.5s' }}></div>
+          
+          {/* Light flowing lines */}
+          <div className="absolute top-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent animate-accent-flow"></div>
+          <div className="absolute bottom-1/2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-blue-400/30 to-transparent animate-accent-flow" style={{ animationDelay: '2s' }}></div>
           
           {/* Light dot pattern overlay */}
           <div className="absolute inset-0 opacity-[0.05]">
@@ -152,6 +166,14 @@ const ServicesPage = () => {
           </div>
         </div>
 
+        {/* Light grid pattern overlay */}
+        <div className="absolute inset-0 opacity-[0.03]">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, #ffffff 1px, transparent 0)`,
+            backgroundSize: '20px 20px'
+          }}></div>
+        </div>
+
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
           <div className="max-w-5xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-8">
@@ -159,8 +181,8 @@ const ServicesPage = () => {
               Trusted by 500+ Companies
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-white">
-              Digital
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight">
+              <span className="text-white">Digital</span>
               <br />
               <span className="bg-gradient-to-r from-white via-blue-400 to-cyan-400 bg-clip-text text-transparent">
                 Excellence
@@ -921,158 +943,6 @@ const ServicesPage = () => {
         
         .animate-pulse-dot {
           animation: pulseDot 3s ease-in-out infinite;
-        }
-        
-        /* Bouncing Ball Animations */
-        @keyframes bounceFromTop {
-          0% {
-            transform: translateY(-150px) translateX(0px);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          25% {
-            transform: translateY(50px) translateX(20px);
-          }
-          40% {
-            transform: translateY(20px) translateX(40px);
-          }
-          55% {
-            transform: translateY(80px) translateX(60px);
-          }
-          70% {
-            transform: translateY(40px) translateX(80px);
-          }
-          85% {
-            transform: translateY(120px) translateX(100px);
-          }
-          100% {
-            transform: translateY(100vh) translateX(120px);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes bounceFromBottom {
-          0% {
-            transform: translateY(150px) translateX(0px);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          25% {
-            transform: translateY(-50px) translateX(-20px);
-          }
-          40% {
-            transform: translateY(-20px) translateX(-40px);
-          }
-          55% {
-            transform: translateY(-80px) translateX(-60px);
-          }
-          70% {
-            transform: translateY(-40px) translateX(-80px);
-          }
-          85% {
-            transform: translateY(-120px) translateX(-100px);
-          }
-          100% {
-            transform: translateY(-100vh) translateX(-120px);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes bounceFromLeft {
-          0% {
-            transform: translateX(-150px) translateY(0px);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          25% {
-            transform: translateX(50px) translateY(20px);
-          }
-          40% {
-            transform: translateX(20px) translateY(40px);
-          }
-          55% {
-            transform: translateX(80px) translateY(60px);
-          }
-          70% {
-            transform: translateX(40px) translateY(80px);
-          }
-          85% {
-            transform: translateX(120px) translateY(100px);
-          }
-          100% {
-            transform: translateX(100vw) translateY(120px);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes bounceFromRight {
-          0% {
-            transform: translateX(150px) translateY(0px);
-            opacity: 0;
-          }
-          10% {
-            opacity: 1;
-          }
-          25% {
-            transform: translateX(-50px) translateY(-20px);
-          }
-          40% {
-            transform: translateX(-20px) translateY(-40px);
-          }
-          55% {
-            transform: translateX(-80px) translateY(-60px);
-          }
-          70% {
-            transform: translateX(-40px) translateY(-80px);
-          }
-          85% {
-            transform: translateX(-120px) translateY(-100px);
-          }
-          100% {
-            transform: translateX(-100vw) translateY(-120px);
-            opacity: 0;
-          }
-        }
-        
-        @keyframes randomFloat {
-          0%, 100% {
-            transform: translate(0px, 0px) rotate(0deg);
-          }
-          25% {
-            transform: translate(20px, -10px) rotate(90deg);
-          }
-          50% {
-            transform: translate(-10px, 20px) rotate(180deg);
-          }
-          75% {
-            transform: translate(15px, 10px) rotate(270deg);
-          }
-        }
-        
-        .animate-bounce-from-top {
-          animation: bounceFromTop 6s ease-in-out infinite;
-        }
-        
-        .animate-bounce-from-bottom {
-          animation: bounceFromBottom 8s ease-in-out infinite;
-        }
-        
-        .animate-bounce-from-left {
-          animation: bounceFromLeft 7s ease-in-out infinite;
-        }
-        
-        .animate-bounce-from-right {
-          animation: bounceFromRight 9s ease-in-out infinite;
-        }
-        
-        .animate-random-float {
-          animation: randomFloat 15s ease-in-out infinite;
         }
       `}</style>
     </div>

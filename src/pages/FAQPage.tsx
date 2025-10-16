@@ -119,7 +119,7 @@ const FAQPage = () => {
       <section className="py-20 bg-gradient-to-br from-brand-blue/5 via-brand-violet/5 to-brand-purple/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
               Frequently Asked{" "}
               <span className="bg-gradient-to-r from-brand-blue via-brand-violet to-brand-purple bg-clip-text text-transparent">
                 Questions
@@ -138,7 +138,7 @@ const FAQPage = () => {
           <div className="max-w-4xl mx-auto space-y-12">
             {faqs.map((section, sectionIndex) => (
               <div key={sectionIndex} className="animate-fade-in-up" style={{ animationDelay: `${sectionIndex * 100}ms` }}>
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <h2 className="text-xl font-bold mb-4 flex items-center gap-3">
                   <span className="w-2 h-8 bg-gradient-to-b from-brand-blue to-brand-violet rounded-full" />
                   {section.category}
                 </h2>
@@ -166,7 +166,7 @@ const FAQPage = () => {
       <section className="py-20 bg-gradient-to-br from-brand-blue/10 via-brand-violet/10 to-brand-purple/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h2 className="text-3xl font-bold mb-6">Still Have Questions?</h2>
+            <h2 className="text-2xl font-bold mb-4">Still Have Questions?</h2>
             <p className="text-xl text-muted-foreground mb-8">
               We're here to help! Get in touch with our team and we'll be happy to answer any questions you have.
             </p>

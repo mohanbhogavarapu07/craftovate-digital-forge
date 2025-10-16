@@ -47,7 +47,7 @@ const Portfolio = () => {
       <div className="max-w-7xl mx-auto px-6">
         {/* Section Header */}
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-gray-900">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
             My Portfolio
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
