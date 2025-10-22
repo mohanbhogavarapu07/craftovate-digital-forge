@@ -40,18 +40,17 @@ const Login = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    const success = await login(formData.email, formData.password);
-    
-    if (success) {
+    try {
+      await login(formData.email, formData.password);
       toast({
         title: "Welcome back! 🎉",
         description: "You have been successfully logged in.",
       });
       navigate('/profile');
-    } else {
+    } catch (error) {
       toast({
         title: "Login failed",
-        description: "Please check your email and password.",
+        description: "Please check your credentials and try again.",
         variant: "destructive",
       });
     }
