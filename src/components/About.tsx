@@ -1,6 +1,11 @@
 import { Lightbulb, Rocket, TrendingUp, Brain } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const About = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const featureCards = [
     {
       icon: Lightbulb,
@@ -52,55 +57,86 @@ const About = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Centered Heading */}
-        <div className="text-center mb-16 animate-fade-in">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">
             About Us
           </h2>
-        </div>
+        </motion.div>
 
         {/* Main Content Row - Two Column Layout */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+        <div ref={ref} className="grid lg:grid-cols-2 gap-12 items-center mb-16">
           {/* Left Column - Text Content */}
-          <div className="space-y-6 animate-fade-in-up">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            className="space-y-6"
+          >
             <h3 className="text-xl font-semibold text-gray-900 mb-4">
               Our Story
             </h3>
             <div className="space-y-4 text-gray-600">
-              <p className="text-lg leading-relaxed">
-                We blend creativity and technology to craft unique digital experiences.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Our mission is to help businesses transform their vision into powerful online presences.
-              </p>
-              <p className="text-lg leading-relaxed">
-                We focus on strategies that drive measurable results and business growth.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Leveraging cutting-edge technology and design trends to keep you ahead.
-              </p>
+              {[
+                "We blend creativity and technology to craft unique digital experiences.",
+                "Our mission is to help businesses transform their vision into powerful online presences.",
+                "We focus on strategies that drive measurable results and business growth.",
+                "Leveraging cutting-edge technology and design trends to keep you ahead."
+              ].map((text, index) => (
+                <motion.p 
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                  className="text-lg leading-relaxed"
+                >
+                  {text}
+                </motion.p>
+              ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column - Large Image */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            <div className="aspect-[4/3] overflow-hidden rounded-2xl shadow-lg">
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.7, delay: 0.4 }}
+          >
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              className="aspect-[4/3] overflow-hidden rounded-2xl shadow-lg"
+            >
               <img
                 src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop"
                 alt="Our Team at Work"
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover"
               />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
 
 
         {/* Feature Cards Section */}
-        <div className="mt-20 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="mt-20"
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {featureCards.map((card, index) => (
-              <div
+              <motion.div
                 key={card.title}
-                className="group relative p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] border border-white/50 hover:border-blue-200/50"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                whileHover={{ y: -10, scale: 1.03 }}
+                className="group relative p-8 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-white/50 hover:border-blue-200/50"
                 style={{
                   background: 'linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,250,252,0.8) 100%)',
                   boxShadow: '0 8px 32px rgba(59, 130, 246, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1)'
@@ -110,11 +146,15 @@ const About = () => {
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
                 {/* Icon with Enhanced Gradient */}
-                <div className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg group-hover:shadow-xl">
+                <motion.div 
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                  className="relative w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center mb-6 shadow-lg group-hover:shadow-xl"
+                >
                   <card.icon className="w-8 h-8 text-white" />
                   {/* Icon Glow */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-400 to-cyan-400 opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300"></div>
-                </div>
+                </motion.div>
                 
                 {/* Card Content */}
                 <div className="relative z-10">
@@ -125,10 +165,10 @@ const About = () => {
                     {card.description}
                   </p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

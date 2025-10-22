@@ -1,8 +1,13 @@
 import { Palette, Code, FileText, Target, Smartphone, Globe, BarChart3, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 const Services = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const services = [
     {
       icon: Palette,
@@ -55,34 +60,50 @@ const Services = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-blue-400/5 via-cyan-400/5 to-blue-600/5"></div>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
+      <div ref={ref} className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
-        <div className="max-w-3xl mx-auto text-center mb-20 animate-fade-in">
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl mx-auto text-center mb-20"
+        >
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
             Our Services
           </h2>
           <p className="text-xl text-muted-foreground">
             What we offer to help you grow
           </p>
-        </div>
+        </motion.div>
 
         {/* Scrolling Cards Container */}
-        <div className="relative h-80 overflow-hidden">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="relative h-80 overflow-hidden"
+        >
           <div className="absolute inset-0 flex items-center">
             {/* Auto-scrolling cards in straight line */}
             <div className="flex items-center space-x-6 animate-scroll-horizontal">
               {/* Duplicate set for seamless loop */}
               {[...services, ...services, ...services].map((service, index) => {
                 return (
-                  <div
+                  <motion.div
                     key={`${service.title}-${index}`}
+                    whileHover={{ scale: 1.1, y: -8 }}
+                    transition={{ duration: 0.3 }}
                     className="flex-shrink-0 w-80 h-64 group cursor-pointer"
                   >
-                    <div className="w-full h-full p-6 bg-white/80 backdrop-blur-md rounded-3xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-400 ease-in-out hover:scale-110 hover:-translate-y-2 hover:shadow-[0_15px_30px_rgba(128,90,213,0.3)]">
+                    <div className="w-full h-full p-6 bg-white/80 backdrop-blur-md rounded-3xl border border-white/20 shadow-lg hover:shadow-2xl transition-all duration-400 ease-in-out hover:shadow-[0_15px_30px_rgba(128,90,213,0.3)]">
                       {/* Icon */}
-                      <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                      <motion.div 
+                        whileHover={{ rotate: 360 }}
+                        transition={{ duration: 0.6 }}
+                        className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg`}
+                      >
                         <service.icon className="w-8 h-8 text-white" />
-                      </div>
+                      </motion.div>
                       
                       {/* Content */}
                       <h3 className="text-xl font-bold mb-3 text-gray-800 group-hover:text-violet-600 transition-colors duration-300">
@@ -93,15 +114,20 @@ const Services = () => {
                         {service.description}
                       </p>
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* View More Button */}
-        <div className="flex justify-center mt-12 relative z-20">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="flex justify-center mt-12 relative z-20"
+        >
           <Link to="/services">
             <Button 
               size="lg" 
@@ -111,7 +137,7 @@ const Services = () => {
               <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </Link>
-        </div>
+        </motion.div>
       </div>
 
       {/* Custom CSS for animation */}
