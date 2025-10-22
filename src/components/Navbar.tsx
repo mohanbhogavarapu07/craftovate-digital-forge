@@ -1,15 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ShoppingCart } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
 import logoImage from "@/assets/logo2.png";
 
-interface NavbarProps {
-  cartItemCount?: number;
-  isAdmin?: boolean;
-}
-
-const Navbar = ({ cartItemCount, isAdmin }: NavbarProps = {}) => {
+const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -88,26 +83,10 @@ const Navbar = ({ cartItemCount, isAdmin }: NavbarProps = {}) => {
             ))}
           </div>
 
-          {/* Cart Icon - Right side (if cartItemCount is provided) */}
-          {cartItemCount !== undefined && (
-            <div className="hidden lg:block absolute right-0">
-              <Link to="/cart" className="relative">
-                <Button variant="ghost" size="icon" className={isHomePage ? (isScrolled ? "" : "text-white hover:text-white hover:bg-white/10") : ""}>
-                  <ShoppingCart className="h-5 w-5" />
-                  {cartItemCount > 0 && (
-                    <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                      {cartItemCount}
-                    </span>
-                  )}
-                </Button>
-              </Link>
-            </div>
-          )}
-
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden absolute ${cartItemCount !== undefined ? 'right-12' : 'right-0'} p-2 rounded-lg transition-smooth ${
+            className={`lg:hidden absolute right-0 p-2 rounded-lg transition-smooth ${
               isHomePage 
                 ? (isScrolled 
                     ? "text-muted-foreground hover:text-foreground hover:bg-muted"
@@ -117,20 +96,6 @@ const Navbar = ({ cartItemCount, isAdmin }: NavbarProps = {}) => {
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
-
-          {/* Mobile Cart Icon */}
-          {cartItemCount !== undefined && (
-            <Link to="/cart" className="lg:hidden absolute right-0">
-              <Button variant="ghost" size="icon" className={isHomePage ? (isScrolled ? "" : "text-white hover:text-white hover:bg-white/10") : ""}>
-                <ShoppingCart className="h-5 w-5" />
-                {cartItemCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-blue-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                    {cartItemCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
-          )}
         </div>
 
         {/* Mobile Navigation */}
