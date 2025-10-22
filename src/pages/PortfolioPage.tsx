@@ -3,69 +3,42 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ShoppingCart, Package, Star, ExternalLink } from "lucide-react";
+import { ShoppingCart, Package, Star, ExternalLink, Leaf, Utensils } from "lucide-react";
 
 const PortfolioPage = () => {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const categories = ["All", "Branding", "Web Design", "Marketing", "Company Profile"];
+  const categories = ["All", "Web Development", "UI/UX Design"];
 
   const projects = [
     {
-      title: "TechStart Branding",
-      category: "Branding",
-      description: "Complete brand identity redesign for a tech startup",
-      image: "https://images.unsplash.com/photo-1558655146-d09347e92766?w=800&h=600&fit=crop"
-    },
-    {
       title: "EcoStore E-commerce",
-      category: "Web Design",
+      category: "Web Development",
       description: "Modern e-commerce platform for sustainable products",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       isEcoStore: true
     },
     {
-      title: "FinanceHub Profile",
-      category: "Company Profile",
-      description: "Professional company profile for financial services",
-      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop"
-    },
-    {
-      title: "FitLife Campaign",
-      category: "Marketing",
-      description: "Multi-channel marketing campaign for fitness brand",
-      image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&h=600&fit=crop"
-    },
-    {
-      title: "CloudTech Website",
-      category: "Web Design",
-      description: "SaaS platform website with custom illustrations",
-      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop"
-    },
-    {
-      title: "GreenLeaf Identity",
-      category: "Branding",
-      description: "Organic brand identity with eco-friendly aesthetic",
-      image: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=600&fit=crop"
-    },
-    {
-      title: "MediaPro Collateral",
-      category: "Marketing",
-      description: "Complete marketing collateral suite for media agency",
-      image: "https://images.unsplash.com/photo-1557838923-2985c318be48?w=800&h=600&fit=crop"
-    },
-    {
       title: "HealthCare Portal",
-      category: "Web Design",
+      category: "Web Development",
       description: "Patient portal with intuitive user experience",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop"
+      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+      isMedical: true
     },
     {
-      title: "RetailCo Profile",
-      category: "Company Profile",
-      description: "Annual report and company profile design",
-      image: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
+      title: "AGRO-MARKETING Platform",
+      category: "UI/UX Design",
+      description: "Comprehensive agricultural marketing platform with modern UI/UX design",
+      image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop",
+      isAgriculture: true
+    },
+    {
+      title: "FoodieHub Delivery",
+      category: "UI/UX Design",
+      description: "Modern food delivery app with intuitive user interface and seamless ordering experience",
+      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
+      isFoodDelivery: true
     }
   ];
 
@@ -149,15 +122,43 @@ const PortfolioPage = () => {
       </section>
 
       {/* Project Modal */}
-      <Dialog open={selectedProject?.isEcoStore} onOpenChange={() => setSelectedProject(null)}>
+      <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
         <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle className="text-xl font-bold flex items-center gap-2">
+              {selectedProject?.isEcoStore ? (
+                <>
               <ShoppingCart className="h-6 w-6 text-brand-blue" />
               EcoStore E-commerce Platform
+                </>
+              ) : selectedProject?.isMedical ? (
+                <>
+                  <Package className="h-6 w-6 text-brand-blue" />
+                  HealthCare Portal
+                </>
+              ) : selectedProject?.isAgriculture ? (
+                <>
+                  <Leaf className="h-6 w-6 text-brand-blue" />
+                  AGRO-MARKETING Platform
+                </>
+              ) : selectedProject?.isFoodDelivery ? (
+                <>
+                  <Utensils className="h-6 w-6 text-brand-blue" />
+                  FoodieHub Delivery
+                </>
+              ) : null}
             </DialogTitle>
             <DialogDescription className="text-lg">
-              A modern, AI-powered e-commerce platform for sustainable products
+              {selectedProject?.isEcoStore 
+                ? "A modern, AI-powered e-commerce platform for sustainable products"
+                : selectedProject?.isMedical
+                ? "A comprehensive patient portal with intuitive user experience"
+                : selectedProject?.isAgriculture
+                ? "A comprehensive agricultural marketing platform with modern UI/UX design"
+                : selectedProject?.isFoodDelivery
+                ? "A modern food delivery app with intuitive user interface and seamless ordering experience"
+                : ""
+              }
             </DialogDescription>
           </DialogHeader>
           
@@ -166,9 +167,16 @@ const PortfolioPage = () => {
             <div className="space-y-4">
               <h4 className="text-lg font-semibold">Project Overview</h4>
               <p className="text-muted-foreground leading-relaxed">
-                EcoStore is a comprehensive e-commerce platform designed for sustainable and eco-friendly products. 
-                Built with modern web technologies, it features AI-powered product recommendations, seamless user 
-                authentication, and a complete shopping experience from browsing to checkout.
+                {selectedProject?.isEcoStore 
+                  ? "EcoStore is a comprehensive e-commerce platform designed for sustainable and eco-friendly products. Built with modern web technologies, it features AI-powered product recommendations, seamless user authentication, and a complete shopping experience from browsing to checkout."
+                  : selectedProject?.isMedical
+                  ? "HealthCare Portal is a comprehensive patient management system designed to streamline healthcare services. Built with modern web technologies, it features patient registration, appointment scheduling, medical records management, and a complete healthcare experience from consultation to follow-up."
+                  : selectedProject?.isAgriculture
+                  ? "AGRO-MARKETING Platform is a comprehensive agricultural marketing solution designed to help farmers and agricultural businesses promote their products and services. Built with modern UI/UX principles, it features product showcasing, market analytics, customer engagement tools, and digital marketing capabilities to maximize agricultural business growth and market reach."
+                  : selectedProject?.isFoodDelivery
+                  ? "FoodieHub Delivery is a comprehensive food delivery platform designed to connect customers with their favorite restaurants. Built with modern UI/UX principles, it features intuitive ordering flow, real-time tracking, payment integration, and personalized recommendations to create a seamless food delivery experience for both customers and restaurant partners."
+                  : ""
+                }
               </p>
               
               <div className="grid md:grid-cols-2 gap-6">
@@ -178,12 +186,43 @@ const PortfolioPage = () => {
                     Key Features
                   </h5>
                   <ul className="space-y-1 text-sm text-muted-foreground">
+                    {selectedProject?.isEcoStore ? (
+                      <>
                     <li>• AI-powered product recommendations</li>
                     <li>• User authentication & profile management</li>
                     <li>• Shopping cart & checkout system</li>
                     <li>• Product categories & filtering</li>
                     <li>• Order tracking & history</li>
                     <li>• Responsive design for all devices</li>
+                      </>
+                    ) : selectedProject?.isMedical ? (
+                      <>
+                        <li>• Patient registration & profile management</li>
+                        <li>• Appointment scheduling system</li>
+                        <li>• Medical records & history tracking</li>
+                        <li>• Doctor & department management</li>
+                        <li>• Prescription & treatment plans</li>
+                        <li>• Secure patient data management</li>
+                      </>
+                    ) : selectedProject?.isAgriculture ? (
+                      <>
+                        <li>• Product showcase & catalog management</li>
+                        <li>• Market analytics & insights dashboard</li>
+                        <li>• Customer engagement & communication tools</li>
+                        <li>• Digital marketing campaign management</li>
+                        <li>• Social media integration & sharing</li>
+                        <li>• Mobile-responsive design for field marketing</li>
+                      </>
+                    ) : selectedProject?.isFoodDelivery ? (
+                      <>
+                        <li>• Intuitive restaurant browsing & menu display</li>
+                        <li>• Real-time order tracking & delivery updates</li>
+                        <li>• Secure payment integration & checkout flow</li>
+                        <li>• Personalized recommendations & favorites</li>
+                        <li>• Restaurant partner management dashboard</li>
+                        <li>• Mobile-first responsive design</li>
+                      </>
+                    ) : null}
                   </ul>
                 </div>
                 
@@ -193,18 +232,40 @@ const PortfolioPage = () => {
                     Technologies Used
                   </h5>
                   <ul className="space-y-1 text-sm text-muted-foreground">
+                    {selectedProject?.isEcoStore || selectedProject?.isMedical ? (
+                      <>
                     <li>• React with TypeScript</li>
                     <li>• Tailwind CSS for styling</li>
                     <li>• Framer Motion for animations</li>
                     <li>• React Router for navigation</li>
                     <li>• Context API for state management</li>
                     <li>• Lucide React for icons</li>
+                      </>
+                    ) : selectedProject?.isAgriculture ? (
+                      <>
+                        <li>• Figma for UI/UX design</li>
+                        <li>• Adobe Creative Suite</li>
+                        <li>• Sketch for prototyping</li>
+                        <li>• Principle for animations</li>
+                        <li>• InVision for collaboration</li>
+                        <li>• Zeplin for handoff</li>
+                      </>
+                    ) : selectedProject?.isFoodDelivery ? (
+                      <>
+                        <li>• Figma for UI/UX design</li>
+                        <li>• Adobe XD for prototyping</li>
+                        <li>• Sketch for wireframing</li>
+                        <li>• Principle for micro-interactions</li>
+                        <li>• Marvel for user testing</li>
+                        <li>• Abstract for version control</li>
+                      </>
+                    ) : null}
                   </ul>
                 </div>
               </div>
             </div>
 
-            {/* Interactive E-commerce Preview */}
+            {/* Interactive Preview */}
             <div className="relative overflow-hidden rounded-lg border-2 border-gray-200 bg-white shadow-lg">
               {/* Browser Header */}
               <div className="flex items-center justify-between bg-gray-100 px-4 py-2 border-b">
@@ -221,17 +282,30 @@ const PortfolioPage = () => {
                 <div className="w-4 h-4"></div>
               </div>
               
-              {/* E-commerce Website Screenshot */}
+              {/* Website Screenshot */}
               <div className="relative">
                 <img
-                  src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop&auto=format&q=80"
-                  alt="EcoStore E-commerce Website"
+                  src={selectedProject?.isEcoStore 
+                    ? "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop&auto=format&q=80"
+                    : selectedProject?.isMedical
+                    ? "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=800&fit=crop&auto=format&q=80"
+                    : selectedProject?.isAgriculture
+                    ? "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1200&h=800&fit=crop&auto=format&q=80"
+                    : selectedProject?.isFoodDelivery
+                    ? "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&h=800&fit=crop&auto=format&q=80"
+                    : ""
+                  }
+                  alt={selectedProject?.title}
                   className="w-full h-auto object-cover"
                 />
                 {/* Overlay Stats Card */}
                 <div className="absolute bottom-4 left-4 bg-white rounded-lg p-3 shadow-lg">
-                  <div className="text-xl font-bold text-green-600">50K+</div>
-                  <div className="text-sm text-gray-600">Happy Customers</div>
+                  <div className="text-xl font-bold text-green-600">
+                    {selectedProject?.isEcoStore ? "50K+" : selectedProject?.isMedical ? "10K+" : selectedProject?.isAgriculture ? "500+" : selectedProject?.isFoodDelivery ? "25K+" : ""}
+                  </div>
+                  <div className="text-sm text-gray-600">
+                    {selectedProject?.isEcoStore ? "Happy Customers" : selectedProject?.isMedical ? "Patients Served" : selectedProject?.isAgriculture ? "Marketing Campaigns" : selectedProject?.isFoodDelivery ? "Orders Delivered" : ""}
+                  </div>
                 </div>
               </div>
               
@@ -239,9 +313,16 @@ const PortfolioPage = () => {
               <div className="absolute inset-0 bg-black/80 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                 <Button 
                   onClick={() => {
-                    // Open the e-commerce project in a new tab
-                    // You can replace this URL with your actual e-commerce deployment URL
-                    window.open('http://localhost:5173', '_blank');
+                    // Open the project in a new tab based on project type
+                    if (selectedProject?.isEcoStore) {
+                      window.open('https://ecommerce-gjcf.vercel.app/', '_blank');
+                    } else if (selectedProject?.isMedical) {
+                      window.open('https://hospitalmanagement-m4gk.vercel.app/', '_blank');
+                    } else if (selectedProject?.isAgriculture) {
+                      window.open('https://www.figma.com/proto/rWudI06OmncVl2bDLu5rkk/AGRO-MARKETING?node-id=224-1420', '_blank');
+                    } else if (selectedProject?.isFoodDelivery) {
+                      window.open('https://www.figma.com/proto/QcTz7tLO8otcBjIh0F7x4u/Food-Delivery-Application?node-id=141-6029', '_blank');
+                    }
                   }}
                   className="bg-white text-black hover:bg-gray-100 px-6 py-3 text-lg font-semibold"
                 >
