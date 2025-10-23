@@ -258,20 +258,26 @@ All colors MUST be HSL.
   }
 }
 
-/* Blue scrollbar */
+/* Hide scrollbar while keeping scrollable functionality */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 0px;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-track {
-  background: #dbeafe;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom, #3b82f6, #1d4ed8);
-  border-radius: 4px;
+  background: transparent;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(to bottom, #1d4ed8, #1e40af);
+/* For Firefox */
+html {
+  scrollbar-width: none;
+}
+
+/* For Internet Explorer and Edge */
+body {
+  -ms-overflow-style: none;
 }
