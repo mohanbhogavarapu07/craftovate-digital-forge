@@ -1,15 +1,102 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ShoppingCart, Package, Star, ExternalLink, Leaf, Utensils } from "lucide-react";
+import { ShoppingCart, Package, Star, ExternalLink, Leaf, Utensils, Users, Award, Clock, TrendingUp, Quote, Mail, Phone, MessageCircle, ChevronRight, Play, Pause } from "lucide-react";
 
 const PortfolioPage = () => {
   const [filter, setFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState(null);
+  const [counters, setCounters] = useState({
+    projects: 0,
+    clients: 0,
+    years: 0,
+    awards: 0
+  });
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isVideoHovered, setIsVideoHovered] = useState(false);
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const videoRef = useRef(null);
+  const cursorRef = useRef(null);
+  const videoSectionRef = useRef(null);
 
   const categories = ["All", "Web Development", "UI/UX Design"];
+
+  // Animate counters on component mount
+  useEffect(() => {
+    const animateCounters = () => {
+      const targetCounters = { projects: 150, clients: 89, years: 5, awards: 12 };
+      const duration = 2000;
+      const steps = 60;
+      const stepDuration = duration / steps;
+      
+      let currentStep = 0;
+      const timer = setInterval(() => {
+        currentStep++;
+        const progress = currentStep / steps;
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        
+        setCounters({
+          projects: Math.floor(targetCounters.projects * easeOutQuart),
+          clients: Math.floor(targetCounters.clients * easeOutQuart),
+          years: Math.floor(targetCounters.years * easeOutQuart),
+          awards: Math.floor(targetCounters.awards * easeOutQuart)
+        });
+        
+        if (currentStep >= steps) {
+          clearInterval(timer);
+        }
+      }, stepDuration);
+    };
+
+    const timer = setTimeout(animateCounters, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Mouse tracking for cursor animation
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Video controls
+  const toggleVideo = () => {
+    if (videoRef.current) {
+      if (isVideoPlaying) {
+        videoRef.current.pause();
+      } else {
+        videoRef.current.play();
+      }
+      setIsVideoPlaying(!isVideoPlaying);
+    }
+  };
+
+  // Intersection Observer for scroll-triggered animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVideoVisible(true);
+            entry.target.classList.add('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (videoSectionRef.current) {
+      observer.observe(videoSectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
 
   const projects = [
     {
@@ -17,28 +104,40 @@ const PortfolioPage = () => {
       category: "Web Development",
       description: "Modern e-commerce platform for sustainable products",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-      isEcoStore: true
+      isEcoStore: true,
+      rating: 4.9,
+      completedDate: "2 weeks ago",
+      skills: ["React", "TypeScript", "Node.js", "MongoDB"]
     },
     {
       title: "HealthCare Portal",
       category: "Web Development",
       description: "Patient portal with intuitive user experience",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
-      isMedical: true
+      isMedical: true,
+      rating: 4.8,
+      completedDate: "1 month ago",
+      skills: ["React", "TypeScript", "Express", "PostgreSQL"]
     },
     {
       title: "AGRO-MARKETING Platform",
       category: "UI/UX Design",
       description: "Comprehensive agricultural marketing platform with modern UI/UX design",
       image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop",
-      isAgriculture: true
+      isAgriculture: true,
+      rating: 4.9,
+      completedDate: "3 weeks ago",
+      skills: ["Figma", "Adobe XD", "Sketch", "Principle"]
     },
     {
       title: "FoodieHub Delivery",
       category: "UI/UX Design",
       description: "Modern food delivery app with intuitive user interface and seamless ordering experience",
       image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
-      isFoodDelivery: true
+      isFoodDelivery: true,
+      rating: 4.7,
+      completedDate: "1 week ago",
+      skills: ["Figma", "Adobe XD", "Sketch", "Marvel"]
     }
   ];
 
@@ -65,17 +164,63 @@ const PortfolioPage = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-16 bg-white border-b">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="text-center group">
+                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-blue to-brand-violet rounded-full">
+                  <Package className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.projects}+</div>
+                <div className="text-sm text-muted-foreground">Projects Completed</div>
+              </div>
+              <div className="text-center group">
+                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-violet to-brand-purple rounded-full">
+                  <Users className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.clients}+</div>
+                <div className="text-sm text-muted-foreground">Happy Clients</div>
+              </div>
+              <div className="text-center group">
+                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-purple to-brand-blue rounded-full">
+                  <Clock className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.years}+</div>
+                <div className="text-sm text-muted-foreground">Years Experience</div>
+              </div>
+              <div className="text-center group">
+                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-blue to-brand-purple rounded-full">
+                  <Award className="h-8 w-8 text-white" />
+                </div>
+                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.awards}+</div>
+                <div className="text-sm text-muted-foreground">Awards Won</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Filter Section */}
       <section className="py-12 border-b">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">Browse Our Work</h2>
+              <p className="text-muted-foreground">Filter by category to explore our diverse portfolio</p>
+            </div>
             <div className="flex flex-wrap justify-center gap-4">
               {categories.map((category) => (
                 <Button
                   key={category}
                   variant={filter === category ? "default" : "outline"}
                   onClick={() => setFilter(category)}
-                  className={filter === category ? "bg-gradient-to-r from-brand-blue to-brand-violet text-white" : ""}
+                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+                    filter === category 
+                      ? "bg-gradient-to-r from-brand-blue to-brand-violet text-white shadow-lg transform scale-105" 
+                      : "hover:bg-gray-50 hover:border-brand-blue/50 hover:text-brand-blue"
+                  }`}
                 >
                   {category}
                 </Button>
@@ -93,7 +238,7 @@ const PortfolioPage = () => {
               {filteredProjects.map((project, index) => (
                 <Card
                   key={index}
-                  className="group overflow-hidden hover:shadow-elegant transition-all duration-300 hover:-translate-y-2 animate-fade-in-up cursor-pointer"
+                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-fade-in-up cursor-pointer border-0 bg-white"
                   style={{ animationDelay: `${index * 100}ms` }}
                   onClick={() => setSelectedProject(project)}
                 >
@@ -101,21 +246,226 @@ const PortfolioPage = () => {
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Badge className="bg-white/90 text-gray-900 hover:bg-white">
+                        <ExternalLink className="h-3 w-3 mr-1" />
+                        View Project
+                      </Badge>
+                    </div>
+                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
+                        <MessageCircle className="h-4 w-4 mr-2" />
+                        Learn More
+                      </Button>
+                    </div>
                   </div>
                   <CardContent className="p-6">
-                    <Badge className="mb-3 bg-gradient-to-r from-brand-blue to-brand-violet text-white">
-                      {project.category}
-                    </Badge>
-                    <h3 className="text-xl font-semibold mb-2 group-hover:text-brand-blue transition-colors">
+                    <div className="flex items-center justify-between mb-3">
+                      <Badge className="bg-gradient-to-r from-brand-blue to-brand-violet text-white px-3 py-1">
+                        {project.category}
+                      </Badge>
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <Star className="h-4 w-4 text-yellow-500 mr-1" />
+                        {project.rating}
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2 group-hover:text-brand-blue transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-muted-foreground">{project.description}</p>
+                    <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
+                    
+                    {/* Skills Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.skills.slice(0, 3).map((skill, skillIndex) => (
+                        <Badge key={skillIndex} variant="secondary" className="text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                      {project.skills.length > 3 && (
+                        <Badge variant="secondary" className="text-xs">
+                          +{project.skills.length - 3} more
+                        </Badge>
+                      )}
+                    </div>
+                    
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <Clock className="h-4 w-4 mr-1" />
+                        {project.completedDate}
+                      </div>
+                      <Button variant="ghost" size="sm" className="text-brand-blue hover:text-brand-violet">
+                        View Details <ChevronRight className="h-4 w-4 ml-1" />
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               ))}
+            </div>
+            
+            {/* CTA Section */}
+            <div className="mt-16 text-center">
+              <div className="bg-gradient-to-r from-brand-blue/5 via-brand-violet/5 to-brand-purple/5 rounded-2xl p-8">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start Your Project?</h3>
+                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                  Let's discuss how we can help transform your ideas into stunning digital experiences. 
+                  Our team is ready to bring your vision to life.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button className="bg-gradient-to-r from-brand-blue to-brand-violet text-white px-8 py-3 text-lg font-semibold hover:shadow-lg transition-all duration-300">
+                    <Mail className="h-5 w-5 mr-2" />
+                    Start a Project
+                  </Button>
+                  <Button variant="outline" className="px-8 py-3 text-lg font-semibold border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-all duration-300">
+                    <Phone className="h-5 w-5 mr-2" />
+                    Schedule a Call
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Video Section */}
+      <section 
+        ref={videoSectionRef}
+        className="relative py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
+        onMouseEnter={() => setIsVideoHovered(true)}
+        onMouseLeave={() => setIsVideoHovered(false)}
+      >
+        {/* Animated Cursor */}
+        <div
+          ref={cursorRef}
+          className="fixed pointer-events-none z-50 w-8 h-8 bg-gradient-to-r from-brand-blue to-brand-violet rounded-full opacity-0 transition-all duration-300 mix-blend-difference"
+          style={{
+            left: mousePosition.x - 16,
+            top: mousePosition.y - 16,
+            opacity: isVideoHovered ? 1 : 0,
+            transform: isVideoHovered ? 'scale(1.5)' : 'scale(1)',
+          }}
+        />
+
+        {/* Background Elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brand-violet/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-purple/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-6xl mx-auto">
+            {/* Text Content */}
+            <div className="text-center mb-16">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+                Crafted with{" "}
+                <span className="bg-gradient-to-r from-brand-blue via-brand-violet to-brand-purple bg-clip-text text-transparent">
+                  Purpose
+                </span>
+                ,<br />
+                Designed with{" "}
+                <span className="bg-gradient-to-r from-brand-purple via-brand-violet to-brand-blue bg-clip-text text-transparent">
+                  Passion
+                </span>
+              </h2>
+              <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+                Watch how Craftovate turns creativity into craft. Experience our journey of innovation, 
+                design excellence, and digital transformation.
+              </p>
+            </div>
+
+            {/* Video Container */}
+            <div className="relative group">
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-800 shadow-2xl">
+                {/* Video Element */}
+                <video
+                  ref={videoRef}
+                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
+                  poster="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=675&fit=crop&auto=format&q=80"
+                  muted
+                  loop
+                >
+                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 group-hover:from-black/40 transition-all duration-500" />
+
+                {/* Play/Pause Button */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Button
+                    onClick={toggleVideo}
+                    className="w-20 h-20 rounded-full bg-white/90 hover:bg-white text-gray-900 hover:scale-110 transition-all duration-300 shadow-2xl group-hover:opacity-100 opacity-90"
+                  >
+                    {isVideoPlaying ? (
+                      <Pause className="h-8 w-8 ml-1" />
+                    ) : (
+                      <Play className="h-8 w-8 ml-1" />
+                    )}
+                  </Button>
+                </div>
+
+                {/* Video Controls Overlay */}
+                <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="flex items-center justify-between">
+                    <div className="text-white">
+                      <div className="text-sm font-medium">Craftovate Showcase</div>
+                      <div className="text-xs text-gray-300">2:30 duration</div>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-white hover:bg-white/20"
+                        onClick={toggleVideo}
+                      >
+                        {isVideoPlaying ? (
+                          <Pause className="h-4 w-4" />
+                        ) : (
+                          <Play className="h-4 w-4" />
+                        )}
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="text-white hover:bg-white/20"
+                      >
+                        <ExternalLink className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute top-4 left-4 w-2 h-2 bg-brand-blue rounded-full animate-ping" />
+                <div className="absolute top-6 right-6 w-1 h-1 bg-brand-violet rounded-full animate-pulse" />
+                <div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-brand-purple rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
+              </div>
+
+              {/* Floating Elements */}
+              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-brand-blue to-brand-violet rounded-full opacity-20 animate-bounce" style={{ animationDelay: '0.2s' }} />
+              <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-gradient-to-r from-brand-violet to-brand-purple rounded-full opacity-20 animate-bounce" style={{ animationDelay: '0.8s' }} />
+              <div className="absolute top-1/2 -right-8 w-4 h-4 bg-gradient-to-r from-brand-purple to-brand-blue rounded-full opacity-30 animate-pulse" style={{ animationDelay: '1.5s' }} />
+            </div>
+
+            {/* Bottom CTA */}
+            <div className="text-center mt-12">
+              <p className="text-gray-400 mb-6">
+                Ready to see your vision come to life?
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button className="bg-gradient-to-r from-brand-blue to-brand-violet text-white px-8 py-3 text-lg font-semibold hover:shadow-lg transition-all duration-300">
+                  <Play className="h-5 w-5 mr-2" />
+                  Start Your Project
+                </Button>
+                <Button variant="outline" className="px-8 py-3 text-lg font-semibold border-white/30 text-white hover:bg-white/10 transition-all duration-300">
+                  <MessageCircle className="h-5 w-5 mr-2" />
+                  Discuss Ideas
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -265,6 +615,27 @@ const PortfolioPage = () => {
               </div>
             </div>
 
+            {/* Client Testimonial */}
+            <div className="bg-gradient-to-r from-brand-blue/5 to-brand-violet/5 rounded-lg p-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-gradient-to-r from-brand-blue to-brand-violet rounded-full flex items-center justify-center">
+                  <Quote className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <p className="text-muted-foreground italic mb-2">
+                    "Craftovate delivered beyond our expectations. Their attention to detail and modern approach 
+                    helped us achieve a 300% increase in user engagement within the first month."
+                  </p>
+                  <div className="text-sm font-semibold text-gray-900">
+                    Sarah Johnson, CEO
+                  </div>
+                  <div className="text-xs text-muted-foreground">
+                    {selectedProject?.isEcoStore ? "EcoStore" : selectedProject?.isMedical ? "HealthCare Portal" : selectedProject?.isAgriculture ? "AGRO-MARKETING" : "FoodieHub"}
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Interactive Preview */}
             <div className="relative overflow-hidden rounded-lg border-2 border-gray-200 bg-white shadow-lg">
               {/* Browser Header */}
@@ -329,6 +700,22 @@ const PortfolioPage = () => {
                   <ExternalLink className="h-5 w-5 mr-2" />
                   View Complete Website
                 </Button>
+              </div>
+            </div>
+
+            {/* Project Stats */}
+            <div className="grid grid-cols-3 gap-4">
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <div className="text-2xl font-bold text-brand-blue">98%</div>
+                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+              </div>
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <div className="text-2xl font-bold text-brand-violet">2.5x</div>
+                <div className="text-sm text-muted-foreground">Performance Boost</div>
+              </div>
+              <div className="text-center p-4 bg-gray-50 rounded-lg">
+                <div className="text-2xl font-bold text-brand-purple">24/7</div>
+                <div className="text-sm text-muted-foreground">Support Available</div>
               </div>
             </div>
 
