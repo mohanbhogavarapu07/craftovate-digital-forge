@@ -76,9 +76,9 @@ const AboutPage = () => {
   ];
 
   return (
-    <div className="pt-20">
+    <div>
       {/* Hero Section - Modern Header */}
-      <section className="relative py-8 overflow-hidden bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/30">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900">
         {/* Animated Background Elements */}
         <div className="absolute inset-0">
           {/* Flowing wave shapes - Dark colors */}
@@ -103,14 +103,14 @@ const AboutPage = () => {
               Crafting Digital Excellence Since 2020
             </div>
             
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-white">
               About{" "}
-              <span className="bg-gradient-to-r from-gray-900 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
                 Craftovate
               </span>
             </h1>
             
-            <p className="text-base sm:text-lg text-gray-600 mb-6 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-base sm:text-lg text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed font-light">
               We are a creative digital studio passionate about helping businesses craft their digital identity and elevate their online presence through innovative design and strategic thinking.
             </p>
 

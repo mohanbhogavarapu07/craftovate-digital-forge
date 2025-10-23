@@ -11,7 +11,7 @@ import ServicesPage from "./pages/ServicesPage";
 import PortfolioPage from "./pages/PortfolioPage";
 import PricingPage from "./pages/PricingPage";
 import ContactPage from "./pages/ContactPage";
-import EcommerceIndex from "./pages/ecommerce/Index";
+// import EcommerceIndex from "./pages/ecommerce/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,7 +30,7 @@ const App = () => (
           <Route path="/portfolio" element={<PortfolioPage />} />
           <Route path="/pricing" element={<PricingPage />} />
           <Route path="/contact" element={<ContactPage />} />
-          <Route path="/ecommerce" element={<EcommerceIndex />} />
+          {/* <Route path="/ecommerce" element={<EcommerceIndex />} /> */}
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer />

@@ -36,92 +36,72 @@ const Navbar = () => {
   const isHomePage = location.pathname === '/';
   
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+    <nav className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-300 w-[calc(100%-8rem)] max-w-3xl mx-auto ${
       isHomePage 
         ? (isScrolled 
-            ? 'bg-background/95 backdrop-blur-lg border-b shadow-lg' 
-            : 'bg-transparent backdrop-blur-none border-transparent')
-        : 'bg-background/95 backdrop-blur-lg border-b shadow-lg'
+            ? 'bg-white/10 backdrop-blur-lg border-2 border-white/20 shadow-lg rounded-2xl' 
+            : 'bg-white/10 backdrop-blur-lg border-2 border-white/20 shadow-lg rounded-2xl')
+        : 'bg-white/10 backdrop-blur-lg border-2 border-white/20 shadow-lg rounded-2xl'
     }`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center h-16 relative">
-          {/* Logo - Left side */}
-          <Link to="/" className="absolute left-0 flex items-center space-x-3">
-            <img 
-              src={logoImage} 
-              alt="Craftovate Logo" 
-              className="h-12 w-12 object-contain"
-            />
-            <span className="text-2xl font-bold">
-              <span className={isHomePage ? (isScrolled ? "text-foreground" : "text-white") : "text-foreground"}>Craft</span>
-              <span className="bg-gradient-to-r from-blue-400 via-blue-500 to-blue-600 bg-clip-text text-transparent">ovate</span>
+      <div className="px-3 sm:px-4 lg:px-6">
+        <div className="flex items-center justify-between h-14 relative">
+          {/* Logo - Left side with handcrafted styling */}
+          <Link to="/" className="flex items-center space-x-3 group">
+            <div className="relative">
+              <img 
+                src={logoImage} 
+                alt="Craftovate Logo" 
+                className="h-10 w-10 object-contain group-hover:scale-110 transition-transform duration-300"
+              />
+            </div>
+            <span className="text-xl font-bold font-sans">
+              <span className="text-white">Craft</span>
+              <span className="bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 bg-clip-text text-transparent">ovate</span>
             </span>
           </Link>
 
-          {/* Desktop Navigation - Centered */}
+          {/* Desktop Navigation - Centered with handcrafted styling */}
           <div className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => (
               <Link
                 key={link.name}
                 to={link.href}
-                className={`px-3 py-2 rounded-lg text-sm font-medium transition-smooth ${
+                className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 font-sans relative group ${
                   isActive(link.href)
-                    ? isHomePage 
-                      ? (isScrolled 
-                          ? "bg-brand-blue/10 text-brand-blue" 
-                          : "bg-white/20 text-white")
-                      : "bg-brand-blue/10 text-brand-blue"
-                    : isHomePage
-                      ? (isScrolled
-                          ? "text-muted-foreground hover:text-foreground hover:bg-muted"
-                          : "text-white/90 hover:text-white hover:bg-white/10")
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                    ? "bg-white/20 text-white border-2 border-white/30"
+                    : "text-white/90 hover:text-white hover:bg-white/10 hover:border-white/20"
                 }`}
               >
-                {link.name}
+                <span className="relative z-10">{link.name}</span>
               </Link>
             ))}
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile menu button with handcrafted styling */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden absolute right-0 p-2 rounded-lg transition-smooth ${
-              isHomePage 
-                ? (isScrolled 
-                    ? "text-muted-foreground hover:text-foreground hover:bg-muted"
-                    : "text-white/90 hover:text-white hover:bg-white/10")
-                : "text-muted-foreground hover:text-foreground hover:bg-muted"
-            }`}
+            className={`lg:hidden p-2 rounded-xl transition-all duration-300 border-2 font-sans text-white/90 hover:text-white hover:bg-white/10 border-white/20 hover:border-white/30`}
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation with handcrafted styling */}
         {isOpen && (
-          <div className="lg:hidden py-4 animate-fade-in-up">
-            <div className="flex flex-col space-y-2">
+          <div className="lg:hidden py-6 animate-fade-in-up">
+            <div className="flex flex-col space-y-3">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
                   to={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-smooth ${
+                  className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 font-sans relative group ${
                     isActive(link.href)
-                      ? isHomePage 
-                        ? (isScrolled 
-                            ? "bg-brand-blue/10 text-brand-blue" 
-                            : "bg-white/20 text-white")
-                        : "bg-brand-blue/10 text-brand-blue"
-                      : isHomePage
-                        ? (isScrolled
-                            ? "text-muted-foreground hover:text-foreground hover:bg-muted"
-                            : "text-white/90 hover:text-white hover:bg-white/10")
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "bg-white/20 text-white border-2 border-white/30"
+                      : "text-white/90 hover:text-white hover:bg-white/10 hover:border-white/20"
                   }`}
                 >
-                  {link.name}
+                  <span className="relative z-10">{link.name}</span>
                 </Link>
               ))}
             </div>

@@ -1,10 +1,29 @@
-import { Palette, Code, Target, Megaphone, BarChart, Sparkles, Smartphone, Globe, ArrowRight, CheckCircle, Star, Zap, Shield, Award, TrendingUp, Users } from "lucide-react";
+import { Palette, Code, Target, Megaphone, BarChart, Sparkles, Smartphone, Globe, ArrowRight, CheckCircle, Star, Zap, Shield, Award, TrendingUp, Users, Brain } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const ServicesPage = () => {
+  // Handle scrolling to service section when page loads with hash
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const serviceId = hash.substring(1); // Remove the # symbol
+      setTimeout(() => {
+        const element = document.getElementById(serviceId);
+        if (element) {
+          element.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start',
+            inline: 'nearest'
+          });
+        }
+      }, 500); // Delay to ensure page is fully loaded
+    }
+  }, []);
+
   const services = [
     {
       icon: Palette,
@@ -95,6 +114,21 @@ const ServicesPage = () => {
       accent: "bg-indigo-100",
       stats: "95% Success Rate",
       category: "Strategy"
+    },
+    {
+      icon: Brain,
+      title: "AI Integration",
+      description: "Leverage artificial intelligence to automate processes, enhance decision-making, and drive innovation across your business.",
+      features: [
+        "Machine Learning Solutions",
+        "Process Automation",
+        "Predictive Analytics",
+        "Intelligent Chatbots & Assistants"
+      ],
+      gradient: "from-emerald-600 to-emerald-800",
+      accent: "bg-emerald-100",
+      stats: "40% Efficiency Gain",
+      category: "Technology"
     }
   ];
 
@@ -106,9 +140,9 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="pt-16">
+    <div>
        {/* Hero Section - Clean Dark Background with Gradient */}
-       <section className="relative py-20 bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 overflow-hidden">
+       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 overflow-hidden">
          {/* Subtle Light Elements */}
          <div className="absolute inset-0">
            <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
@@ -217,10 +251,13 @@ const ServicesPage = () => {
 
           {/* Services Grid - Modern Card Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
-              {services.map((service, index) => (
+              {services.map((service, index) => {
+                const serviceId = service.title.toLowerCase().replace(/\s+/g, '-').replace(/&/g, '');
+                return (
                 <Card
                   key={index}
-                className="group relative overflow-hidden bg-white border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
+                  id={serviceId}
+                  className="group relative overflow-hidden bg-white border border-gray-200 hover:border-gray-300 shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2"
                   style={{ animationDelay: `${index * 100}ms` }}
                 >
                 {/* Card Header */}
@@ -272,7 +309,8 @@ const ServicesPage = () => {
                     </Link>
                   </CardContent>
                 </Card>
-              ))}
+                );
+              })}
           </div>
         </div>
       </section>
