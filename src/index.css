@@ -38,22 +38,23 @@ All colors MUST be HSL.
 
     --radius: 1rem;
 
-    /* Craftovate Brand Colors - Blue Gradient Theme */
-    --brand-blue: 200 90% 55%;
-    --brand-violet: 210 85% 60%;
-    --brand-purple: 220 80% 65%;
-    --brand-light: 200 60% 98%;
+    /* Craftovate Brand Colors - Purple Gradient Theme */
+    --brand-primary: 270 60% 50%; /* #7726B6 */
+    --brand-dark: 270 85% 15%; /* #22023C */
+    --brand-light: 270 60% 98%;
+    --brand-accent: 270 70% 60%;
     
     /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(200 90% 55%) 0%, hsl(210 85% 60%) 50%, hsl(220 80% 65%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(200 60% 98%) 0%, hsl(0 0% 100%) 100%);
-    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(200 60% 99%) 100%);
+    --gradient-primary: linear-gradient(135deg, #7726B6 0%, #22023C 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(270 60% 98%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%) 0%, hsl(270 60% 99%) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(270 60% 98%) 0%, hsl(0 0% 100%) 100%);
     
     /* Shadows */
-    --shadow-sm: 0 2px 8px -2px hsl(200 90% 55% / 0.1);
-    --shadow-md: 0 8px 24px -4px hsl(200 90% 55% / 0.15);
-    --shadow-lg: 0 16px 48px -8px hsl(200 90% 55% / 0.2);
-    --shadow-glow: 0 0 40px hsl(200 90% 55% / 0.3);
+    --shadow-sm: 0 2px 8px -2px hsl(270 60% 50% / 0.1);
+    --shadow-md: 0 8px 24px -4px hsl(270 60% 50% / 0.15);
+    --shadow-lg: 0 16px 48px -8px hsl(270 60% 50% / 0.2);
+    --shadow-glow: 0 0 40px hsl(270 60% 50% / 0.3);
     
     /* Transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -146,5 +147,68 @@ All colors MUST be HSL.
   
   .transition-fast {
     transition: var(--transition-fast);
+  }
+  
+  /* Pricing page specific utilities */
+  .pricing-card-hover {
+    @apply hover:shadow-xl hover:-translate-y-2 transition-all duration-300;
+  }
+  
+  .pricing-card-popular {
+    @apply border-purple-500 border-2 shadow-lg;
+  }
+  
+  .testimonial-card {
+    @apply border-gray-200 hover:shadow-lg transition-all duration-300;
+  }
+  
+  .cta-gradient {
+    background: linear-gradient(135deg, #7726B6 0%, #22023C 100%);
+  }
+  
+  .hero-gradient {
+    background: linear-gradient(180deg, hsl(270 60% 98%) 0%, hsl(0 0% 100%) 100%);
+  }
+  
+  /* Custom scrollbar styles */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+  }
+  
+  .scrollbar-thumb-gray-300::-webkit-scrollbar-thumb {
+    background-color: rgb(209 213 219);
+    border-radius: 0.5rem;
+  }
+  
+  .scrollbar-track-gray-100::-webkit-scrollbar-track {
+    background-color: rgb(243 244 246);
+  }
+  
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  /* Floating animation */
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
   }
 }
