@@ -82,7 +82,7 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-2 rounded-xl transition-all duration-300 border-2 font-sans text-white/90 hover:text-white hover:bg-white/10 border-white/20 hover:border-white/30`}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
 
