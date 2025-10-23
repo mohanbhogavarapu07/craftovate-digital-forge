@@ -55,8 +55,8 @@ const Navbar = () => {
               />
             </div>
             <span className="text-xl font-bold font-sans">
-              <span className="text-white">Craft</span>
-              <span className="bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-600 bg-clip-text text-transparent">ovate</span>
+              <span className="text-gray-800">Craft</span>
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">ovate</span>
             </span>
           </Link>
 
@@ -68,8 +68,8 @@ const Navbar = () => {
                 to={link.href}
                 className={`px-3 py-1.5 rounded-xl text-sm font-medium transition-all duration-300 font-sans relative group ${
                   isActive(link.href)
-                    ? "bg-white/20 text-white border-2 border-white/30"
-                    : "text-white/90 hover:text-white hover:bg-white/10 hover:border-white/20"
+                    ? "bg-blue-100 text-blue-800 border-2 border-blue-300"
+                    : "text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200"
                 }`}
               >
                 <span className="relative z-10">{link.name}</span>
@@ -80,7 +80,7 @@ const Navbar = () => {
           {/* Mobile menu button with handcrafted styling */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-xl transition-all duration-300 border-2 font-sans text-white/90 hover:text-white hover:bg-white/10 border-white/20 hover:border-white/30`}
+            className={`lg:hidden p-2 rounded-xl transition-all duration-300 border-2 font-sans text-gray-700 hover:text-blue-600 hover:bg-blue-50 border-gray-300 hover:border-blue-300`}
           >
             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -97,8 +97,8 @@ const Navbar = () => {
                   onClick={() => setIsOpen(false)}
                   className={`px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 font-sans relative group ${
                     isActive(link.href)
-                      ? "bg-white/20 text-white border-2 border-white/30"
-                      : "text-white/90 hover:text-white hover:bg-white/10 hover:border-white/20"
+                      ? "bg-blue-100 text-blue-800 border-2 border-blue-300"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50 hover:border-blue-200"
                   }`}
                 >
                   <span className="relative z-10">{link.name}</span>
