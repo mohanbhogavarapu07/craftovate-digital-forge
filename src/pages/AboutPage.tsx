@@ -317,20 +317,8 @@ const AboutPage = () => {
       </section>
 
       {/* Our Values Section */}
-      <section className="py-24 relative bg-white overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-blue-50/40 to-indigo-50/30 animate-gentle-flow" style={{
-            clipPath: 'polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%)'
-          }}></div>
-          
-          <div className="absolute bottom-0 right-0 w-full h-48 bg-gradient-to-tl from-purple-50/30 to-pink-50/20 animate-gentle-flow-reverse" style={{
-            clipPath: 'polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%)',
-            animationDelay: '3s'
-          }}></div>
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
+      <section className="py-24">
+        <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
             <div className="text-center mb-20">
@@ -356,7 +344,7 @@ const AboutPage = () => {
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
                   {/* Value Card */}
-                  <div className="relative bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-4 border border-gray-100 group-hover:border-gray-200 h-full">
+                  <div className="p-8">
                     {/* Icon */}
                     <div className={`w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br ${value.color} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                       <value.icon className="w-8 h-8 text-white" />
@@ -371,12 +359,6 @@ const AboutPage = () => {
                         {value.description}
                       </p>
                     </div>
-                    
-                    {/* Hover Effect Overlay */}
-                    <div className={`absolute inset-0 rounded-3xl bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`}></div>
-                    
-                    {/* Floating Animation */}
-                    <div className="absolute inset-0 rounded-3xl animate-float-gentle"></div>
                   </div>
                 </div>
               ))}

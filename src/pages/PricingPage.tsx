@@ -1,8 +1,9 @@
-import { Check, Star, ArrowRight, Home, ChevronDown, Sprout, Rocket, Building } from "lucide-react";
+import { Check, Star, ArrowRight, Home, ChevronDown, Sprout, Rocket, Building, Users } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const PricingPage = () => {
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
@@ -123,6 +124,15 @@ const PricingPage = () => {
       rating: 5,
       avatar: "/api/placeholder/40/40"
     }
+  ];
+
+  const clientLogos = [
+    "TechCorp",
+    "InnovateLab", 
+    "GrowthCo",
+    "StartupHub",
+    "DigitalFlow",
+    "CloudTech"
   ];
 
   return (
@@ -356,6 +366,80 @@ const PricingPage = () => {
         </div>
       </section>
 
+      {/* Trust Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/30">
+        <div className="container mx-auto px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            {/* Testimonials */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center mb-16"
+            >
+              <Badge variant="secondary" className="mb-6 px-4 py-2 text-sm font-medium bg-blue-50 text-blue-700 border-blue-200">
+                <Users className="w-4 h-4 mr-2" />
+                Client Testimonials
+              </Badge>
+              
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                What Our Clients Say
+              </h2>
+            </motion.div>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-16">
+              {testimonials.map((testimonial, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="h-full shadow-lg border-0 bg-white/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
+                    <CardContent className="p-6">
+                      <div className="flex items-center gap-1 mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                        ))}
+                      </div>
+                      
+                      <p className="text-gray-600 leading-relaxed mb-4 italic">
+                        "{testimonial.quote}"
+                      </p>
+                      
+                      <div>
+                        <p className="font-semibold text-gray-900">{testimonial.name}</p>
+                        <p className="text-sm text-gray-500">{testimonial.title}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Client Logos */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h3 className="text-xl font-semibold text-gray-900 mb-8">Trusted by Leading Companies</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
+                {clientLogos.map((logo, index) => (
+                  <div key={index} className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300">
+                    <span className="text-gray-600 font-semibold">{logo}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Call-to-Action Banner */}
       <section className="py-16 sm:py-20 bg-gradient-to-br from-[#7726B6]/20 via-[#7726B6]/15 to-[#22023C]/20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -390,6 +474,74 @@ const PricingPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Custom CSS for animations */}
+      <style>{`
+        @keyframes gentleFlow {
+          0%, 100% {
+            transform: translateX(0px) translateY(0px);
+            clip-path: polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%);
+          }
+          25% {
+            transform: translateX(10px) translateY(-3px);
+            clip-path: polygon(0% 55%, 25% 35%, 50% 65%, 75% 45%, 100% 55%, 100% 100%, 0% 100%);
+          }
+          50% {
+            transform: translateX(-5px) translateY(2px);
+            clip-path: polygon(0% 65%, 25% 45%, 50% 75%, 75% 55%, 100% 65%, 100% 100%, 0% 100%);
+          }
+          75% {
+            transform: translateX(7px) translateY(-1px);
+            clip-path: polygon(0% 58%, 25% 38%, 50% 68%, 75% 48%, 100% 58%, 100% 100%, 0% 100%);
+          }
+        }
+        
+        @keyframes gentleFlowReverse {
+          0%, 100% {
+            transform: translateX(0px) translateY(0px);
+            clip-path: polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%);
+          }
+          25% {
+            transform: translateX(-8px) translateY(3px);
+            clip-path: polygon(0% 0%, 100% 35%, 100% 100%, 0% 100%);
+          }
+          50% {
+            transform: translateX(4px) translateY(-2px);
+            clip-path: polygon(0% 0%, 100% 45%, 100% 100%, 0% 100%);
+          }
+          75% {
+            transform: translateX(-6px) translateY(1px);
+            clip-path: polygon(0% 0%, 100% 38%, 100% 100%, 0% 100%);
+          }
+        }
+        
+        @keyframes softFloat {
+          0%, 100% {
+            transform: translateY(0px) translateX(0px) scale(1);
+          }
+          25% {
+            transform: translateY(-10px) translateX(5px) scale(1.05);
+          }
+          50% {
+            transform: translateY(-5px) translateX(-3px) scale(0.95);
+          }
+          75% {
+            transform: translateY(-15px) translateX(2px) scale(1.02);
+          }
+        }
+        
+        .animate-gentle-flow {
+          animation: gentleFlow 10s ease-in-out infinite;
+        }
+        
+        .animate-gentle-flow-reverse {
+          animation: gentleFlowReverse 13s ease-in-out infinite;
+        }
+        
+        .animate-soft-float {
+          animation: softFloat 8s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };
