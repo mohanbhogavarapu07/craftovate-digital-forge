@@ -1,11 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "sonner";
+import { motion, useInView } from "framer-motion";
 
 const Contact = () => {
   const [email, setEmail] = useState("");
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,12 +17,12 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-16 overflow-hidden bg-gray-900">
-      {/* Dark Atmospheric Background */}
+    <section id="contact" className="relative py-16 overflow-hidden bg-gray-900" ref={sectionRef}>
+      {/* Contact Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&h=800&fit=crop&q=80')`
+          backgroundImage: `url('/src/assets/contactbg.jpeg')`
         }}
       ></div>
       
@@ -33,20 +36,41 @@ const Contact = () => {
 
       <div className="container mx-auto px-6 relative z-10 flex items-center justify-center">
         {/* Newsletter Signup Form - Centered */}
-        <div className="w-full max-w-2xl">
+        <motion.div 
+          className="w-full max-w-2xl"
+          initial={{ opacity: 0, y: 100, scale: 0.8 }}
+          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 100, scale: 0.8 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
           <div className="bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 border border-gray-700/50">
             {/* Heading */}
-            <h2 className="text-4xl font-bold text-white mb-6">
-              Sign up to our Newsletter
-            </h2>
+            <motion.h2 
+              className="text-4xl font-bold text-white mb-6"
+              initial={{ opacity: 0, y: 50 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+            >
+              Let's Work together
+            </motion.h2>
             
             {/* Description */}
-            <p className="text-white/90 text-lg mb-8 leading-relaxed">
-              Sign in Our Newsletter and you will instantly be emailed a full list of New Product Information
-            </p>
+            <motion.p 
+              className="text-white/90 text-lg mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+            >
+              Send a message and we will get back to you as soon as possible.
+            </motion.p>
             
             {/* Newsletter Form */}
-            <form onSubmit={handleSubmit} className="flex gap-4">
+            <motion.form 
+              onSubmit={handleSubmit} 
+              className="flex gap-4"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.6, delay: 0.6, ease: "easeOut" }}
+            >
               <Input
                 type="email"
                 placeholder="Enter your Email Address here"
@@ -62,9 +86,9 @@ const Contact = () => {
               >
                 SUBMIT
               </Button>
-            </form>
+            </motion.form>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

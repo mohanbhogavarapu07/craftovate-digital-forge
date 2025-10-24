@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, Plus, Minus, Mail, Phone, MapPin } from "lucide-react";
+import { Check, Mail, Phone, MapPin } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -16,7 +16,6 @@ const ContactPage = () => {
     message: ""
   });
 
-  const [expandedFAQ, setExpandedFAQ] = useState(0);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -58,61 +57,79 @@ const ContactPage = () => {
   return (
     <div className="min-h-screen bg-gray-900">
       {/* Hero Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20">
+      <section className="pt-24 pb-0 sm:pt-28 sm:pb-0 lg:pt-32 lg:pb-0 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+                Let's Build Your{" "}
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
+                  Digital Story
+                </span>
+              </h1>
+            <p className="text-lg sm:text-xl text-gray-600 mb-0 max-w-2xl mx-auto">
+                Reach out to us and let's craft something amazing together. We're excited to hear about your project!
+              </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section className="pt-16 pb-16 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
               <div className="space-y-8">
                 <div>
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+                  <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                     Get in Touch with Our Sales Team!
-                  </h1>
-                  <p className="text-lg text-gray-300 leading-relaxed">
+                  </h2>
+                  <p className="text-lg text-gray-600 leading-relaxed">
                     Whether you have questions about our plans, need a personalized demo, or want to discuss specific requirements for your organization, our knowledgeable sales team is here to assist you every step of the way.
                   </p>
                 </div>
-                
+
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <Check className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300">Let us guide you through your features, pricing, and more!</p>
+                    <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                    <p className="text-gray-600">Let us guide you through your features, pricing, and more!</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300">We're here to ensure you have a seamless experience.</p>
+                    <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                    <p className="text-gray-600">We're here to ensure you have a seamless experience.</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300">Let's talk about how we can collaborate.</p>
+                    <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                    <p className="text-gray-600">Let's talk about how we can collaborate.</p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Check className="w-6 h-6 text-purple-400 mt-1 flex-shrink-0" />
-                    <p className="text-gray-300">Share your thoughts, ideas, or suggestions on how we can make Craftovate even better.</p>
+                    <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
+                    <p className="text-gray-600">Share your thoughts, ideas, or suggestions on how we can make Craftovate even better.</p>
                   </div>
                 </div>
-              </div>
+                        </div>
 
               {/* Right Content - Contact Form */}
               <div className="lg:pl-8">
                 <Card className="bg-gray-800 border-gray-700 rounded-2xl p-8">
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div>
+                      <form onSubmit={handleSubmit} className="space-y-6">
+                        <div>
                       <Label htmlFor="name" className="text-white font-medium mb-2 block">
                         Name
                       </Label>
-                      <Input
-                        id="name"
-                        type="text"
+                          <Input
+                            id="name"
+                            type="text"
                         placeholder="Your name"
                         value={formData.name}
                         onChange={(e) => handleInputChange("name", e.target.value)}
                         className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
-                        required
-                      />
-                    </div>
+                            required
+                          />
+                        </div>
 
-                    <div>
+                        <div>
                       <Label htmlFor="jobTitle" className="text-white font-medium mb-2 block">
                         Job Title
                       </Label>
@@ -134,18 +151,18 @@ const ContactPage = () => {
                       <Label htmlFor="email" className="text-white font-medium mb-2 block">
                         Business Email Address
                       </Label>
-                      <Input
-                        id="email"
-                        type="email"
+                          <Input
+                            id="email"
+                            type="email"
                         placeholder="your@company.com"
                         value={formData.email}
                         onChange={(e) => handleInputChange("email", e.target.value)}
                         className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
-                        required
-                      />
-                    </div>
+                            required
+                          />
+                        </div>
 
-                    <div>
+                        <div>
                       <Label htmlFor="phone" className="text-white font-medium mb-2 block">
                         Phone Number
                       </Label>
@@ -172,7 +189,7 @@ const ContactPage = () => {
                       </div>
                     </div>
 
-                    <div>
+                      <div>
                       <Label htmlFor="message" className="text-white font-medium mb-2 block">
                         Message
                       </Label>
@@ -198,63 +215,12 @@ const ContactPage = () => {
                     </p>
                   </form>
                 </Card>
-              </div>
+                </div>
             </div>
           </div>
         </div>
       </section>
       
-      {/* FAQ Section */}
-      <section className="py-16 bg-black">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg text-gray-300">
-                Check out our FAQs to learn more about how CustomerShip can elevate your business.
-              </p>
-            </div>
-
-            <div className="space-y-0">
-              {faqs.map((faq, index) => (
-                <div 
-                  key={index} 
-                  className={`bg-gray-800 border-b border-gray-700 last:border-b-0 transition-all duration-300 ${
-                    expandedFAQ === index 
-                      ? 'border border-gray-500 shadow-lg shadow-gray-500/20' 
-                      : 'border border-transparent'
-                  }`}
-                >
-                  <button
-                    onClick={() => setExpandedFAQ(expandedFAQ === index ? -1 : index)}
-                    className="w-full p-6 text-left flex items-center justify-between hover:bg-gray-700/20 transition-colors"
-                  >
-                    <span className="text-white font-semibold text-lg pr-4">{faq.q}</span>
-                    <div className="flex-shrink-0">
-                      {expandedFAQ === index ? (
-                        <div className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center">
-                          <Minus className="w-4 h-4 text-white" />
-                        </div>
-                      ) : (
-                        <div className="w-8 h-8 bg-gray-700 rounded flex items-center justify-center">
-                          <Plus className="w-4 h-4 text-white" />
-                        </div>
-                      )}
-                    </div>
-                  </button>
-                  {expandedFAQ === index && (
-                    <div className="px-6 pb-6">
-                      <p className="text-gray-300 leading-relaxed text-base">{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Call-to-Action Section */}
       <section className="py-16 bg-gray-900">
@@ -262,7 +228,7 @@ const ContactPage = () => {
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Start Growing Your Business With Craftovate Today
-            </h2>
+              </h2>
             <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">
               Whether you're a small team or a large enterprise, Craftovate is designed to meet your digital needs. See how our platform can help you scale.
             </p>

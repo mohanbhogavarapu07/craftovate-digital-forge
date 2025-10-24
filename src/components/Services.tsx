@@ -1,11 +1,13 @@
 import { Palette, Code, Target, Megaphone, Sparkles, Smartphone, ArrowRight, Brain } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
-import { useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
 
 const Services = () => {
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   // Handle scrolling to service section when page loads with hash
   useEffect(() => {
@@ -89,7 +91,7 @@ const Services = () => {
   ];
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden bg-white">
+    <section id="services" className="py-12 relative overflow-hidden bg-white" ref={ref}>
       {/* Professional background elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-gray-50"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/3 via-transparent to-transparent"></div>
@@ -99,117 +101,150 @@ const Services = () => {
         <div className="grid grid-cols-12 gap-12 items-start">
           
           {/* LEFT SIDE - 40% width */}
-          <div className="col-span-12 lg:col-span-5">
+          <motion.div 
+            className="col-span-12 lg:col-span-5"
+            initial={{ opacity: 0, x: -100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="mb-8">
-              <h2 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gray-900 tracking-tight leading-tight">
+              <motion.h2 
+                className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gray-900 tracking-tight leading-tight"
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+              >
                 TRENDING
-              </h2>
-              <h3 className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gray-900 tracking-tight leading-tight mb-6">
+              </motion.h2>
+              <motion.h3 
+                className="text-6xl sm:text-7xl lg:text-8xl font-bold text-gray-900 tracking-tight leading-tight mb-6"
+                initial={{ opacity: 0, y: 50 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+                transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+              >
                 SERVICES
-              </h3>
-              <div className="w-24 h-0.5 bg-gradient-to-r from-blue-500 to-blue-700 mb-8"></div>
-              <p className="text-xl text-gray-600 leading-relaxed font-light mb-8">
+              </motion.h3>
+              <motion.div 
+                className="w-24 h-0.5 bg-gradient-to-r from-blue-500 to-blue-700 mb-8"
+                initial={{ width: 0 }}
+                animate={isInView ? { width: "6rem" } : { width: 0 }}
+                transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
+              ></motion.div>
+              <motion.p 
+                className="text-xl text-gray-600 leading-relaxed font-light mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.6, delay: 0.8, ease: "easeOut" }}
+              >
                 Comprehensive digital solutions designed to accelerate your business growth and enhance your market presence.
-              </p>
+              </motion.p>
               
-              {/* Premium CTA Button */}
+              {/* Compact CTA Button with Floating Animation */}
               <Link to="/services">
                 <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={isInView ? { 
+                    opacity: 1, 
+                    scale: 1,
+                    y: [0, -8, 0]
+                  } : { opacity: 0, scale: 0.8 }}
+                  transition={{ 
+                    opacity: { duration: 0.6, delay: 1, ease: "easeOut" },
+                    scale: { duration: 0.6, delay: 1, ease: "easeOut" },
+                    y: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                  }}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="group relative inline-block"
                 >
-                  <div className="px-8 py-4 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-700 rounded-2xl shadow-xl shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-500 backdrop-blur-sm">
+                  <div className="px-6 py-3 bg-black rounded-xl shadow-2xl hover:shadow-3xl transition-all duration-300">
                     <div className="flex items-center justify-center">
-                      <span className="text-white font-bold text-lg tracking-wider uppercase mr-3">
+                      <span className="text-white font-semibold text-sm tracking-wide uppercase mr-2">
                         VIEW ALL SERVICES
                       </span>
-                      <ArrowRight className="w-5 h-5 text-white group-hover:translate-x-1 transition-transform duration-300" />
+                      <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform duration-300" />
                     </div>
                   </div>
-                  
-                  {/* Premium Glow Effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-700 rounded-2xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 -z-10"></div>
                 </motion.div>
               </Link>
             </div>
-          </div>
+          </motion.div>
 
           {/* RIGHT SIDE - 60% width */}
-          <div className="col-span-12 lg:col-span-7">
-            {/* Premium Service Grid - 3x2 Layout */}
-            <div className="grid grid-cols-3 gap-6">
-              {services.slice(0, 6).map((service, index) => {
+          <motion.div 
+            className="col-span-12 lg:col-span-7 flex justify-center"
+            initial={{ opacity: 0, x: 100 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+            transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+          >
+            {/* Service Cards Grid - 2x2 Layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
+              {services.slice(0, 4).map((service, index) => {
                 const gradients = [
-                  'from-blue-500 to-blue-700',      // BRAND - Blue
-                  'from-purple-500 to-purple-700',  // WEB - Purple  
-                  'from-teal-500 to-teal-700',      // UI/UX - Teal
-                  'from-orange-500 to-orange-700', // MOBILE - Orange
-                  'from-pink-500 to-pink-700',     // DIGITAL - Pink
-                  'from-indigo-500 to-indigo-700'  // BUSINESS - Indigo
+                  'from-red-600 via-red-400 to-red-100',        // BRAND - Red gradient
+                  'from-blue-600 via-blue-400 to-blue-100',     // WEB - Blue gradient
+                  'from-purple-600 via-purple-400 to-purple-100', // UI/UX - Purple gradient  
+                  'from-green-600 via-green-400 to-green-100'   // MOBILE - Green gradient
                 ];
-                
-                const colors = ['blue', 'purple', 'teal', 'orange', 'pink', 'indigo'];
-                const currentColor = colors[index];
                 
                 return (
                   <motion.div
                     key={service.title}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    initial={{ opacity: 0, y: 100, rotateX: 15 }}
+                    animate={isInView ? { 
+                      opacity: 1, 
+                      y: [0, -6, 0],
+                      rotateX: 0
+                    } : { opacity: 0, y: 100, rotateX: 15 }}
+                    transition={{ 
+                      duration: 0.8, 
+                      delay: 0.6 + (index * 0.2),
+                      y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }
+                    }}
                     whileHover={{ 
                       y: -8,
-                      scale: 1.05,
+                      scale: 1.02,
                       transition: { duration: 0.3, ease: "easeOut" }
                     }}
                     className="group relative cursor-pointer"
                     onClick={() => handleServiceClick(service.title)}
                   >
-                    {/* Premium Service Card */}
-                    <div className={`relative h-64 p-6 rounded-2xl overflow-hidden flex flex-col justify-center items-center text-center transition-all duration-500 ${
-                      index === 0 
-                        ? `bg-gradient-to-br ${gradients[index]} shadow-2xl shadow-${currentColor}-500/25` 
-                        : `bg-gradient-to-br ${gradients[index]} shadow-lg hover:shadow-xl`
-                    } group-hover:shadow-2xl`}>
-                      
-                      {/* Glassmorphism Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      
-                      {/* Premium Icon Container */}
-                      <div className={`relative w-14 h-14 rounded-2xl flex items-center justify-center mb-4 transition-all duration-300 ${
-                        index === 0 
-                          ? 'bg-white/20 backdrop-blur-sm border border-white/30' 
-                          : `bg-white/20 backdrop-blur-sm border border-white/30`
-                      } group-hover:scale-110 group-hover:rotate-3`}>
-                        <service.icon className="w-7 h-7 text-white" />
-                        
-                        {/* Icon Glow Effect */}
-                        <div className="absolute inset-0 rounded-2xl bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {/* Service Card - Equal Size with Gradient and Drop Shadow */}
+                    <div 
+                      className={`relative bg-gradient-to-br ${gradients[index]} rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-300 p-6 group cursor-pointer text-left h-64 flex flex-col justify-between`}
+                      onClick={() => handleServiceClick(service.title)}
+                    >
+                      {/* Dark Rounded Square Icon - Inside card, left aligned */}
+                      <div className="w-12 h-12 bg-gray-900 rounded-lg flex items-center justify-center shadow-lg mb-4">
+                        <service.icon className="w-6 h-6 text-white" />
                       </div>
                       
-                      {/* Premium Typography */}
-                      <div className="relative z-10">
-                        <h3 className="text-sm font-bold mb-2 tracking-wider uppercase text-white group-hover:text-white/90 transition-colors duration-300">
-                          {service.title.split(' ')[0]}
+                      {/* Content */}
+                      <div className="relative z-10 flex-1 flex flex-col justify-between">
+                        {/* Title */}
+                        <h3 className="text-lg font-bold text-gray-900 mb-3 leading-tight">
+                          {service.title}
                         </h3>
                         
-                        <p className="text-xs font-medium tracking-widest uppercase text-white/80 group-hover:text-white/70 transition-colors duration-300">
-                          TRENDY COLLECTION
+                        {/* Description */}
+                        <p className="text-gray-700 text-sm leading-relaxed mb-4 flex-1">
+                          {service.description}
                         </p>
+                        
+                        {/* Learn More Link */}
+                        <div className="flex justify-start">
+                          <span className="text-gray-700 hover:text-gray-900 font-medium text-xs flex items-center gap-1 transition-colors duration-200">
+                            Learn More
+                            <ArrowRight className="w-3 h-3" />
+                          </span>
+                        </div>
                       </div>
-
-                      {/* Premium Hover Effects */}
-                      <div className={`absolute inset-0 bg-gradient-to-br from-${currentColor}-500/0 via-${currentColor}-500/0 to-${currentColor}-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`}></div>
-                      
-                      {/* Premium Border Glow */}
-                      <div className={`absolute inset-0 rounded-2xl border-2 border-white/20 group-hover:border-white/40 transition-all duration-300`}></div>
                     </div>
                   </motion.div>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
         </div>
 
       </div>
