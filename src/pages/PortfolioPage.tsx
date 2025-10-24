@@ -3,10 +3,39 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { ShoppingCart, Package, Star, ExternalLink, Leaf, Utensils, Users, Award, Clock, TrendingUp, Quote, Mail, Phone, MessageCircle, ChevronRight, Play, Pause } from "lucide-react";
+import { 
+  ShoppingCart, 
+  Package, 
+  Star, 
+  ExternalLink, 
+  Leaf, 
+  Utensils, 
+  Users, 
+  Award, 
+  Clock, 
+  TrendingUp, 
+  Quote, 
+  Mail, 
+  Phone, 
+  MessageCircle, 
+  ChevronRight, 
+  Play, 
+  Pause,
+  Filter,
+  Grid,
+  List,
+  ArrowRight,
+  Calendar,
+  Tag,
+  Eye,
+  Heart,
+  Share2
+} from "lucide-react";
+import ProcessShowcase from "@/components/ProcessShowcase";
 
 const PortfolioPage = () => {
   const [filter, setFilter] = useState("All");
+  const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [selectedProject, setSelectedProject] = useState(null);
   const [counters, setCounters] = useState({
     projects: 0,
@@ -22,7 +51,7 @@ const PortfolioPage = () => {
   const cursorRef = useRef(null);
   const videoSectionRef = useRef(null);
 
-  const categories = ["All", "Web Development", "UI/UX Design"];
+  const categories = ["All", "Web Development", "UI/UX Design", "Mobile Apps", "E-commerce"];
 
   // Animate counters on component mount
   useEffect(() => {
@@ -100,44 +129,82 @@ const PortfolioPage = () => {
 
   const projects = [
     {
-      title: "EcoStore E-commerce",
-      category: "Web Development",
-      description: "Modern e-commerce platform for sustainable products",
+      title: "EcoStore E-commerce Platform",
+      category: "E-commerce",
+      description: "Modern e-commerce platform for sustainable products with AI-powered recommendations and seamless checkout experience.",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
       isEcoStore: true,
       rating: 4.9,
       completedDate: "2 weeks ago",
-      skills: ["React", "TypeScript", "Node.js", "MongoDB"]
+      skills: ["React", "TypeScript", "Node.js", "MongoDB", "Stripe"],
+      views: 1250,
+      likes: 89,
+      tags: ["E-commerce", "AI", "Sustainability", "React"]
     },
     {
-      title: "HealthCare Portal",
+      title: "HealthCare Portal System",
       category: "Web Development",
-      description: "Patient portal with intuitive user experience",
+      description: "Comprehensive patient portal with intuitive user experience, appointment scheduling, and medical records management.",
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
       isMedical: true,
       rating: 4.8,
       completedDate: "1 month ago",
-      skills: ["React", "TypeScript", "Express", "PostgreSQL"]
+      skills: ["React", "TypeScript", "Express", "PostgreSQL", "JWT"],
+      views: 980,
+      likes: 67,
+      tags: ["Healthcare", "Portal", "Management", "Security"]
     },
     {
       title: "AGRO-MARKETING Platform",
       category: "UI/UX Design",
-      description: "Comprehensive agricultural marketing platform with modern UI/UX design",
+      description: "Comprehensive agricultural marketing platform with modern UI/UX design, analytics dashboard, and digital marketing tools.",
       image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop",
       isAgriculture: true,
       rating: 4.9,
       completedDate: "3 weeks ago",
-      skills: ["Figma", "Adobe XD", "Sketch", "Principle"]
+      skills: ["Figma", "Adobe XD", "Sketch", "Principle", "InVision"],
+      views: 1450,
+      likes: 112,
+      tags: ["Agriculture", "Marketing", "Analytics", "UI/UX"]
     },
     {
-      title: "FoodieHub Delivery",
-      category: "UI/UX Design",
-      description: "Modern food delivery app with intuitive user interface and seamless ordering experience",
+      title: "FoodieHub Delivery App",
+      category: "Mobile Apps",
+      description: "Modern food delivery app with intuitive user interface, real-time tracking, and seamless ordering experience.",
       image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
       isFoodDelivery: true,
       rating: 4.7,
       completedDate: "1 week ago",
-      skills: ["Figma", "Adobe XD", "Sketch", "Marvel"]
+      skills: ["React Native", "Figma", "Adobe XD", "Sketch", "Marvel"],
+      views: 2100,
+      likes: 156,
+      tags: ["Food Delivery", "Mobile", "Real-time", "UI/UX"]
+    },
+    {
+      title: "FinTech Dashboard",
+      category: "Web Development",
+      description: "Advanced financial dashboard with real-time analytics, transaction monitoring, and comprehensive reporting tools.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+      isFinTech: true,
+      rating: 4.8,
+      completedDate: "2 weeks ago",
+      skills: ["React", "D3.js", "Node.js", "PostgreSQL", "Redis"],
+      views: 1680,
+      likes: 98,
+      tags: ["FinTech", "Analytics", "Dashboard", "Real-time"]
+    },
+    {
+      title: "E-Learning Platform",
+      category: "Web Development",
+      description: "Comprehensive e-learning platform with video streaming, progress tracking, and interactive course management.",
+      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
+      isElearning: true,
+      rating: 4.6,
+      completedDate: "3 weeks ago",
+      skills: ["React", "Node.js", "MongoDB", "AWS", "WebRTC"],
+      views: 1320,
+      likes: 87,
+      tags: ["E-Learning", "Video", "Education", "Platform"]
     }
   ];
 
@@ -146,186 +213,286 @@ const PortfolioPage = () => {
     : projects.filter(project => project.category === filter);
 
   return (
-    <div>
-       {/* Hero Section */}
-       <section className="pt-24 pb-0 sm:pt-28 sm:pb-0 lg:pt-32 lg:pb-0 bg-gradient-to-b from-purple-50/30 to-white">
-         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-           <div className="max-w-4xl mx-auto text-center">
-             
-             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
-               Our{" "}
-               <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
-                 Portfolio
-               </span>
-             </h1>
-             <p className="text-lg sm:text-xl text-gray-600 mb-0 max-w-2xl mx-auto">
-               Explore our recent work and see how we've helped businesses transform their digital presence.
-             </p>
-           </div>
-         </div>
-       </section>
-
-      {/* Stats Section */}
-      <section className="py-16 bg-white border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-              <div className="text-center group">
-                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-blue to-brand-violet rounded-full">
-                  <Package className="h-8 w-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.projects}+</div>
-                <div className="text-sm text-muted-foreground">Projects Completed</div>
-              </div>
-              <div className="text-center group">
-                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-violet to-brand-purple rounded-full">
-                  <Users className="h-8 w-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.clients}+</div>
-                <div className="text-sm text-muted-foreground">Happy Clients</div>
-              </div>
-              <div className="text-center group">
-                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-purple to-brand-blue rounded-full">
-                  <Clock className="h-8 w-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.years}+</div>
-                <div className="text-sm text-muted-foreground">Years Experience</div>
-              </div>
-              <div className="text-center group">
-                <div className="relative inline-flex items-center justify-center w-20 h-20 mb-4 bg-gradient-to-r from-brand-blue to-brand-purple rounded-full">
-                  <Award className="h-8 w-8 text-white" />
-                </div>
-                <div className="text-3xl font-bold text-gray-900 mb-2">{counters.awards}+</div>
-                <div className="text-sm text-muted-foreground">Awards Won</div>
-              </div>
-            </div>
-          </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="w-full h-full" style={{
+            backgroundImage: `
+              radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px),
+              radial-gradient(circle at 75% 75%, #06b6d4 2px, transparent 2px)
+            `,
+            backgroundSize: '50px 50px'
+          }} />
         </div>
-      </section>
 
-      {/* Filter Section */}
-      <section className="py-12 border-b">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Browse Our Work</h2>
-              <p className="text-muted-foreground">Filter by category to explore our diverse portfolio</p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant={filter === category ? "default" : "outline"}
-                  onClick={() => setFilter(category)}
-                  className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                    filter === category 
-                      ? "bg-gradient-to-r from-brand-blue to-brand-violet text-white shadow-lg transform scale-105" 
-                      : "hover:bg-gray-50 hover:border-brand-blue/50 hover:text-brand-blue"
-                  }`}
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Portfolio Grid */}
-      <section className="py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {filteredProjects.map((project, index) => (
-                <Card
-                  key={index}
-                  className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 animate-fade-in-up cursor-pointer border-0 bg-white"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                  onClick={() => setSelectedProject(project)}
-                >
-                  <div className="relative overflow-hidden aspect-[4/3]">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Badge className="bg-white/90 text-gray-900 hover:bg-white">
-                        <ExternalLink className="h-3 w-3 mr-1" />
-                        View Project
-                      </Badge>
-                    </div>
-                    <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
-                        <MessageCircle className="h-4 w-4 mr-2" />
-                        Learn More
-                      </Button>
-                    </div>
-                  </div>
-                  <CardContent className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <Badge className="bg-gradient-to-r from-brand-blue to-brand-violet text-white px-3 py-1">
-                        {project.category}
-                      </Badge>
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <Star className="h-4 w-4 text-yellow-500 mr-1" />
-                        {project.rating}
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 group-hover:text-brand-blue transition-colors">
-                      {project.title}
-                    </h3>
-                    <p className="text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
-                    
-                    {/* Skills Tags */}
-                    <div className="flex flex-wrap gap-2 mb-4">
-                      {project.skills.slice(0, 3).map((skill, skillIndex) => (
-                        <Badge key={skillIndex} variant="secondary" className="text-xs">
-                          {skill}
-                        </Badge>
-                      ))}
-                      {project.skills.length > 3 && (
-                        <Badge variant="secondary" className="text-xs">
-                          +{project.skills.length - 3} more
-                        </Badge>
-                      )}
-                    </div>
-                    
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center text-sm text-muted-foreground">
-                        <Clock className="h-4 w-4 mr-1" />
-                        {project.completedDate}
-                      </div>
-                      <Button variant="ghost" size="sm" className="text-brand-blue hover:text-brand-violet">
-                        View Details <ChevronRight className="h-4 w-4 ml-1" />
-                      </Button>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-medium mb-8">
+              <Award className="w-4 h-4 mr-2" />
+              Award-Winning Portfolio
             </div>
             
-            {/* CTA Section */}
-            <div className="mt-16 text-center">
-              <div className="bg-gradient-to-r from-brand-blue/5 via-brand-violet/5 to-brand-purple/5 rounded-2xl p-8">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Start Your Project?</h3>
-                <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                  Let's discuss how we can help transform your ideas into stunning digital experiences. 
-                  Our team is ready to bring your vision to life.
-                </p>
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button className="bg-gradient-to-r from-brand-blue to-brand-violet text-white px-8 py-3 text-lg font-semibold hover:shadow-lg transition-all duration-300">
-                    <Mail className="h-5 w-5 mr-2" />
-                    Start a Project
-                  </Button>
-                  <Button variant="outline" className="px-8 py-3 text-lg font-semibold border-brand-blue text-brand-blue hover:bg-brand-blue hover:text-white transition-all duration-300">
-                    <Phone className="h-5 w-5 mr-2" />
-                    Schedule a Call
-                  </Button>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+              Our{" "}
+              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                Portfolio
+              </span>
+            </h1>
+            
+            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+              Discover our innovative solutions that drive business growth and digital transformation. 
+              Explore our journey of excellence in the digital landscape.
+            </p>
+
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">{counters.projects}+</div>
+                <div className="text-sm text-gray-400">Projects Completed</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">{counters.clients}+</div>
+                <div className="text-sm text-gray-400">Happy Clients</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">{counters.years}+</div>
+                <div className="text-sm text-gray-400">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-3xl font-bold text-white mb-2">{counters.awards}+</div>
+                <div className="text-sm text-gray-400">Awards Won</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Navigation & Filters */}
+      <section className="py-8 bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+              {/* Categories */}
+              <div className="flex flex-wrap gap-3">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setFilter(category)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      filter === category 
+                        ? "bg-blue-500 text-white shadow-lg" 
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+
+              {/* View Controls */}
+              <div className="flex items-center gap-4">
+                <div className="flex items-center bg-gray-100 rounded-lg p-1">
+                  <button
+                    onClick={() => setViewMode("grid")}
+                    className={`p-2 rounded-md transition-all duration-300 ${
+                      viewMode === "grid" ? "bg-white shadow-sm text-blue-500" : "text-gray-500"
+                    }`}
+                  >
+                    <Grid className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode("list")}
+                    className={`p-2 rounded-md transition-all duration-300 ${
+                      viewMode === "list" ? "bg-white shadow-sm text-blue-500" : "text-gray-500"
+                    }`}
+                  >
+                    <List className="w-4 h-4" />
+                  </button>
+                </div>
+                
+                <div className="text-sm text-gray-500">
+                  {filteredProjects.length} projects
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Grid */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            {viewMode === "grid" ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProjects.map((project, index) => (
+                  <Card
+                    key={index}
+                    className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer border-0 bg-white"
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    <div className="relative overflow-hidden aspect-[4/3]">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      {/* Overlay Actions */}
+                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div className="flex gap-2">
+                          <button className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors">
+                            <Heart className="w-4 h-4 text-gray-700" />
+                          </button>
+                          <button className="p-2 bg-white/90 rounded-full hover:bg-white transition-colors">
+                            <Share2 className="w-4 h-4 text-gray-700" />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Category Badge */}
+                      <div className="absolute top-4 left-4">
+                        <Badge className="bg-white/90 text-gray-900 hover:bg-white">
+                          {project.category}
+                        </Badge>
+                      </div>
+
+                      {/* View Project Button */}
+                      <div className="absolute bottom-4 left-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <Button className="w-full bg-white text-gray-900 hover:bg-gray-100">
+                          <Eye className="h-4 w-4 mr-2" />
+                          View Project
+                        </Button>
+                      </div>
+                    </div>
+
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          <Star className="h-4 w-4 text-yellow-500" />
+                          <span className="text-sm font-medium">{project.rating}</span>
+                        </div>
+                        <div className="flex items-center gap-4 text-sm text-gray-500">
+                          <div className="flex items-center gap-1">
+                            <Eye className="h-3 w-3" />
+                            {project.views}
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Heart className="h-3 w-3" />
+                            {project.likes}
+                          </div>
+                        </div>
+                      </div>
+
+                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                        {project.title}
+                      </h3>
+                      
+                      <p className="text-gray-600 mb-4 leading-relaxed text-sm">
+                        {project.description}
+                      </p>
+
+                      {/* Skills */}
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.skills.slice(0, 3).map((skill, skillIndex) => (
+                          <Badge key={skillIndex} variant="secondary" className="text-xs">
+                            {skill}
+                          </Badge>
+                        ))}
+                        {project.skills.length > 3 && (
+                          <Badge variant="secondary" className="text-xs">
+                            +{project.skills.length - 3}
+                          </Badge>
+                        )}
+                      </div>
+
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center text-sm text-gray-500">
+                          <Calendar className="h-4 w-4 mr-1" />
+                          {project.completedDate}
+                        </div>
+                        <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
+                          Learn More <ArrowRight className="h-4 w-4 ml-1" />
+                        </Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            ) : (
+              <div className="space-y-6">
+                {filteredProjects.map((project, index) => (
+                  <Card
+                    key={index}
+                    className="group overflow-hidden hover:shadow-xl transition-all duration-300 cursor-pointer border-0 bg-white"
+                    onClick={() => setSelectedProject(project)}
+                  >
+                    <div className="flex flex-col md:flex-row">
+                      <div className="relative w-full md:w-80 h-48 md:h-auto overflow-hidden">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-4 left-4">
+                          <Badge className="bg-white/90 text-gray-900">
+                            {project.category}
+                          </Badge>
+                        </div>
+                      </div>
+                      
+                      <CardContent className="flex-1 p-6">
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <Star className="h-4 w-4 text-yellow-500" />
+                            <span className="text-sm font-medium">{project.rating}</span>
+                          </div>
+                          <div className="flex items-center gap-4 text-sm text-gray-500">
+                            <div className="flex items-center gap-1">
+                              <Eye className="h-3 w-3" />
+                              {project.views}
+                            </div>
+                            <div className="flex items-center gap-1">
+                              <Heart className="h-3 w-3" />
+                              {project.likes}
+                            </div>
+                          </div>
+                        </div>
+
+                        <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+                          {project.title}
+                        </h3>
+                        
+                        <p className="text-gray-600 mb-4 leading-relaxed">
+                          {project.description}
+                        </p>
+
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.skills.map((skill, skillIndex) => (
+                            <Badge key={skillIndex} variant="secondary" className="text-xs">
+                              {skill}
+                            </Badge>
+                          ))}
+                        </div>
+
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center text-sm text-gray-500">
+                            <Calendar className="h-4 w-4 mr-1" />
+                            {project.completedDate}
+                          </div>
+                          <Button className="bg-blue-500 hover:bg-blue-600 text-white">
+                            View Project <ArrowRight className="h-4 w-4 ml-2" />
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -471,6 +638,9 @@ const PortfolioPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Process Showcase */}
+      <ProcessShowcase />
 
       {/* Project Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>
