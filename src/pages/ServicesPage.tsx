@@ -141,46 +141,21 @@ const ServicesPage = () => {
 
   return (
     <div>
-       {/* Hero Section - Clean Dark Background with Gradient */}
-       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900 overflow-hidden">
-         {/* Subtle Light Elements */}
-         <div className="absolute inset-0">
-           <div className="absolute top-20 right-20 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"></div>
-           <div className="absolute bottom-20 left-20 w-80 h-80 bg-purple-500/5 rounded-full blur-3xl"></div>
-           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-indigo-500/3 rounded-full blur-2xl"></div>
-         </div>
+       {/* Hero Section */}
+       <section className="pt-24 pb-0 sm:pt-28 sm:pb-0 lg:pt-32 lg:pb-0 bg-white">
+         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="max-w-4xl mx-auto text-center">
+             
+             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+               Our{" "}
+               <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
+                 Services
+               </span>
+             </h1>
+             <p className="text-lg sm:text-xl text-gray-600 mb-0 max-w-2xl mx-auto">
+               We craft exceptional digital experiences that drive business growth and create lasting impact.
+             </p>
 
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-white text-sm font-medium mb-8">
-              <Star className="w-4 h-4" />
-              Trusted by 500+ Companies
-            </div>
-            
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-white">
-              Digital
-              <br />
-              <span className="bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
-                Excellence
-              </span>
-            </h1>
-            
-            <p className="text-lg sm:text-xl text-gray-300 mb-6 sm:mb-8 max-w-3xl mx-auto leading-relaxed font-light">
-              We craft exceptional digital experiences that drive business growth and create lasting impact.
-            </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-4xl mx-auto">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center group">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-sm">
-                    <stat.icon className="w-8 h-8 text-white" />
-                  </div>
-                  <div className="text-2xl font-bold text-white mb-2">{stat.value}</div>
-                  <div className="text-sm text-gray-300 font-medium">{stat.label}</div>
-                </div>
-              ))}
-            </div>
           </div>
         </div>
       </section>
@@ -239,15 +214,6 @@ const ServicesPage = () => {
         </div>
 
         <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          {/* Section Header */}
-          <div className="text-center mb-8 sm:mb-12">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4 tracking-tight">
-              Our Services
-            </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto font-light">
-              Comprehensive digital solutions designed to accelerate your business growth and enhance your market presence.
-            </p>
-          </div>
 
           {/* Services Grid - Modern Card Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">

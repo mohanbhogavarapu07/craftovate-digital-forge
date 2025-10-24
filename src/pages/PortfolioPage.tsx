@@ -48,22 +48,23 @@ const PortfolioPage = () => {
 
   return (
     <div>
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center animate-fade-in">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 text-white">
-              Our{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Portfolio
-              </span>
-            </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Explore our recent work and see how we've helped businesses transform their digital presence.
-            </p>
-          </div>
-        </div>
-      </section>
+       {/* Hero Section */}
+       <section className="pt-24 pb-0 sm:pt-28 sm:pb-0 lg:pt-32 lg:pb-0 bg-gradient-to-b from-purple-50/30 to-white">
+         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+           <div className="max-w-4xl mx-auto text-center">
+             
+             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
+               Our{" "}
+               <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
+                 Portfolio
+               </span>
+             </h1>
+             <p className="text-lg sm:text-xl text-gray-600 mb-0 max-w-2xl mx-auto">
+               Explore our recent work and see how we've helped businesses transform their digital presence.
+             </p>
+           </div>
+         </div>
+       </section>
 
       {/* Filter Section */}
       <section className="py-12 border-b">

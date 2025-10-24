@@ -9,15 +9,17 @@ const Footer = () => {
   ];
 
   const servicesLinks = [
-    { name: "Branding & Identity", href: "/services" },
-    { name: "Website Design", href: "/services" },
-    { name: "Company Profile", href: "/services" },
-    { name: "Digital Strategy", href: "/services" }
+    { name: "Brand Identity & Design", href: "/services" },
+    { name: "Web Development", href: "/services" },
+    { name: "UI/UX Design", href: "/services" },
+    { name: "Mobile Development", href: "/services" },
+    { name: "Digital Marketing", href: "/services" },
+    { name: "Business Strategy", href: "/services" },
+    { name: "AI Integration", href: "/services" }
   ];
 
   const resourcesLinks = [
     { name: "Portfolio", href: "/portfolio" },
-    { name: "FAQ", href: "/faq" },
     { name: "Pricing", href: "/pricing" }
   ];
 
@@ -124,13 +126,13 @@ const Footer = () => {
                 <div className="p-1.5 rounded-full bg-blue-500/20">
                   <Phone className="w-3 h-3 text-blue-400" />
                 </div>
-                <span className="text-xs">+1 (555) 123-4567</span>
+                <span className="text-xs">+91 9390000000</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300">
                 <div className="p-1.5 rounded-full bg-blue-500/20">
                   <MapPin className="w-3 h-3 text-blue-400" />
                 </div>
-                <span className="text-xs">San Francisco, CA</span>
+                <span className="text-xs">Andhra Pradesh, India</span>
               </div>
             </div>
           </div>
@@ -140,7 +142,7 @@ const Footer = () => {
             <p className="text-gray-400 flex items-center justify-center gap-2 flex-wrap text-xs">
               © {new Date().getFullYear()} Craftovate. All rights reserved. 
               <span className="flex items-center gap-1">
-                Made with <Heart className="w-3 h-3 text-red-400 fill-red-400" /> by Craftovate Team
+                Craft your vision by Craftovate Team
               </span>
             </p>
           </div>

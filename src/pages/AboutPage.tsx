@@ -1,8 +1,7 @@
-import { Lightbulb, Rocket, TrendingUp, Users, Award, Target, Linkedin, Twitter, Github, Heart, CheckCircle, Zap, Star, ArrowRight } from "lucide-react";
+import { Lightbulb, Rocket, TrendingUp, Award, Target, Twitter, Heart, CheckCircle, Zap, Star, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import revanthImage from "@/assets/revanth.jpg";
-import suryaImage from "@/assets/surya.jpg";
+import { Link } from "react-router-dom";
 
 const AboutPage = () => {
   const values = [
@@ -32,88 +31,23 @@ const AboutPage = () => {
     }
   ];
 
-  const teamMembers = [
-    {
-      name: "Revanth Vasa",
-      role: "Founder",
-      image: revanthImage,
-      bio: "Revanth leads our vision and strategy with extensive experience in digital innovation and business development.",
-      social: {
-        linkedin: "https://linkedin.com/in/revanth-vasa",
-        github: "https://github.com/revanth-vasa"
-      }
-    },
-    {
-      name: "Surya Bogavarapu",
-      role: "Co-Founder & CTO",
-      image: suryaImage,
-      bio: "Surya drives our company's growth and oversees strategic initiatives to deliver exceptional digital solutions.",
-      social: {
-        linkedin: "https://linkedin.com/in/surya-bogavarapu",
-        github: "https://github.com/surya-bogavarapu"
-      }
-    },
-    {
-      name: "Poorna",
-      role: "Co-Founder & CTO",
-      image: "/placeholder.svg",
-      bio: "Poorna leads our technical vision and ensures we stay at the forefront of technology and innovation.",
-      social: {
-        linkedin: "https://linkedin.com/in/poorna",
-        github: "https://github.com/poorna"
-      }
-    },
-    {
-      name: "Bhavya",
-      role: "CEO & COO",
-      image: "/placeholder.svg",
-      bio: "Bhavya manages our technical operations and ensures smooth execution of all projects and initiatives.",
-      social: {
-        linkedin: "https://linkedin.com/in/bhavya",
-        github: "https://github.com/bhavya"
-      }
-    }
-  ];
 
   return (
     <div>
-      {/* Hero Section - Modern Header */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-gray-900">
-        {/* Animated Background Elements */}
-        <div className="absolute inset-0">
-          {/* Flowing wave shapes - Dark colors */}
-          <div className="absolute top-0 left-0 w-full h-80 bg-gradient-to-br from-slate-800/20 to-gray-700/15 animate-gentle-flow" style={{
-            clipPath: 'polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%)'
-          }}></div>
-          
-          <div className="absolute bottom-0 right-0 w-full h-64 bg-gradient-to-tl from-slate-700/15 to-gray-600/10 animate-gentle-flow-reverse" style={{
-            clipPath: 'polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%)',
-            animationDelay: '3s'
-          }}></div>
-          
-          {/* Floating elements - Dark colors */}
-          <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-gradient-to-br from-slate-600/15 to-gray-600/10 rounded-full blur-xl animate-soft-float"></div>
-          <div className="absolute bottom-1/3 right-1/3 w-24 h-24 bg-gradient-to-tl from-slate-700/10 to-gray-700/8 rounded-full blur-xl animate-soft-float" style={{ animationDelay: '2s' }}></div>
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-5xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-medium mb-6">
-              <Star className="w-4 h-4" />
-              Crafting Digital Excellence Since 2020
-            </div>
+      {/* Hero Section */}
+      <section className="pt-24 pb-0 sm:pt-28 sm:pb-0 lg:pt-32 lg:pb-0 bg-gradient-to-b from-purple-50/30 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center">
             
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 tracking-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6">
               About{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
                 Craftovate
               </span>
             </h1>
-            
-            <p className="text-base sm:text-lg text-gray-300 mb-6 max-w-3xl mx-auto leading-relaxed font-light">
+            <p className="text-lg sm:text-xl text-gray-600 mb-0 max-w-2xl mx-auto">
               We are a creative digital studio passionate about helping businesses craft their digital identity and elevate their online presence through innovative design and strategic thinking.
             </p>
-
           </div>
         </div>
       </section>
@@ -140,20 +74,20 @@ const AboutPage = () => {
                 
                 <div className="space-y-6 text-lg text-gray-600 leading-relaxed">
                   <p>
-                    Founded in 2020, <span className="font-semibold text-gray-900">Craft</span> emerged from a simple belief: every business deserves a digital presence that truly represents their vision and values.
+                    Founded in 2025, <span className="font-semibold text-gray-900">Craft</span> emerged from a simple belief: every business deserves a digital presence that truly represents their vision and values.
                   </p>
                   <p>
                     What started as a small team of passionate designers and developers has grown into a full-service digital studio, helping startups and established businesses alike create memorable brand experiences that drive real results.
                   </p>
                   <p>
-                    Today, we're proud to have worked with <span className="font-semibold text-blue-600">500+ clients</span> across various industries, delivering projects that not only look great but create lasting impact and measurable growth.
+                    Today, we're proud to have worked with across various industries, delivering projects that not only look great but create lasting impact and measurable growth.
                   </p>
                 </div>
 
                 {/* Key Achievements List */}
                 <div className="space-y-4">
                   {[
-                    "Award-winning design team",
+                    "Award-winning design expertise",
                     "Industry-leading client satisfaction",
                     "Cutting-edge technology expertise",
                     "Proven track record of success"
@@ -218,103 +152,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Team Section - Modern Interactive Cards */}
-      <section className="py-24 relative bg-gradient-to-b from-gray-50 to-white overflow-hidden">
-        {/* Subtle Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-blue-50/30 to-indigo-50/20 animate-gentle-flow" style={{
-            clipPath: 'polygon(0% 60%, 25% 40%, 50% 70%, 75% 50%, 100% 60%, 100% 100%, 0% 100%)'
-          }}></div>
-          
-          <div className="absolute bottom-0 right-0 w-full h-48 bg-gradient-to-tl from-purple-50/20 to-pink-50/15 animate-gentle-flow-reverse" style={{
-            clipPath: 'polygon(0% 0%, 100% 40%, 100% 100%, 0% 100%)',
-            animationDelay: '3s'
-          }}></div>
-        </div>
-
-        <div className="container mx-auto px-6 lg:px-8 relative z-10">
-          <div className="max-w-7xl mx-auto">
-            {/* Section Header */}
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-medium mb-6">
-                <Users className="w-4 h-4" />
-                Meet the Visionaries
-              </div>
-              
-              <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4 tracking-tight">
-                Our Team
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
-                The creative minds and technical experts behind Craftovate's success, dedicated to bringing your digital vision to life.
-              </p>
-            </div>
-
-            {/* Modern Team Cards Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {teamMembers.map((member, index) => (
-                <div
-                  key={index}
-                  className="group relative h-96 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:scale-[1.02] animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  {/* Background Image */}
-                  <div 
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105"
-                    style={{ 
-                      backgroundImage: `url(${member.image})`,
-                      backgroundPosition: 'center center'
-                    }}
-                  >
-                    {/* Base Gradient Overlay - Always visible */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                    
-                    {/* Hover Overlay - Darker for better readability */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                  </div>
-
-                  {/* Name - Always at bottom, moves to top on hover */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 group-hover:top-6 group-hover:bottom-auto transition-all duration-500 ease-in-out">
-                    <h3 className="text-2xl font-bold text-white mb-2 font-sans">
-                      {member.name}
-                    </h3>
-                  </div>
-
-                  {/* Hover Content Container - Centered */}
-                  <div className="absolute inset-0 flex flex-col justify-center items-center p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                    {/* Description - Appears after name/role moves to top */}
-                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-200 mb-6 max-w-xs">
-                      <p className="text-white text-sm leading-relaxed font-light text-center">
-                        {member.bio}
-                      </p>
-                    </div>
-
-                    {/* Social Icons - Appear after description */}
-                    <div className="flex justify-center gap-3 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-400">
-                      <a
-                        href={member.social.linkedin}
-                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 hover:scale-110 transition-all duration-300 hover:shadow-lg"
-                        aria-label={`${member.name} LinkedIn`}
-                      >
-                        <Linkedin className="w-5 h-5 text-white" />
-                      </a>
-                      <a
-                        href={member.social.github}
-                        className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 hover:scale-110 transition-all duration-300 hover:shadow-lg"
-                        aria-label={`${member.name} GitHub`}
-                      >
-                        <Github className="w-5 h-5 text-white" />
-                      </a>
-                    </div>
-                  </div>
-
-                  {/* Subtle border on hover */}
-                  <div className="absolute inset-0 rounded-2xl border-2 border-transparent group-hover:border-white/20 transition-all duration-500"></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Our Values Section */}
       <section className="py-24">
@@ -402,13 +239,17 @@ const AboutPage = () => {
 
             {/* Call to Action */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
-                Start Your Project
-                <ArrowRight className="ml-2 w-5 h-5 inline" />
-              </button>
-              <button className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
-                View Our Work
-              </button>
+              <Link to="/contact">
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
+                  Start Your Project
+                  <ArrowRight className="ml-2 w-5 h-5 inline" />
+                </button>
+              </Link>
+              <Link to="/portfolio">
+                <button className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
+                  View Our Work
+                </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -560,26 +401,6 @@ const AboutPage = () => {
           animation: softFloat 8s ease-in-out infinite;
         }
         
-        /* Modern Team Card Animations */
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        .animate-fade-in-up {
-          animation: fadeInUp 0.6s ease-out forwards;
-        }
-        
-        /* Enhanced hover effects for team cards */
-        .group:hover .group-hover\:scale-110 {
-          transform: scale(1.1);
-        }
         
         .group:hover .group-hover\:translate-y-0 {
           transform: translateY(0);
