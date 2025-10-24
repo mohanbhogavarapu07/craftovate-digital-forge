@@ -281,3 +281,20 @@ html {
 body {
   -ms-overflow-style: none;
 }
+
+/* Portfolio Book Perspective */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Radial Gradient Background */
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* GPU Acceleration for 3D Transforms */
+.transform-gpu {
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
