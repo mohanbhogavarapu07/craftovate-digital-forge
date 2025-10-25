@@ -46,14 +46,14 @@ const Hero = () => {
 
 
       <div className="container mx-auto pl-6 pr-6 relative z-10 pt-0">
-        <div className="max-w-4xl">
-          <div className="grid grid-cols-12 gap-6 min-h-screen items-center">
+        <div className="max-w-7xl">
+          <div className="grid grid-cols-12 gap-12 min-h-screen items-center">
             
             {/* Left Side Content */}
-            <div className="col-span-12 lg:col-span-6">
+            <div className="col-span-12 lg:col-span-8">
               {/* Professional Digital Studio Chip */}
               <motion.div
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-8"
+                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2 mb-12"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -64,42 +64,36 @@ const Hero = () => {
 
               {/* Main Heading */}
               <motion.h1 
-                className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white mb-6 leading-tight"
+                className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-white mb-12 leading-tight"
                 style={{ 
-                  textShadow: '2px 2px 8px rgba(0,0,0,0.5)',
+                  textShadow: '2px 2px 4px rgba(0,0,0,0.7)',
                   fontFamily: 'system-ui, -apple-system, sans-serif'
                 }}
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
               >
-                <motion.span 
+                <motion.div 
+                  className="block"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  Craft. Innovate.{" "}
-                </motion.span>
-                <motion.span 
-                  className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+                  Craft. Innovate. Elevate
+                </motion.div>
+                <motion.div 
+                  className="text-blue-500 font-bold"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  Elevate{" "}
-                </motion.span>
-                <motion.span 
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 1.0 }}
-                >
                   your Brand.
-                </motion.span>
+                </motion.div>
               </motion.h1>
               
               {/* Description */}
               <motion.p 
-                className="text-base text-white mb-8 leading-relaxed max-w-xl"
+                className="text-lg text-white mb-16 leading-relaxed max-w-2xl"
                 style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.5)' }}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -110,7 +104,7 @@ const Hero = () => {
               
               {/* CTA Buttons */}
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 mb-12"
+                className="flex flex-col sm:flex-row gap-6 mb-20"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 1.4 }}
@@ -136,31 +130,31 @@ const Hero = () => {
             </div>
             
             {/* Right Side Elements */}
-            <div className="col-span-12 lg:col-span-6 relative">
+            <div className="col-span-12 lg:col-span-4 relative">
               {/* Empty right side - content removed */}
             </div>
           </div>
         </div>
         
         {/* Statistics Section - Aligned with Content */}
-        <div className="absolute bottom-6 z-20">
-          <div className="max-w-4xl">
+        <div className="absolute bottom-8 z-20">
+          <div className="max-w-7xl">
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-6"
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 2.0 }}
             >
               {/* 50+ Projects Delivered */}
-              <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-6 min-w-[200px]">
-                <div className="text-2xl font-bold text-white mb-2">50+</div>
-                <div className="text-white/80 text-sm font-medium">Projects Delivered</div>
+              <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-8 min-w-[250px]">
+                <div className="text-3xl font-bold text-white mb-3">50+</div>
+                <div className="text-white/80 text-base font-medium">Projects Delivered</div>
               </div>
               
               {/* 100% Client Satisfaction */}
-              <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-6 min-w-[200px]">
-                <div className="text-2xl font-bold text-white mb-2">100%</div>
-                <div className="text-white/80 text-sm font-medium">Client Satisfaction</div>
+              <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-8 min-w-[250px]">
+                <div className="text-3xl font-bold text-white mb-3">100%</div>
+                <div className="text-white/80 text-base font-medium">Client Satisfaction</div>
               </div>
             </motion.div>
           </div>
@@ -174,3 +168,4 @@ const Hero = () => {
 };
 
 export default Hero;
+

@@ -71,7 +71,7 @@ const ContactPage = () => {
                   <p className="text-lg text-gray-600 leading-relaxed">
                     Whether you have questions about our plans, need a personalized demo, or want to discuss specific requirements for your organization, our knowledgeable sales team is here to assist you every step of the way.
                   </p>
-                </div>
+        </div>
 
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -89,9 +89,9 @@ const ContactPage = () => {
                   <div className="flex items-start gap-3">
                     <Check className="w-6 h-6 text-blue-600 mt-1 flex-shrink-0" />
                     <p className="text-gray-600">Share your thoughts, ideas, or suggestions on how we can make Craftovate even better.</p>
-                  </div>
+          </div>
+        </div>
                 </div>
-                        </div>
 
               {/* Right Content - Contact Form */}
               <div className="lg:pl-8">
@@ -113,9 +113,9 @@ const ContactPage = () => {
                         </div>
 
 
-                    <div>
+                        <div>
                       <Label htmlFor="email" className="text-gray-700 font-medium mb-2 block">
-                        Email Address
+                            Email Address
                       </Label>
                           <Input
                             id="email"
@@ -139,41 +139,41 @@ const ContactPage = () => {
                         value={formData.phone}
                         onChange={(e) => handleInputChange("phone", e.target.value)}
                         className="w-full bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                        required
-                      />
-                    </div>
+                            required
+                          />
+                        </div>
 
-                      <div>
+                        <div>
                       <Label htmlFor="message" className="text-gray-700 font-medium mb-2 block">
                         Message
                       </Label>
-                      <Textarea
+                          <Textarea
                         id="message"
                         placeholder="Tell us about your project..."
                         value={formData.message}
                         onChange={(e) => handleInputChange("message", e.target.value)}
                         className="w-full bg-white border-gray-300 text-gray-900 placeholder-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 min-h-[100px]"
-                        required
-                      />
-                    </div>
+                            required
+                          />
+                        </div>
 
-                    <Button 
-                      type="submit" 
+                        <Button
+                          type="submit"
                       className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-medium transition-colors duration-200 flex items-center justify-center gap-2"
                     >
                       <Send className="w-4 h-4" />
-                      Send Message
-                    </Button>
+                              Send Message
+                        </Button>
 
                     <p className="text-sm text-gray-500 text-center">
                       By submitting this form you agree to our privacy policy.
                     </p>
-                  </form>
+                      </form>
                 </Card>
                 </div>
-            </div>
-          </div>
-        </div>
+                      </div>
+                      </div>
+                    </div>
       </section>
 
       {/* Divider */}
@@ -190,8 +190,8 @@ const ContactPage = () => {
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 Find answers to common questions about our digital services and solutions.
               </p>
-            </div>
-            
+                    </div>
+
             <div className="space-y-4">
               {faqs.map((faq, index) => (
                 <Card key={index} className="bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-all duration-300">

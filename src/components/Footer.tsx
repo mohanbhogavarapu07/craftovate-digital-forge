@@ -125,7 +125,7 @@ const Footer = () => {
                 <div className="p-1.5 rounded-full bg-blue-500/20">
                   <Phone className="w-3 h-3 text-blue-400" />
                 </div>
-                <span className="text-xs">+91 9390000000</span>
+                <span className="text-xs">+91 9502812714</span>
               </div>
               <div className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors duration-300">
                 <div className="p-1.5 rounded-full bg-blue-500/20">

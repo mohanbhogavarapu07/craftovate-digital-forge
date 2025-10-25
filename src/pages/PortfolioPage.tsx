@@ -187,22 +187,22 @@ const PortfolioPage = () => {
 
         {/* Navigation & Filters */}
         <div className="py-6 bg-white sticky top-0 z-40">
-          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                 {/* Categories */}
                 <div className="flex flex-wrap gap-3">
-                  {categories.map((category) => (
+              {categories.map((category) => (
                     <button
-                      key={category}
-                      onClick={() => setFilter(category)}
+                  key={category}
+                  onClick={() => setFilter(category)}
                       className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
                         filter === category 
                           ? "bg-blue-500 text-white shadow-lg" 
                           : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                       }`}
-                    >
-                      {category}
+                >
+                  {category}
                     </button>
                   ))}
                 </div>
@@ -242,17 +242,17 @@ const PortfolioPage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {viewMode === "grid" ? (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {filteredProjects.map((project, index) => (
-                  <Card
-                    key={index}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProjects.map((project, index) => (
+                <Card
+                  key={index}
                     className="group overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 cursor-pointer border-0 bg-white"
-                    onClick={() => setSelectedProject(project)}
-                  >
-                    <div className="relative overflow-hidden aspect-[4/3]">
-                      <img
-                        src={project.image}
-                        alt={project.title}
+                  onClick={() => setSelectedProject(project)}
+                >
+                  <div className="relative overflow-hidden aspect-[4/3]">
+                    <img
+                      src={project.image}
+                      alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -267,13 +267,13 @@ const PortfolioPage = () => {
                             <Share2 className="w-4 h-4 text-gray-700" />
                           </button>
                         </div>
-                      </div>
+                  </div>
 
                       {/* Category Badge */}
                       <div className="absolute top-4 left-4">
                         <Badge className="bg-white/90 text-gray-900 hover:bg-white">
-                          {project.category}
-                        </Badge>
+                      {project.category}
+                    </Badge>
                       </div>
 
                       {/* View Project Button */}
@@ -304,8 +304,8 @@ const PortfolioPage = () => {
                       </div>
 
                       <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                        {project.title}
-                      </h3>
+                      {project.title}
+                    </h3>
                       
                       <p className="text-gray-600 mb-4 leading-relaxed text-sm">
                         {project.description}
@@ -334,9 +334,9 @@ const PortfolioPage = () => {
                           Learn More <ArrowRight className="h-4 w-4 ml-1" />
                         </Button>
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                  </CardContent>
+                </Card>
+              ))}
               </div>
             ) : (
               <div className="space-y-6">
@@ -409,8 +409,8 @@ const PortfolioPage = () => {
                 ))}
               </div>
             )}
+            </div>
           </div>
-        </div>
         </div>
       </section>
 

@@ -245,15 +245,15 @@ const AboutPage = () => {
             {/* Call to Action */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link to="/contact">
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
-                  Start Your Project
-                  <ArrowRight className="ml-2 w-5 h-5 inline" />
-                </button>
+              <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:from-blue-700 hover:to-purple-700 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
+                Start Your Project
+                <ArrowRight className="ml-2 w-5 h-5 inline" />
+              </button>
               </Link>
               <Link to="/portfolio">
-                <button className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
-                  View Our Work
-                </button>
+              <button className="border-2 border-gray-300 text-gray-700 hover:bg-gray-50 hover:border-gray-400 hover:shadow-2xl hover:scale-105 transition-all duration-300 px-8 py-4 text-lg font-semibold rounded-xl">
+                View Our Work
+              </button>
               </Link>
             </div>
           </div>
