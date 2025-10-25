@@ -298,3 +298,54 @@ body {
   backface-visibility: hidden;
   perspective: 1000px;
 }
+
+/* Navbar-specific styles for consistent hover effects across all pages */
+@layer components {
+  /* Navbar link hover effects */
+  .navbar-link {
+    @apply px-3 py-1.5 text-sm font-medium transition-all duration-300 relative;
+  }
+  
+  .navbar-link:hover {
+    @apply text-gray-900 bg-gray-100 rounded-xl shadow-md scale-105;
+  }
+  
+  .navbar-link-active {
+    @apply text-gray-900 font-semibold bg-gray-100 rounded-xl;
+  }
+  
+  /* Mobile navbar link hover effects */
+  .navbar-mobile-link {
+    @apply px-3 py-1.5 text-sm font-medium transition-all duration-300 relative;
+  }
+  
+  .navbar-mobile-link:hover {
+    @apply text-gray-900 bg-gray-50 rounded-xl shadow-md scale-105;
+  }
+  
+  .navbar-mobile-link-active {
+    @apply text-gray-900 bg-gray-100 rounded-xl font-semibold;
+  }
+  
+  /* Mobile menu button hover effects */
+  .navbar-mobile-button {
+    @apply lg:hidden p-2 rounded-xl transition-all duration-300;
+  }
+  
+  .navbar-mobile-button:hover {
+    @apply shadow-md scale-105;
+  }
+  
+  /* Logo hover effects */
+  .navbar-logo {
+    @apply flex items-center space-x-2 hover:scale-105 transition-all duration-300;
+  }
+  
+  .navbar-logo img {
+    @apply h-8 w-auto transition-all duration-300;
+  }
+  
+  .navbar-logo:hover img {
+    @apply scale-110;
+  }
+}

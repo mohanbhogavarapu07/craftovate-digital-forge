@@ -43,11 +43,11 @@ const Navbar = () => {
       <div className="container mx-auto px-4 py-2">
         <div className="flex items-center justify-between h-12 relative">
           {/* Logo with dynamic coloring */}
-          <Link to="/" className="flex items-center space-x-2 group">
+          <Link to="/" className="navbar-logo group">
             <img 
               src={logoImage} 
               alt="Craftovate Digital Logo" 
-              className="h-8 w-auto group-hover:scale-105 transition-transform duration-300"
+              className="h-8 w-auto transition-all duration-300"
             />
             <span className="text-xl font-bold">
               <span className={isHomePage ? (isScrolled ? "text-gray-800" : "text-white") : "text-gray-800"}>Craft</span>
@@ -61,24 +61,17 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                 className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 relative group ${
+                 className={`navbar-link ${
                    isActive(link.href)
-                     ? isHomePage 
-                       ? (isScrolled 
-                           ? "text-gray-900 font-semibold"
-                           : "text-gray-900 font-semibold")
-                       : "text-gray-900 font-semibold"
+                     ? "navbar-link-active"
                      : isHomePage
                        ? (isScrolled
-                           ? "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl"
-                           : "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl")
-                       : "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl"
+                           ? "text-gray-700"
+                           : "text-gray-700")
+                       : "text-gray-700"
                  }`}
               >
                 <span className="relative z-10">{link.name}</span>
-                {isActive(link.href) && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gray-900"></div>
-                )}
               </Link>
             ))}
           </div>
@@ -86,7 +79,7 @@ const Navbar = () => {
           {/* Mobile menu button with dynamic styling */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden p-2 rounded-xl transition-all duration-300 ${
+            className={`navbar-mobile-button ${
               isHomePage 
                 ? (isScrolled 
                     ? "text-gray-700 hover:text-gray-900 hover:bg-gray-100 border border-gray-300 hover:border-gray-400"
@@ -107,18 +100,14 @@ const Navbar = () => {
                   key={link.name}
                   to={link.href}
                   onClick={() => setIsOpen(false)}
-                   className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 relative group ${
+                   className={`navbar-mobile-link ${
                      isActive(link.href)
-                       ? isHomePage 
-                         ? (isScrolled 
-                             ? "text-gray-900 bg-gray-100 rounded-xl font-semibold"
-                             : "text-gray-900 bg-gray-100 rounded-xl font-semibold")
-                         : "text-gray-900 bg-gray-100 rounded-xl font-semibold"
+                       ? "navbar-mobile-link-active"
                        : isHomePage
                          ? (isScrolled
-                             ? "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl"
-                             : "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl")
-                         : "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl"
+                             ? "text-gray-700"
+                             : "text-gray-700")
+                         : "text-gray-700"
                    }`}
                 >
                   <span className="relative z-10">{link.name}</span>
