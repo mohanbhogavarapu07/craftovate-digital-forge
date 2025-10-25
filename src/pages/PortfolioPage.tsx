@@ -19,8 +19,6 @@ import {
   Phone, 
   MessageCircle, 
   ChevronRight, 
-  Play, 
-  Pause,
   Filter,
   Grid,
   List,
@@ -31,7 +29,6 @@ import {
   Heart,
   Share2
 } from "lucide-react";
-import ProcessShowcase from "@/components/ProcessShowcase";
 
 const PortfolioPage = () => {
   const [filter, setFilter] = useState("All");
@@ -43,13 +40,6 @@ const PortfolioPage = () => {
     years: 0,
     awards: 0
   });
-  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isVideoHovered, setIsVideoHovered] = useState(false);
-  const [isVideoVisible, setIsVideoVisible] = useState(false);
-  const videoRef = useRef(null);
-  const cursorRef = useRef(null);
-  const videoSectionRef = useRef(null);
 
   const categories = ["All", "Web Development", "UI/UX Design", "Mobile Apps", "E-commerce"];
 
@@ -84,48 +74,6 @@ const PortfolioPage = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Mouse tracking for cursor animation
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
-
-  // Video controls
-  const toggleVideo = () => {
-    if (videoRef.current) {
-      if (isVideoPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
-      }
-      setIsVideoPlaying(!isVideoPlaying);
-    }
-  };
-
-  // Intersection Observer for scroll-triggered animation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVideoVisible(true);
-            entry.target.classList.add('animate-fade-in-up');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    if (videoSectionRef.current) {
-      observer.observe(videoSectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const projects = [
     {
@@ -214,115 +162,83 @@ const PortfolioPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative pt-24 pb-16 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="w-full h-full" style={{
-            backgroundImage: `
-              radial-gradient(circle at 25% 25%, #3b82f6 2px, transparent 2px),
-              radial-gradient(circle at 75% 75%, #06b6d4 2px, transparent 2px)
-            `,
-            backgroundSize: '50px 50px'
-          }} />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-medium mb-8">
+      {/* Hero Section with Navigation and Projects */}
+      <section className="pt-24 pb-8 bg-gradient-to-b from-purple-50/30 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto text-center mb-8">
+            <div className="inline-flex items-center px-4 py-2 bg-blue-100 border border-blue-200 rounded-full text-blue-700 text-sm font-medium mb-8">
               <Award className="w-4 h-4 mr-2" />
               Award-Winning Portfolio
             </div>
             
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
               Our{" "}
-              <span className="bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-700 bg-clip-text text-transparent">
                 Portfolio
               </span>
             </h1>
             
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
               Discover our innovative solutions that drive business growth and digital transformation. 
               Explore our journey of excellence in the digital landscape.
             </p>
-
-            {/* Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">{counters.projects}+</div>
-                <div className="text-sm text-gray-400">Projects Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">{counters.clients}+</div>
-                <div className="text-sm text-gray-400">Happy Clients</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">{counters.years}+</div>
-                <div className="text-sm text-gray-400">Years Experience</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-white mb-2">{counters.awards}+</div>
-                <div className="text-sm text-gray-400">Awards Won</div>
-              </div>
-            </div>
           </div>
         </div>
-      </section>
 
-      {/* Navigation & Filters */}
-      <section className="py-8 bg-white border-b border-gray-200 sticky top-0 z-40">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-              {/* Categories */}
-              <div className="flex flex-wrap gap-3">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setFilter(category)}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                      filter === category 
-                        ? "bg-blue-500 text-white shadow-lg" 
-                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-
-              {/* View Controls */}
-              <div className="flex items-center gap-4">
-                <div className="flex items-center bg-gray-100 rounded-lg p-1">
-                  <button
-                    onClick={() => setViewMode("grid")}
-                    className={`p-2 rounded-md transition-all duration-300 ${
-                      viewMode === "grid" ? "bg-white shadow-sm text-blue-500" : "text-gray-500"
-                    }`}
-                  >
-                    <Grid className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => setViewMode("list")}
-                    className={`p-2 rounded-md transition-all duration-300 ${
-                      viewMode === "list" ? "bg-white shadow-sm text-blue-500" : "text-gray-500"
-                    }`}
-                  >
-                    <List className="w-4 h-4" />
-                  </button>
+        {/* Navigation & Filters */}
+        <div className="py-6 bg-white sticky top-0 z-40">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                {/* Categories */}
+                <div className="flex flex-wrap gap-3">
+                  {categories.map((category) => (
+                    <button
+                      key={category}
+                      onClick={() => setFilter(category)}
+                      className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                        filter === category 
+                          ? "bg-blue-500 text-white shadow-lg" 
+                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                      }`}
+                    >
+                      {category}
+                    </button>
+                  ))}
                 </div>
-                
-                <div className="text-sm text-gray-500">
-                  {filteredProjects.length} projects
+
+                {/* View Controls */}
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center bg-gray-100 rounded-lg p-1">
+                    <button
+                      onClick={() => setViewMode("grid")}
+                      className={`p-2 rounded-md transition-all duration-300 ${
+                        viewMode === "grid" ? "bg-white shadow-sm text-blue-500" : "text-gray-500"
+                      }`}
+                    >
+                      <Grid className="w-4 h-4" />
+                    </button>
+                    <button
+                      onClick={() => setViewMode("list")}
+                      className={`p-2 rounded-md transition-all duration-300 ${
+                        viewMode === "list" ? "bg-white shadow-sm text-blue-500" : "text-gray-500"
+                      }`}
+                    >
+                      <List className="w-4 h-4" />
+                    </button>
+                  </div>
+                  
+                  <div className="text-sm text-gray-500">
+                    {filteredProjects.length} projects
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Projects Grid */}
-      <section className="py-16">
+        {/* Projects Grid */}
+        <div className="py-8">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-7xl mx-auto">
             {viewMode === "grid" ? (
@@ -495,152 +411,9 @@ const PortfolioPage = () => {
             )}
           </div>
         </div>
-      </section>
-
-      {/* Video Section */}
-      <section 
-        ref={videoSectionRef}
-        className="relative py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden"
-        onMouseEnter={() => setIsVideoHovered(true)}
-        onMouseLeave={() => setIsVideoHovered(false)}
-      >
-        {/* Animated Cursor */}
-        <div
-          ref={cursorRef}
-          className="fixed pointer-events-none z-50 w-8 h-8 bg-gradient-to-r from-brand-blue to-brand-violet rounded-full opacity-0 transition-all duration-300 mix-blend-difference"
-          style={{
-            left: mousePosition.x - 16,
-            top: mousePosition.y - 16,
-            opacity: isVideoHovered ? 1 : 0,
-            transform: isVideoHovered ? 'scale(1.5)' : 'scale(1)',
-          }}
-        />
-
-        {/* Background Elements */}
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-brand-violet/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-brand-purple/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-        </div>
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-6xl mx-auto">
-            {/* Text Content */}
-            <div className="text-center mb-16">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-                Crafted with{" "}
-                <span className="bg-gradient-to-r from-brand-blue via-brand-violet to-brand-purple bg-clip-text text-transparent">
-                  Purpose
-                </span>
-                ,<br />
-                Designed with{" "}
-                <span className="bg-gradient-to-r from-brand-purple via-brand-violet to-brand-blue bg-clip-text text-transparent">
-                  Passion
-                </span>
-              </h2>
-              <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-                Watch how Craftovate turns creativity into craft. Experience our journey of innovation, 
-                design excellence, and digital transformation.
-              </p>
-            </div>
-
-            {/* Video Container */}
-            <div className="relative group">
-              <div className="relative aspect-video rounded-2xl overflow-hidden bg-gray-800 shadow-2xl">
-                {/* Video Element */}
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover transition-all duration-700 group-hover:scale-105"
-                  poster="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=675&fit=crop&auto=format&q=80"
-                  muted
-                  loop
-                >
-                  <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 group-hover:from-black/40 transition-all duration-500" />
-
-                {/* Play/Pause Button */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <Button
-                    onClick={toggleVideo}
-                    className="w-20 h-20 rounded-full bg-white/90 hover:bg-white text-gray-900 hover:scale-110 transition-all duration-300 shadow-2xl group-hover:opacity-100 opacity-90"
-                  >
-                    {isVideoPlaying ? (
-                      <Pause className="h-8 w-8 ml-1" />
-                    ) : (
-                      <Play className="h-8 w-8 ml-1" />
-                    )}
-                  </Button>
-                </div>
-
-                {/* Video Controls Overlay */}
-                <div className="absolute bottom-6 left-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="flex items-center justify-between">
-                    <div className="text-white">
-                      <div className="text-sm font-medium">Craftovate Showcase</div>
-                      <div className="text-xs text-gray-300">2:30 duration</div>
-                    </div>
-                    <div className="flex items-center space-x-2">
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-white hover:bg-white/20"
-                        onClick={toggleVideo}
-                      >
-                        {isVideoPlaying ? (
-                          <Pause className="h-4 w-4" />
-                        ) : (
-                          <Play className="h-4 w-4" />
-                        )}
-                      </Button>
-                      <Button
-                        variant="ghost"
-                        size="sm"
-                        className="text-white hover:bg-white/20"
-                      >
-                        <ExternalLink className="h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute top-4 left-4 w-2 h-2 bg-brand-blue rounded-full animate-ping" />
-                <div className="absolute top-6 right-6 w-1 h-1 bg-brand-violet rounded-full animate-pulse" />
-                <div className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-brand-purple rounded-full animate-ping" style={{ animationDelay: '0.5s' }} />
-              </div>
-
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -left-4 w-8 h-8 bg-gradient-to-r from-brand-blue to-brand-violet rounded-full opacity-20 animate-bounce" style={{ animationDelay: '0.2s' }} />
-              <div className="absolute -bottom-4 -right-4 w-6 h-6 bg-gradient-to-r from-brand-violet to-brand-purple rounded-full opacity-20 animate-bounce" style={{ animationDelay: '0.8s' }} />
-              <div className="absolute top-1/2 -right-8 w-4 h-4 bg-gradient-to-r from-brand-purple to-brand-blue rounded-full opacity-30 animate-pulse" style={{ animationDelay: '1.5s' }} />
-            </div>
-
-            {/* Bottom CTA */}
-            <div className="text-center mt-12">
-              <p className="text-gray-400 mb-6">
-                Ready to see your vision come to life?
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-gradient-to-r from-brand-blue to-brand-violet text-white px-8 py-3 text-lg font-semibold hover:shadow-lg transition-all duration-300">
-                  <Play className="h-5 w-5 mr-2" />
-                  Start Your Project
-                </Button>
-                <Button variant="outline" className="px-8 py-3 text-lg font-semibold border-white/30 text-white hover:bg-white/10 transition-all duration-300">
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Discuss Ideas
-                </Button>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Process Showcase */}
-      <ProcessShowcase />
 
       {/* Project Modal */}
       <Dialog open={!!selectedProject} onOpenChange={() => setSelectedProject(null)}>

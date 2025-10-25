@@ -25,7 +25,6 @@ const Navbar = () => {
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "About", href: "/about" },
-    { name: "Pricing", href: "/pricing" },
     { name: "Contact", href: "/contact" }
   ];
 
@@ -62,19 +61,19 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 relative group ${
-                  isActive(link.href)
-                    ? isHomePage 
-                      ? (isScrolled 
-                          ? "text-gray-900 font-semibold"
-                          : "text-white font-semibold")
-                      : "text-gray-900 font-semibold"
-                    : isHomePage
-                      ? (isScrolled
-                          ? "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl"
-                          : "text-white hover:text-gray-200 hover:bg-white/10 hover:rounded-xl")
-                      : "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl"
-                }`}
+                 className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 relative group ${
+                   isActive(link.href)
+                     ? isHomePage 
+                       ? (isScrolled 
+                           ? "text-gray-900 font-semibold"
+                           : "text-gray-900 font-semibold")
+                       : "text-gray-900 font-semibold"
+                     : isHomePage
+                       ? (isScrolled
+                           ? "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl"
+                           : "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl")
+                       : "text-gray-700 hover:text-gray-900 hover:bg-gray-100 hover:rounded-xl"
+                 }`}
               >
                 <span className="relative z-10">{link.name}</span>
                 {isActive(link.href) && (
@@ -108,19 +107,19 @@ const Navbar = () => {
                   key={link.name}
                   to={link.href}
                   onClick={() => setIsOpen(false)}
-                  className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 relative group ${
-                    isActive(link.href)
-                      ? isHomePage 
-                        ? (isScrolled 
-                            ? "text-gray-900 bg-gray-100 rounded-xl font-semibold"
-                            : "text-white bg-white/20 rounded-xl font-semibold")
-                        : "text-gray-900 bg-gray-100 rounded-xl font-semibold"
-                      : isHomePage
-                        ? (isScrolled
-                            ? "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl"
-                            : "text-white hover:text-gray-200 hover:bg-white/10 hover:rounded-xl")
-                        : "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl"
-                  }`}
+                   className={`px-3 py-1.5 text-sm font-medium transition-all duration-300 relative group ${
+                     isActive(link.href)
+                       ? isHomePage 
+                         ? (isScrolled 
+                             ? "text-gray-900 bg-gray-100 rounded-xl font-semibold"
+                             : "text-gray-900 bg-gray-100 rounded-xl font-semibold")
+                         : "text-gray-900 bg-gray-100 rounded-xl font-semibold"
+                       : isHomePage
+                         ? (isScrolled
+                             ? "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl"
+                             : "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl")
+                         : "text-gray-700 hover:text-gray-900 hover:bg-gray-50 hover:rounded-xl"
+                   }`}
                 >
                   <span className="relative z-10">{link.name}</span>
                 </Link>

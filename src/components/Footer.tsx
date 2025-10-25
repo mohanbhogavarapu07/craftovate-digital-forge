@@ -20,7 +20,6 @@ const Footer = () => {
 
   const resourcesLinks = [
     { name: "Portfolio", href: "/portfolio" },
-    { name: "Pricing", href: "/pricing" }
   ];
 
   const scrollToTop = () => {

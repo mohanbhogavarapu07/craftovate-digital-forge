@@ -53,7 +53,7 @@ const AboutPage = () => {
       </section>
 
       {/* Our Story Section - Two Column Layout */}
-      <section className="py-24 relative bg-white overflow-hidden">
+      <section className="py-12 relative bg-white overflow-hidden">
         {/* Subtle background elements */}
         <div className="absolute inset-0">
           <div className="absolute top-1/4 right-0 w-96 h-96 bg-blue-100/20 rounded-full blur-3xl"></div>
@@ -117,7 +117,7 @@ const AboutPage = () => {
                       <Star className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-xl font-bold text-gray-900">200+</div>
+                      <div className="text-xl font-bold text-gray-900">10+</div>
                       <div className="text-sm text-gray-600 font-medium">Projects Completed</div>
                     </div>
                   </div>
@@ -129,7 +129,7 @@ const AboutPage = () => {
                       <Heart className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-xl font-bold text-gray-900">500+</div>
+                      <div className="text-xl font-bold text-gray-900">10+</div>
                       <div className="text-sm text-gray-600 font-medium">Happy Clients</div>
                     </div>
                   </div>
@@ -141,7 +141,7 @@ const AboutPage = () => {
                       <Star className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <div className="text-xl font-bold text-gray-900">5+</div>
+                      <div className="text-xl font-bold text-gray-900">1+</div>
                       <div className="text-sm text-gray-600 font-medium">Years Experience</div>
                     </div>
                   </div>
@@ -152,13 +152,15 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
 
       {/* Our Values Section */}
-      <section className="py-24">
+      <section className="py-12">
         <div className="container mx-auto px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             {/* Section Header */}
-            <div className="text-center mb-20">
+            <div className="text-center mb-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-50 border border-purple-100 text-purple-700 text-sm font-medium mb-8">
                 <Heart className="w-4 h-4" />
                 What Drives Us
@@ -204,8 +206,11 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Divider */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-gray-400 to-transparent"></div>
+
       {/* Mission Section */}
-      <section className="py-24 relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 overflow-hidden">
+      <section className="py-12 relative bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/20 overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0">
           <div className="absolute top-0 left-0 w-full h-64 bg-gradient-to-br from-blue-100/20 to-indigo-100/15 animate-gentle-flow" style={{

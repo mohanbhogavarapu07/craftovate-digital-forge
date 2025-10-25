@@ -59,28 +59,47 @@ const Testimonials = () => {
     }
   ];
 
-  // Auto-scroll functionality
+  // Auto-scroll functionality with pause on hover
   useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
+    if (!scrollContainerRef.current) return;
 
+    const container = scrollContainerRef.current;
     let scrollAmount = 0;
     const scrollSpeed = 0.5; // pixels per frame
-    const cardWidth = 500; // testimonial card width
+    let isPaused = false;
 
     const scroll = () => {
-      scrollAmount += scrollSpeed;
-      scrollContainer.scrollLeft = scrollAmount;
+      if (!isPaused) {
+        scrollAmount += scrollSpeed;
+        container.scrollLeft = scrollAmount;
 
-      // Reset scroll when we've scrolled through all cards
-      if (scrollAmount >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
-        scrollAmount = 0;
+        // Reset scroll when we've scrolled through all cards
+        if (scrollAmount >= container.scrollWidth - container.clientWidth) {
+          scrollAmount = 0;
+        }
       }
     };
 
+    // Pause auto-scroll on hover
+    const handleMouseEnter = () => {
+      isPaused = true;
+    };
+
+    const handleMouseLeave = () => {
+      isPaused = false;
+    };
+
+    // Add event listeners
+    container.addEventListener('mouseenter', handleMouseEnter);
+    container.addEventListener('mouseleave', handleMouseLeave);
+
     const interval = setInterval(scroll, 16); // ~60fps
 
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      container.removeEventListener('mouseenter', handleMouseEnter);
+      container.removeEventListener('mouseleave', handleMouseLeave);
+    };
   }, []);
 
   return (
@@ -111,6 +130,7 @@ const Testimonials = () => {
           </motion.p>
         </motion.div>
 
+
         {/* Horizontal Scrolling Testimonial Cards */}
         <motion.div 
           ref={scrollContainerRef}
@@ -123,7 +143,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.name}
-              className="relative w-[500px] h-[300px] md:w-[600px] md:h-[350px] flex-shrink-0"
+              className="relative w-[350px] h-[200px] md:w-[400px] md:h-[250px] flex-shrink-0"
               initial={{ opacity: 0, y: 100, rotateX: 15 }}
               animate={isInView ? { 
                 opacity: 1, 
@@ -142,39 +162,22 @@ const Testimonials = () => {
                 <div className="absolute inset-2 border-4 border-black rounded-xl"></div>
                 
                 {/* Testimonial Text with Inline Quotes */}
-                <div className="absolute inset-0 flex items-center justify-center px-12 pt-8 pb-12">
-                  <p className="text-lg font-medium text-gray-800 text-center leading-relaxed font-['Inter',sans-serif]">
-                    <span className="text-4xl font-bold text-black mr-2">"</span>
+                <div className="absolute inset-0 flex items-center justify-center px-8 pt-6 pb-8">
+                  <p className="text-sm font-medium text-gray-800 text-center leading-relaxed font-['Inter',sans-serif]">
+                    <span className="text-2xl font-bold text-black mr-1">"</span>
                     {testimonial.content}
-                    <span className="text-4xl font-bold text-black ml-2">"</span>
+                    <span className="text-2xl font-bold text-black ml-1">"</span>
                   </p>
                 </div>
                 
                 {/* 5 Solid Black Stars */}
-                <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex gap-2">
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-5 h-5 fill-black text-black" />
+                    <Star key={i} className="w-4 h-4 fill-black text-black" />
                   ))}
                 </div>
               </div>
 
-              {/* Floating Polaroid Photo - Desktop: Top Right, Mobile: Top Center */}
-              <div className="absolute top-4 right-4 md:top-6 md:right-6 md:transform md:rotate-3 transform rotate-2">
-                <div className="relative">
-                  {/* Polaroid Photo */}
-                  <div className="w-24 h-28 bg-white rounded-lg shadow-lg p-2 border-2 border-gray-300">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-full h-full object-cover rounded"
-                    />
-                  </div>
-                  
-                  {/* Realistic Black Paperclip */}
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-6 h-3 bg-black rounded-full opacity-80"></div>
-                  <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-4 h-1 bg-black rounded-full opacity-60"></div>
-                </div>
-              </div>
             </motion.div>
           ))}
         </motion.div>

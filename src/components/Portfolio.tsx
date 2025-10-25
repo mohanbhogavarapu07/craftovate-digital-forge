@@ -13,55 +13,67 @@ const Portfolio = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const projects = [
-    // Page 1 - Left and Right
+    // Page 1 - UI/UX Design Projects
     {
       left: {
         id: 1,
-        title: "E-Commerce Platform",
-        description: "A comprehensive online marketplace with advanced payment integration and inventory management system.",
-        thumbnail: "/src/assets/hero1.jpg",
-        category: "Web Development"
+        title: "AGRO-MARKETING Platform",
+        description: "Comprehensive agricultural marketing platform with modern UI/UX design, analytics dashboard, and digital marketing tools.",
+        thumbnail: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop",
+        category: "UI/UX Design",
+        skills: ["Figma", "Adobe XD", "Sketch", "Principle", "InVision"],
+        rating: 4.9
       },
       right: {
         id: 2,
-        title: "Mobile Banking App",
-        description: "Secure mobile banking application with biometric authentication and real-time transaction monitoring.",
-        thumbnail: "/src/assets/hero1.jpg",
-        category: "Mobile Development"
+        title: "FoodieHub Delivery App",
+        description: "Modern food delivery app with intuitive user interface, real-time tracking, and seamless ordering experience.",
+        thumbnail: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&h=600&fit=crop",
+        category: "Mobile Apps",
+        skills: ["React Native", "Figma", "Adobe XD", "Sketch", "Marvel"],
+        rating: 4.7
       }
     },
-    // Page 2 - Left and Right
+    // Page 2 - Web Development Projects
     {
       left: {
         id: 3,
-        title: "Brand Identity System",
-        description: "Complete visual identity design including logo, color palette, typography, and brand guidelines.",
-        thumbnail: "/src/assets/hero1.jpg",
-        category: "Brand Design"
+        title: "HealthCare Portal System",
+        description: "Comprehensive patient portal with intuitive user experience, appointment scheduling, and medical records management.",
+        thumbnail: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop",
+        category: "Web Development",
+        skills: ["React", "TypeScript", "Express", "PostgreSQL", "JWT"],
+        rating: 4.8
       },
       right: {
         id: 4,
-        title: "AI-Powered Dashboard",
-        description: "Intelligent analytics dashboard with machine learning insights and predictive data visualization.",
-        thumbnail: "/src/assets/hero1.jpg",
-        category: "AI Integration"
+        title: "FinTech Dashboard",
+        description: "Advanced financial dashboard with real-time analytics, transaction monitoring, and comprehensive reporting tools.",
+        thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+        category: "Web Development",
+        skills: ["React", "D3.js", "Node.js", "PostgreSQL", "Redis"],
+        rating: 4.8
       }
     },
-    // Page 3 - Left and Right
+    // Page 3 - E-commerce & E-Learning Projects
     {
       left: {
         id: 5,
-        title: "Healthcare Portal",
-        description: "Patient management system with telemedicine capabilities and secure health record management.",
-        thumbnail: "/src/assets/hero1.jpg",
-        category: "Healthcare Tech"
+        title: "EcoStore E-commerce Platform",
+        description: "Modern e-commerce platform for sustainable products with AI-powered recommendations and seamless checkout experience.",
+        thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+        category: "E-commerce",
+        skills: ["React", "TypeScript", "Node.js", "MongoDB", "Stripe"],
+        rating: 4.9
       },
       right: {
         id: 6,
-        title: "Real Estate Platform",
-        description: "Virtual property tours with 360° viewing technology and integrated mortgage calculator.",
-        thumbnail: "/src/assets/hero1.jpg",
-        category: "Real Estate Tech"
+        title: "E-Learning Platform",
+        description: "Comprehensive e-learning platform with video streaming, progress tracking, and interactive course management.",
+        thumbnail: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=600&fit=crop",
+        category: "Web Development",
+        skills: ["React", "Node.js", "MongoDB", "AWS", "WebRTC"],
+        rating: 4.6
       }
     }
   ];
@@ -280,9 +292,16 @@ const Portfolio = () => {
               
                  {/* Left Page Content - Editorial Style */}
                  <div className="relative z-10">
-                   <h3 className="text-xl font-medium text-gray-900 mb-4 tracking-wide">Business Projects</h3>
+                   <h3 className="text-xl font-medium text-gray-900 mb-4 tracking-wide">{currentProjects.left.category}</h3>
                    <p className="text-gray-700 mb-6 leading-relaxed text-sm font-normal">
-                     Discover our innovative solutions that drive business growth and digital transformation.
+                     {currentProjects.left.category === "UI/UX Design" 
+                       ? "Creating intuitive and beautiful user experiences that engage and delight users."
+                       : currentProjects.left.category === "Web Development"
+                       ? "Building robust, scalable web applications with modern technologies and best practices."
+                       : currentProjects.left.category === "E-commerce"
+                       ? "Developing comprehensive e-commerce solutions with seamless user experiences and secure payment processing."
+                       : "Discover our innovative solutions that drive business growth and digital transformation."
+                     }
                    </p>
                  
 
@@ -293,7 +312,7 @@ const Portfolio = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -30 }}
                   transition={{ duration: 0.8 }}
-                   className="bg-white rounded-lg p-4 mb-4 shadow-sm border border-gray-200"
+                   className="bg-yellow-50 rounded-lg p-4 mb-4 shadow-lg border border-yellow-200"
                 >
                    <div className="flex gap-4">
                      <div className="w-20 h-16 bg-stone-200 rounded-md overflow-hidden flex-shrink-0 shadow-sm">
@@ -304,35 +323,30 @@ const Portfolio = () => {
                       />
                     </div>
                     <div className="flex-1">
-                       <h4 className="font-semibold text-gray-900 mb-2 text-sm">{currentProjects.left.title}</h4>
-                       <p className="text-xs text-gray-800 leading-relaxed font-normal">{currentProjects.left.description}</p>
+                       <div className="flex items-center justify-between mb-1">
+                         <h4 className="font-semibold text-gray-900 text-sm">{currentProjects.left.title}</h4>
+                         <div className="flex items-center gap-1">
+                           <span className="text-xs text-yellow-500">★</span>
+                           <span className="text-xs text-gray-600">{currentProjects.left.rating}</span>
+                         </div>
+                       </div>
+                       <p className="text-xs text-gray-800 leading-relaxed font-normal mb-2">{currentProjects.left.description}</p>
+                       <div className="flex flex-wrap gap-1">
+                         {currentProjects.left.skills.slice(0, 3).map((skill, index) => (
+                           <span key={index} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                             {skill}
+                           </span>
+                         ))}
+                         {currentProjects.left.skills.length > 3 && (
+                           <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                             +{currentProjects.left.skills.length - 3}
+                           </span>
+                         )}
+                       </div>
                   </div>
                 </div>
                 </motion.div>
 
-                {/* Project 2 - Printed Layout */}
-                <motion.div
-                  key={`left-2-${currentPage}`}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  className="bg-white rounded-lg p-4 mb-4 shadow-lg border border-gray-300"
-                >
-                   <div className="flex gap-4">
-                     <div className="w-20 h-16 bg-stone-200 rounded-md overflow-hidden flex-shrink-0 shadow-sm">
-                      <img 
-                        src={currentProjects.left.thumbnail} 
-                        alt={currentProjects.left.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                       <h4 className="font-semibold text-gray-900 mb-2 text-sm">{currentProjects.left.title}</h4>
-                       <p className="text-xs text-gray-800 leading-relaxed font-normal">{currentProjects.left.description}</p>
-                </div>
-              </div>
-                </motion.div>
           </div>
             </motion.div>
 
@@ -355,9 +369,16 @@ const Portfolio = () => {
               
                  {/* Right Page Content - Editorial Style */}
                  <div className="relative z-10">
-                   <h3 className="text-xl font-medium text-gray-900 mb-4 tracking-wide">Company History</h3>
+                   <h3 className="text-xl font-medium text-gray-900 mb-4 tracking-wide">{currentProjects.right.category}</h3>
                    <p className="text-gray-700 mb-6 leading-relaxed text-sm font-normal">
-                     Our journey of innovation and growth in the digital landscape.
+                     {currentProjects.right.category === "Mobile Apps"
+                       ? "Crafting mobile applications that provide seamless experiences across all devices and platforms."
+                       : currentProjects.right.category === "Web Development"
+                       ? "Delivering high-performance web solutions with cutting-edge technologies and user-centric design."
+                       : currentProjects.right.category === "E-commerce"
+                       ? "Building comprehensive e-commerce platforms with advanced features and exceptional user experiences."
+                       : "Our journey of innovation and growth in the digital landscape."
+                     }
                    </p>
                  
 
@@ -368,7 +389,7 @@ const Portfolio = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 30 }}
                   transition={{ duration: 0.8 }}
-                   className="bg-white rounded-lg p-4 mb-4 shadow-sm border border-gray-200"
+                   className="bg-yellow-50 rounded-lg p-4 mb-4 shadow-lg border border-yellow-200"
                 >
                    <div className="flex gap-4">
                      <div className="w-20 h-16 bg-stone-200 rounded-md overflow-hidden flex-shrink-0 shadow-sm">
@@ -379,35 +400,30 @@ const Portfolio = () => {
                       />
                   </div>
                     <div className="flex-1">
-                       <h4 className="font-semibold text-gray-900 mb-2 text-sm">{currentProjects.right.title}</h4>
-                       <p className="text-xs text-gray-800 leading-relaxed font-normal">{currentProjects.right.description}</p>
+                       <div className="flex items-center justify-between mb-1">
+                         <h4 className="font-semibold text-gray-900 text-sm">{currentProjects.right.title}</h4>
+                         <div className="flex items-center gap-1">
+                           <span className="text-xs text-yellow-500">★</span>
+                           <span className="text-xs text-gray-600">{currentProjects.right.rating}</span>
+                         </div>
+                       </div>
+                       <p className="text-xs text-gray-800 leading-relaxed font-normal mb-2">{currentProjects.right.description}</p>
+                       <div className="flex flex-wrap gap-1">
+                         {currentProjects.right.skills.slice(0, 3).map((skill, index) => (
+                           <span key={index} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                             {skill}
+                           </span>
+                         ))}
+                         {currentProjects.right.skills.length > 3 && (
+                           <span className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded">
+                             +{currentProjects.right.skills.length - 3}
+                           </span>
+                         )}
+                       </div>
                 </div>
               </div>
                 </motion.div>
 
-                {/* Project 2 - Printed Layout */}
-                <motion.div
-                  key={`right-2-${currentPage}`}
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 30 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  className="bg-white rounded-lg p-4 mb-4 shadow-lg border border-gray-300"
-                >
-                   <div className="flex gap-4">
-                     <div className="w-20 h-16 bg-stone-200 rounded-md overflow-hidden flex-shrink-0 shadow-sm">
-                      <img 
-                        src={currentProjects.right.thumbnail} 
-                        alt={currentProjects.right.title}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div className="flex-1">
-                       <h4 className="font-semibold text-gray-900 mb-2 text-sm">{currentProjects.right.title}</h4>
-                       <p className="text-xs text-gray-800 leading-relaxed font-normal">{currentProjects.right.description}</p>
-          </div>
-        </div>
-                </motion.div>
               </div>
             </motion.div>
           </div>

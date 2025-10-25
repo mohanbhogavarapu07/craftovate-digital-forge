@@ -181,10 +181,10 @@ const Services = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl">
               {services.slice(0, 4).map((service, index) => {
                 const gradients = [
-                  'from-red-600 via-red-400 to-red-100',        // BRAND - Red gradient
-                  'from-blue-600 via-blue-400 to-blue-100',     // WEB - Blue gradient
-                  'from-purple-600 via-purple-400 to-purple-100', // UI/UX - Purple gradient  
-                  'from-green-600 via-green-400 to-green-100'   // MOBILE - Green gradient
+                  'from-red-300 via-red-200 to-red-50',        // BRAND - Light Red gradient
+                  'from-blue-300 via-blue-200 to-blue-50',     // WEB - Light Blue gradient
+                  'from-purple-300 via-purple-200 to-purple-50', // UI/UX - Light Purple gradient  
+                  'from-green-300 via-green-200 to-green-50'   // MOBILE - Light Green gradient
                 ];
                 
                 return (

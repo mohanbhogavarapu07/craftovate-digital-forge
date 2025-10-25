@@ -16,13 +16,25 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen overflow-hidden">
-      {/* Modern House Background with Sunset */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('/src/assets/hero1.jpg'), url('./src/assets/hero1.jpg')`
-        }}
-      ></div>
+      {/* Video Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <video
+          className="w-full h-full object-cover"
+          autoPlay
+          muted
+          loop
+          playsInline
+        >
+          <source src="/src/assets/HEROBG.mp4" type="video/mp4" />
+          {/* Fallback image if video fails to load */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            style={{
+              backgroundImage: `url('/src/assets/hero1.jpg')`
+            }}
+          ></div>
+        </video>
+      </div>
       
       {/* Premium Left-Side Gradient Overlay */}
       <div 
@@ -34,7 +46,7 @@ const Hero = () => {
 
 
       <div className="container mx-auto pl-6 pr-6 relative z-10 pt-0">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-4xl">
           <div className="grid grid-cols-12 gap-6 min-h-screen items-center">
             
             {/* Left Side Content */}
@@ -62,23 +74,21 @@ const Hero = () => {
                 transition={{ duration: 1, delay: 0.4 }}
               >
                 <motion.span 
-                  className="block"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                  Craft. Innovate.
+                  Craft. Innovate.{" "}
                 </motion.span>
                 <motion.span 
-                  className="block bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
+                  className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.8 }}
                 >
-                  Elevate
+                  Elevate{" "}
                 </motion.span>
                 <motion.span 
-                  className="block"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 1.0 }}
@@ -132,26 +142,28 @@ const Hero = () => {
           </div>
         </div>
         
-        {/* Statistics Section - Perfectly Aligned with Content */}
-        <div className="absolute bottom-6 left-6 z-20">
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 2.0 }}
-          >
-            {/* 50+ Projects Delivered */}
-            <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-6 min-w-[200px]">
-              <div className="text-2xl font-bold text-white mb-2">50+</div>
-              <div className="text-white/80 text-sm font-medium">Projects Delivered</div>
-            </div>
-            
-            {/* 100% Client Satisfaction */}
-            <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-6 min-w-[200px]">
-              <div className="text-2xl font-bold text-white mb-2">100%</div>
-              <div className="text-white/80 text-sm font-medium">Client Satisfaction</div>
-            </div>
-          </motion.div>
+        {/* Statistics Section - Aligned with Content */}
+        <div className="absolute bottom-6 z-20">
+          <div className="max-w-4xl">
+            <motion.div 
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 2.0 }}
+            >
+              {/* 50+ Projects Delivered */}
+              <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-6 min-w-[200px]">
+                <div className="text-2xl font-bold text-white mb-2">50+</div>
+                <div className="text-white/80 text-sm font-medium">Projects Delivered</div>
+              </div>
+              
+              {/* 100% Client Satisfaction */}
+              <div className="bg-black/20 backdrop-blur-sm border border-white/20 rounded-lg p-6 min-w-[200px]">
+                <div className="text-2xl font-bold text-white mb-2">100%</div>
+                <div className="text-white/80 text-sm font-medium">Client Satisfaction</div>
+              </div>
+            </motion.div>
+          </div>
         </div>
         
         {/* Bottom Horizontal Bar */}
